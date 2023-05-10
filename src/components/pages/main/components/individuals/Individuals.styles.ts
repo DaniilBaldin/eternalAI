@@ -42,7 +42,7 @@ export const ImageWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: left;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     max-width: 1600px;
     margin-bottom: 150px;
 `;
@@ -54,7 +54,7 @@ export const Img = styled(LazyLoadImage)`
     min-width: 270px;
     max-width: 270px;
     padding: 10px;
-    border-radius: 40px;
+    border-radius: 30px;
     object-fit: contain;
     margin: 0;
 `;

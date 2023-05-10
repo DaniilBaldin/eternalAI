@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Footer = styled.div`
-    width: 90vw;
+export const Footer = styled.footer`
+    width: 80vw;
     /* max-width: 1600px; */
     max-width: 90vw;
     height: 140px;
@@ -16,6 +16,7 @@ export const Footer = styled.div`
     justify-content: space-between;
     -webkit-justify-content: space-between;
     padding: 48px;
+    margin-bottom: 32px;
 `;
 
 export const LogoContainer = styled(Link)`
