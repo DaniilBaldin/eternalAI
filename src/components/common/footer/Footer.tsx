@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Footer,
@@ -10,12 +10,22 @@ import {
 } from './Footer.styles';
 
 export const FooterComponent = () => {
+    const [image, setImage] = useState<string>('/header/ETERNAL.svg');
     return (
         <div>
             <Footer>
                 <LogoContainer to="/">
                     <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
-                    <img src="/header/ETERNAL.svg" alt="Eternal" />
+                    <img
+                        src={image}
+                        alt="Eternal"
+                        onMouseOver={() => {
+                            setImage('/header/ETERNAL-pink.svg');
+                        }}
+                        onMouseOut={() => {
+                            setImage('/header/ETERNAL.svg');
+                        }}
+                    />
                 </LogoContainer>
                 <CentralText> &copy; 2023 Eternal. All rights reserved.</CentralText>
                 <ButtonsContainer>

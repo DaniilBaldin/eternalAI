@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Header,
@@ -11,6 +11,7 @@ import {
 } from './Header.styles';
 
 export const HeaderComponent = () => {
+    const [image, setImage] = useState<string>('/header/ETERNAL.svg');
     return (
         <Header>
             <HeaderMain>
@@ -19,7 +20,16 @@ export const HeaderComponent = () => {
                 </MenuButton>
                 <LogoContainer to="/">
                     <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
-                    <img src="/header/ETERNAL.svg" alt="Eternal" />
+                    <img
+                        src={image}
+                        alt="Eternal"
+                        onMouseOver={() => {
+                            setImage('/header/ETERNAL-pink.svg');
+                        }}
+                        onMouseOut={() => {
+                            setImage('/header/ETERNAL.svg');
+                        }}
+                    />
                 </LogoContainer>
                 <ButtonsContainer>
                     <LoginButton type="button">LOGIN</LoginButton>
