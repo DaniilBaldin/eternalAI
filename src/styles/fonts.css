@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Arquitecta';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./fonts/Arquitecta/Arquitecta.woff2') format('woff2'),
+        url('./fonts/Arquitecta/Arquitecta.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./fonts/Avenir/Avenir-Book.woff2') format('woff2'),
+        url('./fonts/Avenir/Avenir-Book.woff') format('woff');
+}
