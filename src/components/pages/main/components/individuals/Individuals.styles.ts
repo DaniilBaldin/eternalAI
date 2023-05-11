@@ -1,16 +1,21 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { styled } from 'styled-components';
 
 export const IndividualsMain = styled.div`
     margin-top: 150px;
-    padding-left: 4%;
-    padding-right: 4%;
-    margin-left: 5%;
+    width: 80vw;
+    /* max-width: 80vw; */
+    /* padding-left: 4%; */
+    padding-right: 1%;
+    /* margin-left: 10%; */
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
     align-items: right;
-    justify-content: center;
+    justify-content: flex-end;
+
+    @media (max-width: 1200px) {
+        margin-left: 8%;
+    }
 `;
 
 export const Title = styled.p`
@@ -23,7 +28,7 @@ export const Title = styled.p`
     /* text-align: left; */
     text-transform: uppercase;
     margin-bottom: 8px;
-    margin-left: 1vw;
+    margin-left: 5vw;
 `;
 
 export const Text = styled.p`
@@ -35,26 +40,19 @@ export const Text = styled.p`
     color: #ffffff;
     opacity: 0.7;
     margin-top: 8px;
-    margin-left: 1vw;
+    width: 80vw;
+    margin-left: 5vw;
 `;
 
 export const ImageWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    flex-wrap: wrap;
-    max-width: 1600px;
-    margin-bottom: 150px;
-`;
+    /* display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin-bottom: 150px; */
 
-export const Img = styled(LazyLoadImage)`
-    flex-basis: 19%;
-    flex-grow: 1;
-    margin: 0.02% !important;
-    min-width: 270px;
-    max-width: 270px;
-    padding: 10px;
-    border-radius: 30px;
-    object-fit: contain;
-    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 150px;
 `;

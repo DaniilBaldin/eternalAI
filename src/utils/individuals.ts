@@ -1,4 +1,4 @@
-export const souls = [
+export const individuals = [
     {
         id: 1,
         name: 'Dr. Martin Luther King Jr.',
@@ -78,7 +78,7 @@ export const souls = [
     },
     {
         id: 12,
-        name: 'Ghandi',
+        name: 'Mahatma Ghandi',
         title: 'Philanthropist',
         src: '/main/souls/Ghandi.png',
         alt: 'Ghandi',

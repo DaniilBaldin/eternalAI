@@ -1,4 +1,4 @@
-export type Soul = {
+export type Individual = {
     id: number;
     name: string;
     title: string;

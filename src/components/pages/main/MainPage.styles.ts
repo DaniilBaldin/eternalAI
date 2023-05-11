@@ -6,6 +6,9 @@ export const Main = styled.div`
     width: 100%;
     padding: 0 15px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const Gradient = styled.div`
@@ -115,9 +118,10 @@ export const QuestionButton = styled.button`
         );
     }
 
-    /* &:nth-child(2) {
-        margin-bottom: 500px;
-    } */
+    @media (max-width: 1000px) {
+        width: 343px;
+        height: 64px;
+    }
 `;
 
 export const ButtonText = styled.p`
