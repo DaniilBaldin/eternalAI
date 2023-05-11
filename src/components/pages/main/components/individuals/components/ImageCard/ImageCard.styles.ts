@@ -44,7 +44,8 @@ export const ImageInfo = styled.div<{ hidden: boolean }>`
     padding: 20px;
     z-index: 1;
     margin: 0;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
 `;
 
 export const Title = styled.p`

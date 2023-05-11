@@ -19,12 +19,12 @@ export const FooterComponent = () => {
                     <img
                         src={image}
                         alt="Eternal"
-                        onMouseOver={() => {
-                            setImage('/header/ETERNAL-pink.svg');
-                        }}
-                        onMouseOut={() => {
-                            setImage('/header/ETERNAL.svg');
-                        }}
+                        // onMouseOver={() => {
+                        //     setImage('/header/ETERNAL-pink.svg');
+                        // }}
+                        // onMouseOut={() => {
+                        //     setImage('/header/ETERNAL.svg');
+                        // }}
                     />
                 </LogoContainer>
                 <CentralText> &copy; 2023 Eternal. All rights reserved.</CentralText>

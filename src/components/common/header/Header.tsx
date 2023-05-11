@@ -23,12 +23,12 @@ export const HeaderComponent = () => {
                     <img
                         src={image}
                         alt="Eternal"
-                        onMouseOver={() => {
-                            setImage('/header/ETERNAL-pink.svg');
-                        }}
-                        onMouseOut={() => {
-                            setImage('/header/ETERNAL.svg');
-                        }}
+                        // onMouseOver={() => {
+                        //     setImage('/header/ETERNAL-pink.svg');
+                        // }}
+                        // onMouseOut={() => {
+                        //     setImage('/header/ETERNAL.svg');
+                        // }}
                     />
                 </LogoContainer>
                 <ButtonsContainer>
