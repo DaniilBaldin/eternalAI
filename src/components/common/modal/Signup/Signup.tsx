@@ -15,9 +15,7 @@ export const SignUpModal: FC<Props> = (props) => {
     return createPortal(
         <div>
             <Modal $show={show} onClick={onClose} />
-            <ModalContent $show={show}>
-                <p>Signup</p>
-            </ModalContent>
+            <ModalContent $show={show}></ModalContent>
         </div>,
         document.getElementById('root') as HTMLElement,
     );
