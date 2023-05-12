@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
-export const Header = styled.header`
+export const Header = styled.header<{ $fixed: boolean }>`
     width: 80vw;
     /* max-width: 1600px; */
     max-width: 80vw;
@@ -11,6 +11,8 @@ export const Header = styled.header`
     border: none;
     padding: 0px 0 18px 0;
     min-height: 80px;
+    z-index: 999;
+    position: ${(props) => (props.$fixed ? 'fixed' : 'relative')};
 `;
 
 export const HeaderMain = styled.div`
@@ -29,7 +31,7 @@ export const MenuButton = styled.button`
     margin-top: 32px;
     width: 56px;
     height: 56px;
-    display: frex;
+    display: flex;
     display: -webkit-frex;
     align-items: center;
     -webkit-align-items: center;
@@ -48,6 +50,22 @@ export const MenuButton = styled.button`
     }
 `;
 
+export const CloseButton = styled.button`
+    margin-top: 32px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    display: -webkit-frex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    background-color: transparent;
+    border: 1px solid #2f2535;
+    border-radius: 8px;
+    cursor: pointer;
+`;
+
 export const LogoContainer = styled(Link)`
     display: flex;
     display: -webkit-flex;
@@ -58,7 +76,7 @@ export const LogoContainer = styled(Link)`
     padding: 0;
     margin: 0;
     margin-top: 32px;
-    margin-left: 12%;
+    margin-left: 15%;
 
     @media (max-width: 1400px) {
         margin-left: 20%;

@@ -46,6 +46,10 @@ export const ImageInfo = styled.div<{ hidden: boolean }>`
     margin: 0;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const Title = styled.p`

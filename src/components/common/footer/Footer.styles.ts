@@ -65,7 +65,7 @@ export const FollowUsText = styled.p`
     margin-right: 16px;
 `;
 
-export const SocialButton = styled(Link)`
+export const SocialButton = styled.a`
     height: 32px;
     width: 32px;
     background: linear-gradient(281.4deg, #f82d98 -2.34%, #5833ef 114.41%);
