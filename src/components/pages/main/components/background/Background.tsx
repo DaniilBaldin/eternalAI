@@ -19,8 +19,9 @@ export const Background = () => {
                 top={58.5}
                 bottom={'0%'}
                 left={'72%'}
-                src="/main/Teresa.webp"
+                src="/main/Teresa-compressed.webp"
                 alt="Image"
+                placeholderSrc="/main/Teresa-compressed.webp"
                 width={'19%'}
             />
 
@@ -43,12 +44,40 @@ export const Background = () => {
             <Image top={5} left={'60%'} src="/main/Ellipse3643.svg" alt="Image" width={'30%'} />
             <Image top={10} left={'40%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
             <Image top={5} left={'20%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={50} left={'57%'} src="/main/Einstein.webp" alt="Image" width={'21%'} />
+            <Image
+                top={50}
+                left={'57%'}
+                src="/main/Einstein-compressed.webp"
+                alt="Image"
+                placeholderSrc="/main/Einstein-compressed.webp"
+                width={'21%'}
+            />
             <Image top={22} left={'36%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={62} left={'7%'} src="/main/Musk.webp" alt="Image" width={'21%'} />
-            <Image top={47} left={'20%'} src="/main/Jobs.webp" alt="Image" width={'23%'} />
+            <Image
+                top={62}
+                left={'7%'}
+                src="/main/Musk-compressed.webp"
+                alt="Image"
+                placeholderSrc="/main/Musk-compressed.webp"
+                width={'21%'}
+            />
+            <Image
+                top={47}
+                left={'20%'}
+                src="/main/Jobs-compressed.webp"
+                alt="Image"
+                placeholderSrc="/main/Jobs-compressed.webp"
+                width={'23%'}
+            />
             <Image top={21} left={'22%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={23} left={'33%'} src="/main/King.webp" alt="Image" width={'33%'} />
+            <Image
+                top={23}
+                left={'33%'}
+                src="/main/King-compressed.webp"
+                placeholderSrc="/main/King-compressed.webp"
+                alt="Image"
+                width={'33%'}
+            />
             <Image top={12} left={'32%'} src="/main/Ellipse3644.svg" alt="Image" width={'43%'} />
             <Image top={47.5} left={'32'} src="/main/Gradient.png" alt="Image" width={'100%'} />
         </Wrapper>
