@@ -26,7 +26,6 @@ export const ModalContent = styled.div<{ $show: boolean }>`
     background-color: transparent;
     display: block;
     position: fixed;
-    transition: all 0.1s ease-in-out;
     /* border: 1px solid white; */
     top: 50%;
     right: 0;

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from '~/components/common/layout/Layout';
 import { routes } from './routes';
@@ -17,6 +17,7 @@ export const Router = () => {
                     <Route key={index} path={route.path} element={<route.element />} />
                 ))}
             </Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
 };

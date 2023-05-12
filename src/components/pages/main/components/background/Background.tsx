@@ -11,7 +11,7 @@ export const Background = () => {
                     bottom={'px'}
                     left={'10%'}
                     width={'80%'}
-                    src="/main/conversation.svg"
+                    src="/main/conversation.webp"
                     alt="conversation"
                 />
             </div>
@@ -19,7 +19,7 @@ export const Background = () => {
                 top={58.5}
                 bottom={'0%'}
                 left={'72%'}
-                src="/main/Teresa.svg"
+                src="/main/Teresa.webp"
                 alt="Image"
                 width={'19%'}
             />
@@ -28,7 +28,7 @@ export const Background = () => {
                 top={-45}
                 bottom={'0%'}
                 left={'4%'}
-                src="/main/Group2.png"
+                src="/main/Group2.webp"
                 alt="Group"
                 width={'90%'}
             />
@@ -43,12 +43,12 @@ export const Background = () => {
             <Image top={5} left={'60%'} src="/main/Ellipse3643.svg" alt="Image" width={'30%'} />
             <Image top={10} left={'40%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
             <Image top={5} left={'20%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={50} left={'57%'} src="/main/Einstein.svg" alt="Image" width={'21%'} />
+            <Image top={50} left={'57%'} src="/main/Einstein.webp" alt="Image" width={'21%'} />
             <Image top={22} left={'36%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={62} left={'7%'} src="/main/Musk.svg" alt="Image" width={'21%'} />
-            <Image top={47} left={'20%'} src="/main/Jobs.svg" alt="Image" width={'23%'} />
+            <Image top={62} left={'7%'} src="/main/Musk.webp" alt="Image" width={'21%'} />
+            <Image top={47} left={'20%'} src="/main/Jobs.webp" alt="Image" width={'23%'} />
             <Image top={21} left={'22%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={23} left={'33%'} src="/main/King.svg" alt="Image" width={'33%'} />
+            <Image top={23} left={'33%'} src="/main/King.webp" alt="Image" width={'33%'} />
             <Image top={12} left={'32%'} src="/main/Ellipse3644.svg" alt="Image" width={'43%'} />
             <Image top={47.5} left={'32'} src="/main/Gradient.png" alt="Image" width={'100%'} />
         </Wrapper>

@@ -15,19 +15,19 @@ export const Header = styled.header<{ $fixed: boolean }>`
     position: ${(props) => (props.$fixed ? 'fixed' : 'relative')};
 `;
 
-export const HeaderMain = styled.div`
+export const HeaderWrapper = styled.div`
+    position: relative;
+    padding: 0;
+    margin: 0;
     display: flex;
-    display: -webkit-flex;
-    width: 100%;
     align-items: center;
-    -webkit-align-items: center;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
-    padding: 0 32px;
-    margin: 0 auto;
+    justify-content: center;
 `;
 
 export const MenuButton = styled.button`
+    position: absolute;
+    left: 0;
+    top: 0;
     margin-top: 32px;
     width: 56px;
     height: 56px;
@@ -51,6 +51,9 @@ export const MenuButton = styled.button`
 `;
 
 export const CloseButton = styled.button`
+    position: absolute;
+    left: 0;
+    top: 0;
     margin-top: 32px;
     width: 56px;
     height: 56px;
@@ -76,14 +79,12 @@ export const LogoContainer = styled(Link)`
     padding: 0;
     margin: 0;
     margin-top: 32px;
-    margin-left: 15%;
-
-    @media (max-width: 1400px) {
-        margin-left: 20%;
-    }
 `;
 
 export const ButtonsContainer = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
     display: flex;
     display: -webkit-flex;
     align-items: center;
@@ -149,5 +150,50 @@ export const GetStartedButton = styled.button`
             rgba(248, 45, 152, 0.8) -2.34%,
             rgba(88, 51, 239, 0.8) 114.41%
         );
+    }
+`;
+
+export const HeaderAlternative = styled.div`
+    position: relative;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const CloseButtonAlterntive = styled.button`
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 32px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    display: -webkit-frex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    background-color: transparent;
+    border: 1px solid #2f2535;
+    border-radius: 8px;
+    cursor: pointer;
+`;
+
+export const LogoContainerAlternative = styled(Link)`
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    margin-top: 32px;
+    /* margin-left: 15%; */
+
+    @media (max-width: 1400px) {
+        margin-left: 20%;
     }
 `;
