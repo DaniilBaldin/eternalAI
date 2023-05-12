@@ -191,9 +191,4 @@ export const LogoContainerAlternative = styled(Link)`
     padding: 0;
     margin: 0;
     margin-top: 32px;
-    /* margin-left: 15%; */
-
-    @media (max-width: 1400px) {
-        margin-left: 20%;
-    }
 `;
