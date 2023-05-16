@@ -66,7 +66,7 @@ export const LoginModal: FC<Props> = (props) => {
                                 SIGN IN WITH GOOGLE
                             </GoogleButton>
                         </ButtonWrap>
-                        <SignUpButton>LOGIN</SignUpButton>
+                        <SignUpButton>SIGN IN</SignUpButton>
                     </ButtonsContainer>
                     <BreakLine />
                     <BottomTextWrapper>
