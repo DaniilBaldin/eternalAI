@@ -142,6 +142,8 @@ export const GetStartedButton = styled.button`
     line-height: 14.3px;
     letter-spacing: 0.3em;
     color: #ffffff;
+    /* text-align: center; */
+    /* vertical-align: center; */
     margin: 0;
 
     &:hover {

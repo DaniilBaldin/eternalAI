@@ -16,11 +16,13 @@ import {
 import { MenuModal } from '../modal/Menu/Menu';
 import { LoginModal } from '../modal/Login/Login';
 import { SignUpModal } from '../modal/Signup/Signup';
+import { ConsentModal } from '../modal/Consent/Consent';
 
 export const HeaderComponent = () => {
     const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
     const [isLoginShow, setIsLoginShow] = useState<boolean>(false);
     const [isSignupShow, setIsSignUpShow] = useState<boolean>(false);
+    const [isConsent, setIsConsent] = useState<boolean>(false);
 
     const onMenuHandler = () => {
         setIsLoginShow(false);
@@ -43,12 +45,19 @@ export const HeaderComponent = () => {
     const onCloseHandler = () => {
         setIsLoginShow(false);
         setIsSignUpShow(false);
+        setIsConsent(false);
+    };
+
+    const onConsentHandler = () => {
+        setIsLoginShow(false);
+        setIsSignUpShow(false);
+        setIsConsent(true);
     };
 
     return (
         <>
-            {isLoginShow || isSignupShow ? (
-                <Header $fixed={isMenuShow || isLoginShow || isSignupShow}>
+            {isLoginShow || isSignupShow || isConsent ? (
+                <Header $fixed={isConsent || isMenuShow || isLoginShow || isSignupShow}>
                     <HeaderAlternative>
                         <LogoContainerAlternative
                             to="/"
@@ -56,6 +65,7 @@ export const HeaderComponent = () => {
                                 setIsMenuShow(false);
                                 setIsLoginShow(false);
                                 setIsSignUpShow(false);
+                                setIsConsent(false);
                             }}
                         >
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
@@ -65,8 +75,18 @@ export const HeaderComponent = () => {
                             <img src="/header/Close.svg" alt="MenuClose" style={{ margin: '0' }} />
                         </CloseButtonAlterntive>
                     </HeaderAlternative>
-                    <LoginModal onClose={() => setIsLoginShow(false)} show={isLoginShow} />
-                    <SignUpModal onClose={() => setIsSignUpShow(false)} show={isSignupShow} />
+                    <ConsentModal show={isConsent} onClose={() => setIsConsent(false)} />
+                    <LoginModal
+                        onClose={() => setIsLoginShow(false)}
+                        show={isLoginShow}
+                        onSignUp={onSignupHandler}
+                    />
+                    <SignUpModal
+                        onClose={() => setIsSignUpShow(false)}
+                        show={isSignupShow}
+                        onSignIn={onLoginHandler}
+                        onConsent={onConsentHandler}
+                    />
                 </Header>
             ) : (
                 <Header $fixed={isMenuShow}>
