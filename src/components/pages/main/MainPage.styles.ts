@@ -104,10 +104,10 @@ export const QuestionButton = styled.button`
             rgba(249, 108, 183, 1) -2.34%,
             rgba(129, 98, 252, 1) 114.41%
         );
-        top: -2px;
-        left: -2px;
-        bottom: -2px;
-        right: -2px;
+        top: -1px;
+        left: -1px;
+        bottom: -1px;
+        right: -1px;
     }
 
     &:focus-visible {

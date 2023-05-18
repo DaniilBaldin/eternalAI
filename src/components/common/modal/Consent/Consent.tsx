@@ -73,7 +73,7 @@ export const ConsentModal: FC<Props> = (props) => {
                             <Span>I have read the above statement</Span>
                         </Label>
                     </CheckboxContainer>
-                    <ContinueButton>
+                    <ContinueButton disabled={!isChecked}>
                         <ButtonText>CONTINUE</ButtonText>
                     </ContinueButton>
                 </ConsentWindow>

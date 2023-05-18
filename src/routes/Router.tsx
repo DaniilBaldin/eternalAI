@@ -17,6 +17,7 @@ export const Router = () => {
                     <Route key={index} path={route.path} element={<route.element />} />
                 ))}
             </Route>
+
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );

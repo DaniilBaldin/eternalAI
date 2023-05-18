@@ -11,6 +11,8 @@ type Props = {
 export const MenuModal: FC<Props> = (props) => {
     const { isShow, onClose } = props;
 
+    const account = 'account';
+
     const onCloseHandler = () => {
         onClose();
     };
@@ -19,12 +21,18 @@ export const MenuModal: FC<Props> = (props) => {
         <div>
             <Modal onClick={onCloseHandler} $show={isShow} />
             <ModalContent $show={isShow} onClick={(e) => e.stopPropagation()}>
-                <MenuLink to="/about" style={{ marginTop: '20px' }}>
+                <MenuLink to="/about" style={{ marginTop: '20px' }} onClick={onCloseHandler}>
                     About Us
                 </MenuLink>
-                <MenuLink to="/pricing">Pricing</MenuLink>
-                <MenuLink to="/how-it-works">How it Works</MenuLink>
-                <MenuLink to="/account">My Account</MenuLink>
+                <MenuLink to="/pricing" onClick={onCloseHandler}>
+                    Pricing
+                </MenuLink>
+                <MenuLink to="/how-it-works" onClick={onCloseHandler}>
+                    How it Works
+                </MenuLink>
+                <MenuLink to="/account" onClick={onCloseHandler} hidden={!account}>
+                    My Account
+                </MenuLink>
                 <BreakLine />
                 <Footer>
                     <a href="https://facebook.com/eternalai" target="_blank" rel="noreferrer">
