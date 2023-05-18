@@ -205,7 +205,7 @@ export const SaveButton = styled.button`
 
 export const Badge = styled.div`
     width: 64px;
-    height: 39px;
+    height: 40px;
     border-radius: 15px;
     /* padding: 8px 16px 8px 16px; */
     /* gap: 8px; */
