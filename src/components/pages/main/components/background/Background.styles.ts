@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 

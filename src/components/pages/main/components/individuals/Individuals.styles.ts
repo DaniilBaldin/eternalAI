@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const IndividualsMain = styled.div`
     margin-top: 150px;
