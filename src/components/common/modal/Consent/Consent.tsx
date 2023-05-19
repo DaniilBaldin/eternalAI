@@ -26,7 +26,6 @@ export const ConsentModal: FC<Props> = (props) => {
     const { show, onClose } = props;
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
-    console.log(isChecked);
 
     return createPortal(
         <div>

@@ -78,7 +78,7 @@ export const LogoContainer = styled(Link)`
     -webkit-justify-content: space-between;
     padding: 0;
     margin: 0;
-    margin-top: 32px;
+    margin-top: 35px;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -192,5 +192,5 @@ export const LogoContainerAlternative = styled(Link)`
     -webkit-justify-content: space-between;
     padding: 0;
     margin: 0;
-    margin-top: 32px;
+    margin-top: 35px;
 `;

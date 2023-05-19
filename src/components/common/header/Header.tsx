@@ -17,12 +17,19 @@ import { MenuModal } from '../modal/Menu/Menu';
 import { LoginModal } from '../modal/Login/Login';
 import { SignUpModal } from '../modal/Signup/Signup';
 import { ConsentModal } from '../modal/Consent/Consent';
+import { useGlobalContext } from '~/utils/Context';
+import { PaywallModal } from '../modal/Paywall/Paywall';
+import { SubscribePayment } from '../modal/Paywall/components/SubscribePayment/SubscribePayment';
+import { SubscribeSuccess } from '../modal/Paywall/components/SubscribeSuccess/SubscribeSuccess';
 
 export const HeaderComponent = () => {
     const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
     const [isLoginShow, setIsLoginShow] = useState<boolean>(false);
     const [isSignupShow, setIsSignUpShow] = useState<boolean>(false);
     const [isConsent, setIsConsent] = useState<boolean>(false);
+
+    const { isPricing, setIsPricing, isSubscribe, setIsSubscribe, isSuccess, setIsSuccess } =
+        useGlobalContext();
 
     const onMenuHandler = () => {
         setIsLoginShow(false);
@@ -46,6 +53,10 @@ export const HeaderComponent = () => {
         setIsLoginShow(false);
         setIsSignUpShow(false);
         setIsConsent(false);
+        setIsPricing(false);
+        setIsMenuShow(false);
+        setIsSubscribe(false);
+        setIsSuccess(false);
     };
 
     const onConsentHandler = () => {
@@ -56,8 +67,18 @@ export const HeaderComponent = () => {
 
     return (
         <>
-            {isLoginShow || isSignupShow || isConsent ? (
-                <Header $fixed={isConsent || isMenuShow || isLoginShow || isSignupShow}>
+            {isLoginShow || isSignupShow || isConsent || isPricing || isSubscribe || isSuccess ? (
+                <Header
+                    $fixed={
+                        isConsent ||
+                        isMenuShow ||
+                        isLoginShow ||
+                        isSignupShow ||
+                        isPricing ||
+                        isSubscribe ||
+                        isSuccess
+                    }
+                >
                     <HeaderAlternative>
                         <LogoContainerAlternative
                             to="/"
@@ -66,6 +87,9 @@ export const HeaderComponent = () => {
                                 setIsLoginShow(false);
                                 setIsSignUpShow(false);
                                 setIsConsent(false);
+                                setIsPricing(false);
+                                setIsSubscribe(false);
+                                setIsSuccess(false);
                             }}
                         >
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
@@ -87,6 +111,14 @@ export const HeaderComponent = () => {
                         onSignIn={onLoginHandler}
                         onConsent={onConsentHandler}
                     />
+                    <PaywallModal
+                        show={isPricing}
+                        onClose={() => {
+                            setIsPricing(false);
+                        }}
+                    />
+                    <SubscribePayment show={isSubscribe} />
+                    <SubscribeSuccess show={isSuccess} />
                 </Header>
             ) : (
                 <Header $fixed={isMenuShow}>

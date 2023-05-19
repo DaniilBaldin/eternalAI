@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Modal, ModalContent, MenuLink, BreakLine, Footer, Img } from './Menu.styles';
+import { Modal, ModalContent, MenuLink, BreakLine, Footer, Img, MenuText } from './Menu.styles';
+
+import { useGlobalContext } from '~/utils/Context';
 
 type Props = {
     isShow: boolean;
@@ -10,6 +12,8 @@ type Props = {
 
 export const MenuModal: FC<Props> = (props) => {
     const { isShow, onClose } = props;
+
+    const { setIsPricing } = useGlobalContext();
 
     const account = 'account';
 
@@ -21,15 +25,16 @@ export const MenuModal: FC<Props> = (props) => {
         <div>
             <Modal onClick={onCloseHandler} $show={isShow} />
             <ModalContent $show={isShow} onClick={(e) => e.stopPropagation()}>
-                <MenuLink to="/about" style={{ marginTop: '20px' }} onClick={onCloseHandler}>
-                    About Us
-                </MenuLink>
-                <MenuLink to="/pricing" onClick={onCloseHandler}>
+                <MenuText style={{ marginTop: '20px' }}>About Us</MenuText>
+                <MenuText
+                    onClick={() => {
+                        setIsPricing(true);
+                        // onClose();
+                    }}
+                >
                     Pricing
-                </MenuLink>
-                <MenuLink to="/how-it-works" onClick={onCloseHandler}>
-                    How it Works
-                </MenuLink>
+                </MenuText>
+                <MenuText aria-disabled={true}>How it Works</MenuText>
                 <MenuLink to="/account" onClick={onCloseHandler} hidden={!account}>
                     My Account
                 </MenuLink>

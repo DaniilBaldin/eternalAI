@@ -44,3 +44,8 @@ img {
     display: block;
     max-width: 100%;
 }
+
+:root {
+    --color-stop: #f12c06;
+    --color-bot: #faed34;
+}

@@ -51,6 +51,19 @@ export const MenuLink = styled(Link)`
     letter-spacing: 0.01em;
 `;
 
+export const MenuText = styled.p`
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 32px;
+    text-decoration: none;
+    font-family: 'Avenir';
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+`;
+
 export const BreakLine = styled.div`
     width: 279px;
     height: 0px;
