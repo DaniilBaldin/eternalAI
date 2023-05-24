@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
 
 import {
@@ -23,8 +24,7 @@ export const Chat = () => {
     // const [messages, setMessages] = useState([]);
 
     const { id } = useParams();
-    if (!id) return;
-    const individualInfo = individuals.filter((individual: Individual) => individual.id === +id);
+    const individualInfo = individuals.filter((individual: Individual) => individual.id === +id!);
 
     return (
         <Container>
