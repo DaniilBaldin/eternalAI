@@ -12,6 +12,7 @@ import {
     CloseButtonAlterntive,
     LogoContainerAlternative,
     HeaderWrapper,
+    ShareButton,
 } from './Header.styles';
 import { MenuModal } from '../modal/Menu/Menu';
 import { LoginModal } from '../modal/Login/Login';
@@ -21,8 +22,11 @@ import { useGlobalContext } from '~/utils/Context';
 import { PaywallModal } from '../modal/Paywall/Paywall';
 import { SubscribePayment } from '../modal/Paywall/components/SubscribePayment/SubscribePayment';
 import { SubscribeSuccess } from '../modal/Paywall/components/SubscribeSuccess/SubscribeSuccess';
+import { useLocation } from 'react-router-dom';
 
 export const HeaderComponent = () => {
+    const { pathname } = useLocation();
+
     const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
     const [isLoginShow, setIsLoginShow] = useState<boolean>(false);
     const [isSignupShow, setIsSignUpShow] = useState<boolean>(false);
@@ -146,14 +150,20 @@ export const HeaderComponent = () => {
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
                             <img src="/header/ETERNAL.svg" alt="Eternal" />
                         </LogoContainer>
-                        <ButtonsContainer>
-                            <LoginButton type="button" onClick={onLoginHandler}>
-                                LOGIN
-                            </LoginButton>
-                            <GetStartedButton type="button" onClick={onSignupHandler}>
-                                GET STARTED
-                            </GetStartedButton>
-                        </ButtonsContainer>
+                        {pathname.includes('chat') ? (
+                            <ButtonsContainer>
+                                <ShareButton>SHARE</ShareButton>
+                            </ButtonsContainer>
+                        ) : (
+                            <ButtonsContainer>
+                                <LoginButton type="button" onClick={onLoginHandler}>
+                                    LOGIN
+                                </LoginButton>
+                                <GetStartedButton type="button" onClick={onSignupHandler}>
+                                    GET STARTED
+                                </GetStartedButton>
+                            </ButtonsContainer>
+                        )}
                     </HeaderWrapper>
 
                     <MenuModal onClose={() => setIsMenuShow(false)} isShow={isMenuShow} />

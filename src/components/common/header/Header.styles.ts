@@ -194,3 +194,43 @@ export const LogoContainerAlternative = styled(Link)`
     margin: 0;
     margin-top: 35px;
 `;
+
+export const ShareButton = styled.button`
+    width: 157px;
+    height: 48px;
+    background: transparent;
+    background: url('data:image/svg+xml;utf8,<svg   xmlns="http://www.w3.org/2000/svg" ><defs><linearGradient id="Gradient" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="rotate(28.1)"><stop offset="-2.34%" stop-color="rgb(89, 52, 239)" stop-opacity="0.8" /><stop offset="114.41%" stop-color="rgb(248, 42, 152)" stop-opacity="0.8"/></linearGradient></defs><rect x="0" y="0" width="100%" height="100%" style="height:calc(100%);width:calc(100% )" rx="31" ry="31" stroke-width="1" fill="transparent" stroke="url(%23Gradient)"/></svg>');
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-radius: 66px;
+    display: inline-block;
+    margin: 0;
+    font-family: 'Arquitecta';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.3em;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    /* margin-top: 24px; */
+
+    &:hover {
+        background: linear-gradient(
+            281.4deg,
+            rgba(248, 45, 152, 0.8) -2.34%,
+            rgba(88, 51, 239, 0.8) 114.41%
+        );
+    }
+
+    &:focus {
+        background: linear-gradient(
+            281.4deg,
+            rgba(248, 45, 152, 0.8) -2.34%,
+            rgba(88, 51, 239, 0.8) 114.41%
+        );
+    }
+`;

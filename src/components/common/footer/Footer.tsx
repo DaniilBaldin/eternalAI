@@ -8,10 +8,12 @@ import {
     FollowUsText,
     SocialButton,
 } from './Footer.styles';
+import { useLocation } from 'react-router-dom';
 
 export const FooterComponent = () => {
+    const { pathname } = useLocation();
     return (
-        <div>
+        <div hidden={pathname.includes('chat')}>
             <Footer>
                 <LogoContainer to="/">
                     <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />

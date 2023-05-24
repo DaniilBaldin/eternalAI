@@ -7,8 +7,10 @@ import { individuals } from '~/utils/individuals';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { ImageCard } from './components/ImageCard/ImageCard';
+import { useNavigate } from 'react-router-dom';
 
 export const Individuals = (): JSX.Element => {
+    const navigate = useNavigate();
     return (
         <IndividualsMain>
             <Title>Individuals</Title>
@@ -16,7 +18,11 @@ export const Individuals = (): JSX.Element => {
 
             <ImageWrapper>
                 {individuals.map((individual: Individual) => (
-                    <div key={individual.id}>
+                    <div
+                        key={individual.id}
+                        onClick={() => navigate(`/chat/${individual.id}`)}
+                        tabIndex={0}
+                    >
                         <ImageCard
                             id={individual.id}
                             src={individual.src}

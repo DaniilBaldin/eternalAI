@@ -4,4 +4,5 @@ export type Individual = {
     title: string;
     src: string;
     alt: string;
+    portrait?: string;
 };

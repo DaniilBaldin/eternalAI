@@ -227,13 +227,13 @@ export const ShareButton = styled.button`
     margin-top: 24px;
 
     &:hover {
-        background: url('data:image/svg+xml;utf8,<svg   xmlns="http://www.w3.org/2000/svg" ><defs><linearGradient id="Gradient" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="rotate(28.1)"><stop offset="-2.34%" stop-color="rgb(248, 42, 152)" stop-opacity="0.8" /><stop offset="114.41%" stop-color="rgb(89, 52, 239)" stop-opacity="0.8"/></linearGradient></defs><rect x="0" y="0" width="100%" height="100%" style="height:calc(100%);width:calc(100% )" rx="31" ry="31" stroke-width="1" fill="transparent" stroke="url(%23Gradient)"/></svg>');
+        background: url('data:image/svg+xml;utf8,<svg   xmlns="http://www.w3.org/2000/svg" ><defs><linearGradient id="Gradient" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="rotate(28.1)"><stop offset="-2.34%" stop-color="rgb(89, 52, 239)" stop-opacity="0.8" /><stop offset="114.41%" stop-color="rgb(248, 42, 152)" stop-opacity="0.8"/></linearGradient></defs><rect x="0" y="0" width="100%" height="100%" style="height:calc(100%);width:calc(100% )" rx="31" ry="31" stroke-width="1" fill="transparent" stroke="url(%23Gradient)"/></svg>');
         outline: none;
         border: none;
     }
 
     &:focus {
-        background: url('data:image/svg+xml;utf8,<svg   xmlns="http://www.w3.org/2000/svg" ><defs><linearGradient id="Gradient" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="rotate(28.1)"><stop offset="-2.34%" stop-color="rgb(248, 42, 152)" stop-opacity="0.8" /><stop offset="114.41%" stop-color="rgb(89, 52, 239)" stop-opacity="0.8"/></linearGradient></defs><rect x="0" y="0" width="100%" height="100%" style="height:calc(100%);width:calc(100% )" rx="31" ry="31" stroke-width="1" fill="transparent" stroke="url(%23Gradient)"/></svg>');
+        background: url('data:image/svg+xml;utf8,<svg   xmlns="http://www.w3.org/2000/svg" ><defs><linearGradient id="Gradient" x1="0" x2="100" y1="0" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="rotate(28.1)"><stop offset="-2.34%" stop-color="rgb(89, 52, 239)" stop-opacity="0.8" /><stop offset="114.41%" stop-color="rgb(248, 42, 152)" stop-opacity="0.8"/></linearGradient></defs><rect x="0" y="0" width="100%" height="100%" style="height:calc(100%);width:calc(100% )" rx="31" ry="31" stroke-width="1" fill="transparent" stroke="url(%23Gradient)"/></svg>');
         outline: none;
         border: none;
     }

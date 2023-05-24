@@ -5,6 +5,7 @@ export const individuals = [
         title: 'Political Activist',
         src: '/main/souls/King.webp',
         alt: 'King',
+        portrait: '/portraits/King.webp',
     },
     {
         id: 2,
@@ -12,6 +13,7 @@ export const individuals = [
         title: 'Apple Computer Founder',
         src: '/main/souls/Jobs.webp',
         alt: 'Jobs',
+        portrait: '/portraits/Jobs.webp',
     },
     {
         id: 3,
@@ -19,6 +21,7 @@ export const individuals = [
         title: 'Space nerd',
         src: '/main/souls/Musk.webp',
         alt: 'Musk',
+        portrait: '/portraits/Musk.webp',
     },
     {
         id: 4,
@@ -26,6 +29,7 @@ export const individuals = [
         title: 'Genius',
         src: '/main/souls/Einstein.webp',
         alt: 'Einstein',
+        portrait: '/portraits/Einstein.webp',
     },
     {
         id: 5,
@@ -33,6 +37,7 @@ export const individuals = [
         title: 'Philanthropist',
         src: '/main/souls/Teresa.webp',
         alt: 'Teresa',
+        portrait: '/portraits/Teresa.webp',
     },
     {
         id: 6,
@@ -40,6 +45,7 @@ export const individuals = [
         title: 'Lord & Savior',
         src: '/main/souls/Jesus.webp',
         alt: 'Jesus',
+        portrait: '/portraits/Jesus.webp',
     },
     {
         id: 7,
@@ -47,6 +53,7 @@ export const individuals = [
         title: 'Artist',
         src: '/main/souls/Davinci.webp',
         alt: 'Davinci',
+        portrait: '/portraits/Davinci.webp',
     },
     {
         id: 8,
@@ -54,6 +61,7 @@ export const individuals = [
         title: 'Queen of England',
         src: '/main/souls/Queen.webp',
         alt: 'Queen',
+        portrait: '/portraits/Queen.webp',
     },
     {
         id: 9,
@@ -61,6 +69,7 @@ export const individuals = [
         title: 'Author',
         src: '/main/souls/Shakespeare.webp',
         alt: 'Shakespeare',
+        portrait: '/portraits/Shakespeare.webp',
     },
     {
         id: 10,
@@ -68,6 +77,7 @@ export const individuals = [
         title: 'Philanthropist',
         src: '/main/souls/Mandela.webp',
         alt: 'Mandela',
+        portrait: '/portraits/Mandela.webp',
     },
     {
         id: 11,
@@ -75,6 +85,7 @@ export const individuals = [
         title: 'American history',
         src: '/main/souls/Ross.webp',
         alt: 'Ross',
+        portrait: '/portraits/Ross.webp',
     },
     {
         id: 12,
@@ -82,6 +93,7 @@ export const individuals = [
         title: 'Philanthropist',
         src: '/main/souls/Ghandi.webp',
         alt: 'Ghandi',
+        portrait: '/portraits/Ghandi.webp',
     },
     {
         id: 13,
@@ -89,6 +101,7 @@ export const individuals = [
         title: 'American president',
         src: '/main/souls/Lincoln.webp',
         alt: 'Lincoln',
+        portrait: '/portraits/Lincoln.webp',
     },
     {
         id: 14,
@@ -96,5 +109,6 @@ export const individuals = [
         title: 'TV goofy guy',
         src: '/main/souls/Swanson.webp',
         alt: 'Swanson',
+        portrait: '/portraits/Swanson.webp',
     },
 ];
