@@ -31,7 +31,7 @@ export const Chat = () => {
             <Wrapper>
                 <ImageContainer>
                     <InnerImageWrapper>
-                        <BackgroundGradient src="/public/main/Ellipse3644.svg" />
+                        <BackgroundGradient src="/main/Ellipse3644.svg" />
                         <PersonImage individual={individualInfo[0]} />
                         <NameContainer>
                             <Name>{individualInfo[0].name}</Name>
