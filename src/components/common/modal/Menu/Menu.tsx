@@ -51,9 +51,11 @@ export const MenuModal: FC<Props> = (props) => {
                     Pricing
                 </MenuText>
                 <MenuText aria-disabled={true}>How it Works</MenuText>
-                <MenuLink to="/account" onClick={onCloseHandler} hidden={!account} tabIndex={1}>
-                    My Account
-                </MenuLink>
+                {isAuth && (
+                    <MenuLink to="/account" onClick={onCloseHandler} hidden={!account} tabIndex={1}>
+                        My Account
+                    </MenuLink>
+                )}
                 <BreakLine />
                 <Footer>
                     <a href="https://facebook.com/eternalai" target="_blank" rel="noreferrer">

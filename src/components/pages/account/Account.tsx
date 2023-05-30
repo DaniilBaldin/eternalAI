@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     Main,
@@ -24,12 +24,24 @@ import {
     PaymentSaveButton,
 } from './Account.styles';
 import { PaymentInputs } from '~/components/common/PaymentInput/PaymentInput';
+import { Selector } from '~/store/hooks/redux-hooks';
+import { authSelector } from '~/store/selectors/authSelector';
+import { useNavigate } from 'react-router-dom';
 
 //TODO:Account data fetching and adding to form as value
 //TODO:Change subscription date
 
 export const Account = () => {
+    const navigate = useNavigate();
     const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
+
+    const isAuth = Selector(authSelector);
+
+    useEffect(() => {
+        if (!isAuth) {
+            navigate('/');
+        }
+    }, [isAuth]);
 
     return (
         <Main>
