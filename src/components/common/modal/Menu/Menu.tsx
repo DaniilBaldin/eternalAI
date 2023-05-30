@@ -31,11 +31,12 @@ export const MenuModal: FC<Props> = (props) => {
                         setIsPricing(true);
                         // onClose();
                     }}
+                    tabIndex={1}
                 >
                     Pricing
                 </MenuText>
                 <MenuText aria-disabled={true}>How it Works</MenuText>
-                <MenuLink to="/account" onClick={onCloseHandler} hidden={!account}>
+                <MenuLink to="/account" onClick={onCloseHandler} hidden={!account} tabIndex={1}>
                     My Account
                 </MenuLink>
                 <BreakLine />

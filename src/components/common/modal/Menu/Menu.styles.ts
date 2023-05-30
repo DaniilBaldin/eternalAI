@@ -78,13 +78,14 @@ export const Footer = styled.div`
     justify-content: center;
     /* padding-top: 10px; */
     margin-top: 32px;
+    gap: 22px;
 `;
 
 export const Img = styled.img`
     width: 24px;
     height: 24px;
     object-fit: contain;
-    margin-left: 22px;
+    /* margin-left: 22px; */
 
     &:hover {
         cursor: pointer;

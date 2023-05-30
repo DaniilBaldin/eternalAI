@@ -4,7 +4,7 @@ import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import { images } from '~/utils/images';
 import { css } from 'styled-components';
 
-export const PaymentInputs = () => {
+export const PaymentInputs = (): JSX.Element => {
     const { wrapperProps, getCardImageProps, getCardNumberProps, getExpiryDateProps, getCVCProps } =
         usePaymentInputs();
 
@@ -14,6 +14,7 @@ export const PaymentInputs = () => {
     return (
         <PaymentInputsWrapper
             {...wrapperProps}
+            focused={true}
             styles={{
                 fieldWrapper: {
                     base: css`
@@ -77,6 +78,8 @@ export const PaymentInputs = () => {
         >
             <svg {...getCardImageProps({ images })} />
             <input
+                autoFocus={true}
+                maxLength={19}
                 {...getCardNumberProps({
                     onChange: (e: FormEvent<HTMLInputElement>) => {
                         // if (onChange) onChange(e);

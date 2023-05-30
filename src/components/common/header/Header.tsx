@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     Header,
@@ -23,9 +23,13 @@ import { PaywallModal } from '../modal/Paywall/Paywall';
 import { SubscribePayment } from '../modal/Paywall/components/SubscribePayment/SubscribePayment';
 import { SubscribeSuccess } from '../modal/Paywall/components/SubscribeSuccess/SubscribeSuccess';
 import { useLocation } from 'react-router-dom';
+import { Selector } from '~/store/hooks/redux-hooks';
+import { authSelector, signUpSelector } from '~/store/selectors/authSelector';
 
 export const HeaderComponent = () => {
     const { pathname } = useLocation();
+    const isAuth = Selector(authSelector);
+    const isSign = Selector(signUpSelector);
 
     const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
     const [isLoginShow, setIsLoginShow] = useState<boolean>(false);
@@ -54,11 +58,11 @@ export const HeaderComponent = () => {
     };
 
     const onCloseHandler = () => {
+        setIsMenuShow(false);
         setIsLoginShow(false);
         setIsSignUpShow(false);
         setIsConsent(false);
         setIsPricing(false);
-        setIsMenuShow(false);
         setIsSubscribe(false);
         setIsSuccess(false);
     };
@@ -68,6 +72,10 @@ export const HeaderComponent = () => {
         setIsSignUpShow(false);
         setIsConsent(true);
     };
+
+    useEffect(() => {
+        onCloseHandler();
+    }, [isAuth, isSign]);
 
     return (
         <>
@@ -84,18 +92,7 @@ export const HeaderComponent = () => {
                     }
                 >
                     <HeaderAlternative>
-                        <LogoContainerAlternative
-                            to="/"
-                            onClick={() => {
-                                setIsMenuShow(false);
-                                setIsLoginShow(false);
-                                setIsSignUpShow(false);
-                                setIsConsent(false);
-                                setIsPricing(false);
-                                setIsSubscribe(false);
-                                setIsSuccess(false);
-                            }}
-                        >
+                        <LogoContainerAlternative to="/" onClick={onCloseHandler}>
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
                             <img src="/header/ETERNAL.svg" alt="Eternal" />
                         </LogoContainerAlternative>
@@ -140,13 +137,7 @@ export const HeaderComponent = () => {
                                 />
                             </CloseButton>
                         )}
-                        <LogoContainer
-                            to="/"
-                            onClick={() => {
-                                setIsMenuShow(false);
-                                setIsLoginShow(false);
-                            }}
-                        >
+                        <LogoContainer to="/" onClick={onCloseHandler}>
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
                             <img src="/header/ETERNAL.svg" alt="Eternal" />
                         </LogoContainer>
@@ -156,12 +147,16 @@ export const HeaderComponent = () => {
                             </ButtonsContainer>
                         ) : (
                             <ButtonsContainer>
-                                <LoginButton type="button" onClick={onLoginHandler}>
-                                    LOGIN
-                                </LoginButton>
-                                <GetStartedButton type="button" onClick={onSignupHandler}>
-                                    GET STARTED
-                                </GetStartedButton>
+                                {!isAuth && (
+                                    <LoginButton type="button" onClick={onLoginHandler}>
+                                        LOGIN
+                                    </LoginButton>
+                                )}
+                                {!isAuth && (
+                                    <GetStartedButton type="button" onClick={onSignupHandler}>
+                                        GET STARTED
+                                    </GetStartedButton>
+                                )}
                             </ButtonsContainer>
                         )}
                     </HeaderWrapper>

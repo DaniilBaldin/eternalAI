@@ -120,6 +120,9 @@ export const LoginButton = styled.button`
     &:hover {
         color: #f82d98;
     }
+    &:hidden {
+        display: none;
+    }
 `;
 
 export const GetStartedButton = styled.button`
@@ -152,6 +155,10 @@ export const GetStartedButton = styled.button`
             rgba(248, 45, 152, 0.8) -2.34%,
             rgba(88, 51, 239, 0.8) 114.41%
         );
+    }
+
+    &:hidden {
+        display: none;
     }
 `;
 

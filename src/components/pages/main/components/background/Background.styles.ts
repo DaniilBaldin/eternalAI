@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     aspect-ratio: 1/1;
     transform: none;
     z-index: -10;
+    user-select: none;
 
     @media (max-width: 1500px) {
         bottom: 80px;

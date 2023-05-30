@@ -205,7 +205,7 @@ export const GoogleButton = styled.button`
     }
 `;
 
-export const SignUpButton = styled.button`
+export const SignInButton = styled.button`
     width: 305px;
     height: 62px;
     border-radius: 120px;
@@ -241,6 +241,15 @@ export const SignUpButton = styled.button`
             rgba(248, 45, 152, 0.8) -2.34%,
             rgba(88, 51, 239, 0.8) 114.41%
         );
+    }
+
+    &:disabled {
+        background: linear-gradient(
+            281.4deg,
+            rgba(248, 45, 152, 0.4) -2.34%,
+            rgba(88, 51, 239, 0.4) 114.41%
+        );
+        cursor: auto;
     }
 `;
 

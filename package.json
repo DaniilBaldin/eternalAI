@@ -10,15 +10,23 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^1.9.5",
+        "@types/axios": "^0.14.0",
         "@types/react-lazy-load-image-component": "^1.5.3",
         "@types/react-payment-inputs": "^1.1.0",
         "@types/styled-components": "^5.1.26",
+        "@types/tabbable": "^3.1.2",
+        "axios": "^1.4.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-focus-trap": "^2.7.2",
         "react-lazy-load-image-component": "^1.5.6",
         "react-payment-inputs": "^1.1.9",
+        "react-redux": "^8.0.5",
         "react-router-dom": "^6.11.1",
-        "styled-components": "^5.3.6"
+        "redux-thunk": "^2.4.2",
+        "styled-components": "^5.3.6",
+        "tabbable": "^6.1.2"
     },
     "devDependencies": {
         "@types/react": "^18.0.28",

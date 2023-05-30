@@ -18,11 +18,7 @@ export const Individuals = (): JSX.Element => {
 
             <ImageWrapper>
                 {individuals.map((individual: Individual) => (
-                    <div
-                        key={individual.id}
-                        onClick={() => navigate(`/chat/${individual.id}`)}
-                        tabIndex={0}
-                    >
+                    <div key={individual.id} onClick={() => navigate(`/chat/${individual.id}`)}>
                         <ImageCard
                             id={individual.id}
                             src={individual.src}

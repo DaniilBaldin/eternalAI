@@ -252,9 +252,10 @@ export const BadgeWrap = styled.div`
         rgba(248, 45, 152, 0.8) -2.34%,
         rgba(88, 51, 239, 0.8) 114.41%
     );
-    cursor: pointer;
+    cursor: default;
     margin-right: 16px;
     outline: none;
+    user-select: none;
 `;
 
 export const PriceTitle = styled.p`
@@ -369,8 +370,8 @@ export const CancelButton = styled.button`
 export const PaymentForm = styled.form`
     display: flex;
     flex-direction: row;
-    justify-content: bottom;
-    align-items: center;
+    justify-content: center;
+    align-items: top;
     margin: 0;
     gap: 16px;
     /* height: 62px; */

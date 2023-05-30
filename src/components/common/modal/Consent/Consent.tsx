@@ -16,16 +16,38 @@ import {
     ButtonText,
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
+import { useGlobalContext } from '~/utils/Context';
+import { Dispatch } from '~/store/hooks/redux-hooks';
+import { signUpAction } from '~/store/actions/signUpActions';
 
 type Props = {
     show: boolean;
     onClose: () => void;
 };
 
+type SignUpResponse = {
+    id: string;
+    email: string;
+    success: boolean;
+};
+
 export const ConsentModal: FC<Props> = (props) => {
+    const dispatch = Dispatch();
+
     const { show, onClose } = props;
 
+    const { user } = useGlobalContext();
+
     const [isChecked, setIsChecked] = useState<boolean>(false);
+
+    const onSubmit = async (event: { preventDefault: () => void }) => {
+        event.preventDefault();
+        const response = await dispatch(signUpAction(user));
+        console.log(response);
+        if ((response.payload as SignUpResponse).success) {
+            alert('You now may login with your email and password!');
+        }
+    };
 
     return createPortal(
         <div>
@@ -50,7 +72,7 @@ export const ConsentModal: FC<Props> = (props) => {
                                 checked={isChecked}
                                 onChange={(event) => setIsChecked(event.target.checked)}
                             />
-                            <StyledCheckbox checked={isChecked} tabIndex={0}>
+                            <StyledCheckbox checked={isChecked}>
                                 <Icon
                                     checked={isChecked}
                                     width="18"
@@ -73,7 +95,7 @@ export const ConsentModal: FC<Props> = (props) => {
                         </Label>
                     </CheckboxContainer>
                     <ContinueButton disabled={!isChecked}>
-                        <ButtonText>CONTINUE</ButtonText>
+                        <ButtonText onClick={onSubmit}>CONTINUE</ButtonText>
                     </ContinueButton>
                 </ConsentWindow>
             </ModalContent>

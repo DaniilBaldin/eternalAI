@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC,  } from 'react';
 import { createPortal } from 'react-dom';
 import { Modal, ProBadge, Subtitle, Title, WindowTitle } from '../../Paywall.styles';
 import {
@@ -19,16 +19,18 @@ export const SubscribePayment: FC<Props> = (props) => {
 
     const { setIsSubscribe, setIsSuccess } = useGlobalContext();
 
+    
+
     return createPortal(
         <div>
             <Modal $show={show} />
-            <ModalContent $show={show}>
+            <ModalContent $show={show} >
                 <Title>Unlock full features</Title>
                 <Subtitle>Share or subscribe to continue asking unlimited questions</Subtitle>
                 <SubscribePaymentWindow>
                     <ProBadge style={{ marginTop: '48px', marginBottom: '24px' }}>PRO</ProBadge>
                     <WindowTitle style={{ margin: '0' }}>$10 / month</WindowTitle>
-                    <PaymentForm>
+                    <PaymentForm tabIndex={0}>
                         <PaymentInputs />
                         <SubmitButton
                             onClick={(e) => {

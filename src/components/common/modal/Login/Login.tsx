@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
     BottomLink,
     BottomText,
@@ -13,11 +13,14 @@ import {
     Modal,
     ModalContent,
     ResetLink,
-    SignUpButton,
+    SignInButton,
     SignUpWindow,
     Title,
 } from './Login.styles';
 import { createPortal } from 'react-dom';
+import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
+import { signInAction } from '~/store/actions/signInActions';
+import { errorSelector } from '~/store/selectors/errorSelector';
 
 type Props = {
     show: boolean;
@@ -26,7 +29,19 @@ type Props = {
 };
 
 export const LoginModal: FC<Props> = (props) => {
+    const dispatch = Dispatch();
+
+    const isError = Selector(errorSelector);
+
     const { show, onClose, onSignUp } = props;
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const onSubmit = async (event: { preventDefault: () => void }) => {
+        event.preventDefault();
+        const response = await dispatch(signInAction({ email: email, password: password }));
+        console.log(response);
+    };
 
     return createPortal(
         <div>
@@ -34,7 +49,7 @@ export const LoginModal: FC<Props> = (props) => {
             <ModalContent $show={show}>
                 <SignUpWindow>
                     <Title>Login</Title>
-                    <Form>
+                    <Form onSubmit={onSubmit}>
                         <Label>Email</Label>
                         <Input
                             type="text"
@@ -42,6 +57,8 @@ export const LoginModal: FC<Props> = (props) => {
                             autoCapitalize="off"
                             placeholder="Login"
                             min={1}
+                            // value={user ? user.email : ''}
+                            onChange={(event) => setEmail(event.target.value)}
                             required
                         />
                         <Label>Password</Label>
@@ -50,10 +67,21 @@ export const LoginModal: FC<Props> = (props) => {
                             autoComplete="off"
                             autoCapitalize="off"
                             placeholder="Password"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
                             min={1}
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            onInvalid={(e) => {
+                                (e.target as HTMLInputElement).setCustomValidity(
+                                    'Password must contain at least one uppercase letter and one number!',
+                                );
+                            }}
                             required
                         />
                     </Form>
+                    {isError && (
+                        <p style={{ margin: '0', color: 'white' }}>Incorrect email or password.</p>
+                    )}
                     <ResetLink>Forgot password?</ResetLink>
                     <ButtonsContainer>
                         <ButtonWrap>
@@ -66,14 +94,17 @@ export const LoginModal: FC<Props> = (props) => {
                                 SIGN IN WITH GOOGLE
                             </GoogleButton>
                         </ButtonWrap>
-                        <SignUpButton>SIGN IN</SignUpButton>
+                        <SignInButton
+                            onClick={onSubmit}
+                            disabled={!email || !password || password.length < 6}
+                        >
+                            SIGN IN
+                        </SignInButton>
                     </ButtonsContainer>
                     <BreakLine />
                     <BottomTextWrapper>
                         <BottomText>Don&acute;t have an account?</BottomText>
-                        <BottomLink tabIndex={0} onClick={onSignUp}>
-                            Sign up
-                        </BottomLink>
+                        <BottomLink onClick={onSignUp}>Sign up</BottomLink>
                     </BottomTextWrapper>
                 </SignUpWindow>
             </ModalContent>
