@@ -96,3 +96,21 @@ export const Img = styled.img`
         transform: scale(1.1);
     }
 `;
+
+export const LogoutButton = styled.button`
+    width: 200px;
+    height: 142px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 100px;
+    font-family: 'Arquitecta';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+`;

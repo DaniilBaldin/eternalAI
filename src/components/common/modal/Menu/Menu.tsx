@@ -1,9 +1,21 @@
 import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Modal, ModalContent, MenuLink, BreakLine, Footer, Img, MenuText } from './Menu.styles';
+import {
+    Modal,
+    ModalContent,
+    MenuLink,
+    BreakLine,
+    Footer,
+    Img,
+    MenuText,
+    LogoutButton,
+} from './Menu.styles';
 
 import { useGlobalContext } from '~/utils/Context';
+import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
+import { logOut } from '~/store/reducers/authReducer';
+import { authSelector } from '~/store/selectors/authSelector';
 
 type Props = {
     isShow: boolean;
@@ -11,9 +23,12 @@ type Props = {
 };
 
 export const MenuModal: FC<Props> = (props) => {
+    const dispatch = Dispatch();
+
     const { isShow, onClose } = props;
 
     const { setIsPricing } = useGlobalContext();
+    const isAuth = Selector(authSelector);
 
     const account = 'account';
 
@@ -62,6 +77,15 @@ export const MenuModal: FC<Props> = (props) => {
                         <Img src="/footer/Youtube.svg" alt="Youtube" />
                     </a>
                 </Footer>
+                {isAuth && (
+                    <LogoutButton
+                        onClick={() => {
+                            dispatch(logOut());
+                        }}
+                    >
+                        Sign out
+                    </LogoutButton>
+                )}
             </ModalContent>
         </div>,
         document.getElementById('root') as HTMLElement,
