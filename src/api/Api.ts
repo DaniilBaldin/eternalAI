@@ -1,8 +1,7 @@
 import HttpClient from './httpClient';
 
 type SignUpResponse = {
-    id: string;
-    email: string;
+    user: { id: string; email: string };
     success: boolean;
 };
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Modal = styled.div<{ $show: boolean }>`
@@ -172,7 +173,7 @@ export const ButtonWrap = styled.div`
     outline: none;
 `;
 
-export const GoogleButton = styled.button`
+export const GoogleButton = styled(Link)`
     width: 303px;
     height: 62px;
     border-radius: 120px;
@@ -180,6 +181,7 @@ export const GoogleButton = styled.button`
     border: 1px solid white;
     margin: 0;
     /* padding: 16px 24px 16px 24px; */
+    text-decoration: none;
     cursor: pointer;
     display: flex;
     align-items: center;

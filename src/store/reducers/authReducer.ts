@@ -1,15 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { signInAction } from '../actions/signInActions';
 import { signUpAction } from '../actions/signUpActions';
 
 import { storage } from '~/utils/localStorage';
 
 const initialToken = storage.get('Token');
-
-type User = {
-    id: string;
-    email: string;
-};
 
 const initialState = {
     token: initialToken ? initialToken : '',
@@ -21,10 +16,18 @@ const initialState = {
     user: { id: '', email: '' },
 };
 
+type Token = string | null;
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        logIn: (state, action: PayloadAction<Token>) => {
+            storage.set('Token', action.payload);
+            state.token = action.payload as string;
+            state.isSuccess = true;
+            state.isAuth = true;
+        },
         logOut(state) {
             storage.remove('Token');
             state.token = '';
@@ -52,8 +55,8 @@ export const authSlice = createSlice({
         });
         builder.addCase(signUpAction.fulfilled, (state, { payload }) => {
             state.isLoading = false;
-            state.user.email = (payload as User).email;
-            state.user.id = (payload as User).id;
+            state.user.email = payload.user.email;
+            state.user.id = payload.user.id;
             state.isSigned = true;
         });
         builder.addCase(signUpAction.rejected, (state, { payload }) => {
@@ -64,6 +67,6 @@ export const authSlice = createSlice({
     },
 });
 
-export const { logOut } = authSlice.actions;
+export const { logIn, logOut } = authSlice.actions;
 
 export default authSlice.reducer;

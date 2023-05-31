@@ -21,6 +21,7 @@ import { createPortal } from 'react-dom';
 import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { signInAction } from '~/store/actions/signInActions';
 import { errorSelector } from '~/store/selectors/errorSelector';
+import { googleUrl } from '~/utils/stringifiedParams';
 
 type Props = {
     show: boolean;
@@ -85,7 +86,7 @@ export const LoginModal: FC<Props> = (props) => {
                     <ResetLink>Forgot password?</ResetLink>
                     <ButtonsContainer>
                         <ButtonWrap>
-                            <GoogleButton>
+                            <GoogleButton to={googleUrl}>
                                 <img
                                     src="/google-icon.svg"
                                     alt="Google"
