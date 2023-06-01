@@ -1,4 +1,4 @@
-import React, { FC,  useState } from 'react';
+import React, { FC, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import {
@@ -20,9 +20,10 @@ import {
     BottomLink,
 } from './Signup.styles';
 
-import {  Selector } from '~/store/hooks/redux-hooks';
+import { Selector } from '~/store/hooks/redux-hooks';
 import { errorSelector } from '~/store/selectors/errorSelector';
 import { useGlobalContext } from '~/utils/Context';
+import { googleUrl } from '~/utils/stringifiedParams';
 
 type Props = {
     show: boolean;
@@ -32,7 +33,6 @@ type Props = {
 };
 
 export const SignUpModal: FC<Props> = (props) => {
-
     const isError = Selector(errorSelector);
     const { setUser } = useGlobalContext();
 
@@ -86,7 +86,7 @@ export const SignUpModal: FC<Props> = (props) => {
                     )}
                     <ButtonsContainer>
                         <ButtonWrap>
-                            <GoogleButton>
+                            <GoogleButton to={googleUrl}>
                                 <img
                                     src="/google-icon.svg"
                                     alt="Google"

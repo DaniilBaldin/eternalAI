@@ -8,10 +8,10 @@ import { SuccessPaymentWindow, SuccessBadge, Title } from './LoginSuccessful.sty
 
 export const LoginSuccessful = () => {
     const dispatch = Dispatch();
+    const navigate = useNavigate();
 
     const [params] = useSearchParams();
     const token = params.get('token');
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (!token?.length) navigate('/');
