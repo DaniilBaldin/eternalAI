@@ -20,10 +20,11 @@ import {
     BottomLink,
 } from './Signup.styles';
 
-import { Selector } from '~/store/hooks/redux-hooks';
+import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { errorSelector } from '~/store/selectors/errorSelector';
 import { useGlobalContext } from '~/utils/Context';
 import { googleUrl } from '~/utils/stringifiedParams';
+import { resetError } from '~/store/reducers/authReducer';
 
 type Props = {
     show: boolean;
@@ -33,6 +34,8 @@ type Props = {
 };
 
 export const SignUpModal: FC<Props> = (props) => {
+    const dispatch = Dispatch();
+
     const isError = Selector(errorSelector);
     const { setUser } = useGlobalContext();
 
@@ -41,6 +44,12 @@ export const SignUpModal: FC<Props> = (props) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const user = { email: email, password: password };
+
+    const handleEmailBlur = (event: { target: HTMLInputElement }) => {
+        if ((event.target as HTMLInputElement).validity.patternMismatch) {
+            alert('Not a valid email address!');
+        }
+    };
 
     const handleBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
@@ -57,29 +66,48 @@ export const SignUpModal: FC<Props> = (props) => {
                 <SignUpWindow>
                     <Title>Get started</Title>
                     <Subtitle>To continue please create an account</Subtitle>
-                    <Form>
-                        <Label>Email</Label>
-                        <Input
-                            type="text"
-                            autoComplete="off"
-                            autoCapitalize="off"
-                            placeholder="Login"
-                            min={1}
-                            onChange={(event) => setEmail(event.target.value)}
-                            required
-                        />
-                        <Label>Password</Label>
-                        <Input
-                            type="password"
-                            autoComplete="off"
-                            autoCapitalize="off"
-                            placeholder="Password"
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
-                            min={1}
-                            onChange={(event) => setPassword(event.target.value)}
-                            onBlur={handleBlur}
-                            required
-                        />
+                    <Form
+                        onSubmit={() => {
+                            setUser(user);
+                            onConsent();
+                        }}
+                    >
+                        <Label htmlFor="email">
+                            Email
+                            <Input
+                                type="email"
+                                id="email"
+                                name="email"
+                                // pattern="/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/u"
+                                autoComplete="off"
+                                placeholder="Email"
+                                autoCorrect="off"
+                                min={1}
+                                onChange={(event) => {
+                                    dispatch(resetError());
+                                    setEmail(event.target.value);
+                                }}
+                                // onBlur={handleEmailBlur}
+                                required
+                            />
+                        </Label>
+                        <Label htmlFor="password">
+                            Password
+                            <Input
+                                type="password"
+                                id="password"
+                                autoComplete="off"
+                                placeholder="Password"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
+                                min={1}
+                                onChange={(event) => {
+                                    dispatch(resetError());
+                                    setPassword(event.target.value);
+                                }}
+                                onBlur={handleBlur}
+                                required
+                            />
+                        </Label>
                     </Form>
                     {isError && (
                         <p style={{ margin: '0', color: 'white' }}>Incorrect email or password.</p>
@@ -96,6 +124,7 @@ export const SignUpModal: FC<Props> = (props) => {
                             </GoogleButton>
                         </ButtonWrap>
                         <SignUpButton
+                            type="submit"
                             onClick={() => {
                                 setUser(user);
                                 onConsent();

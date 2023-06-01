@@ -52,6 +52,7 @@ export const HeaderComponent = () => {
         setIsMenuShow(false);
         setIsSignUpShow(false);
         setIsLoginShow(true);
+        setIsConsent(false);
     };
 
     const onSignupHandler = () => {
@@ -104,7 +105,11 @@ export const HeaderComponent = () => {
                             <img src="/header/Close.svg" alt="MenuClose" style={{ margin: '0' }} />
                         </CloseButtonAlterntive>
                     </HeaderAlternative>
-                    <ConsentModal show={isConsent} onClose={() => setIsConsent(false)} />
+                    <ConsentModal
+                        show={isConsent}
+                        onClose={() => setIsConsent(false)}
+                        onGoBack={onLoginHandler}
+                    />
                     <LoginModal
                         onClose={() => setIsLoginShow(false)}
                         show={isLoginShow}

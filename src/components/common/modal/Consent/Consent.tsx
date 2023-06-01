@@ -14,16 +14,20 @@ import {
     Span,
     ContinueButton,
     ButtonText,
+    ErrorMessage,
+    ErrorMessagePink,
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
 import { useGlobalContext } from '~/utils/Context';
 import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { signUpAction } from '~/store/actions/signUpActions';
 import { errorSelector } from '~/store/selectors/errorSelector';
+import { resetError } from '~/store/reducers/authReducer';
 
 type Props = {
     show: boolean;
     onClose: () => void;
+    onGoBack: () => void;
 };
 
 type SignUpResponse = {
@@ -35,7 +39,7 @@ type SignUpResponse = {
 export const ConsentModal: FC<Props> = (props) => {
     const dispatch = Dispatch();
 
-    const { show, onClose } = props;
+    const { show, onClose, onGoBack } = props;
 
     const { user } = useGlobalContext();
 
@@ -49,6 +53,11 @@ export const ConsentModal: FC<Props> = (props) => {
         if ((response.payload as SignUpResponse).success) {
             alert('You now may login with your email and password!');
         }
+    };
+
+    const onGoBackHandler = () => {
+        dispatch(resetError());
+        onGoBack();
     };
 
     return createPortal(
@@ -97,12 +106,14 @@ export const ConsentModal: FC<Props> = (props) => {
                         </Label>
                     </CheckboxContainer>
                     {isError && (
-                        <p style={{ margin: '0', marginTop: '10px', color: 'white' }}>
+                        <ErrorMessage>
                             {isError === 'BAD_REQUEST' ||
                             isError === 'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS'
                                 ? 'User already exists'
                                 : 'Please, use Google auth, since you are signed up with it.'}
-                        </p>
+                            &nbsp;
+                            <ErrorMessagePink onClick={onGoBackHandler}>Sign in</ErrorMessagePink>
+                        </ErrorMessage>
                     )}
                     <ContinueButton disabled={!isChecked}>
                         <ButtonText onClick={onSubmit}>CONTINUE</ButtonText>

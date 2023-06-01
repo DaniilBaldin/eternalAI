@@ -22,6 +22,7 @@ import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { signInAction } from '~/store/actions/signInActions';
 import { errorSelector } from '~/store/selectors/errorSelector';
 import { googleUrl } from '~/utils/stringifiedParams';
+import { resetError } from '~/store/reducers/authReducer';
 
 type Props = {
     show: boolean;
@@ -44,6 +45,14 @@ export const LoginModal: FC<Props> = (props) => {
         console.log(response);
     };
 
+    const handleBlur = (event: { target: HTMLInputElement }) => {
+        if ((event.target as HTMLInputElement).validity.patternMismatch) {
+            alert(
+                'Password must be at least 6 characters long and contain at least one uppercase letter and one number!',
+            );
+        }
+    };
+
     return createPortal(
         <div>
             <Modal $show={show} onClick={onClose} />
@@ -59,7 +68,10 @@ export const LoginModal: FC<Props> = (props) => {
                             placeholder="Login"
                             min={1}
                             // value={user ? user.email : ''}
-                            onChange={(event) => setEmail(event.target.value)}
+                            onChange={(event) => {
+                                dispatch(resetError());
+                                setEmail(event.target.value);
+                            }}
                             required
                         />
                         <Label>Password</Label>
@@ -71,12 +83,11 @@ export const LoginModal: FC<Props> = (props) => {
                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
                             min={1}
                             value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            onInvalid={(e) => {
-                                (e.target as HTMLInputElement).setCustomValidity(
-                                    'Password must contain at least one uppercase letter and one number!',
-                                );
+                            onChange={(event) => {
+                                setPassword(event.target.value);
+                                dispatch(resetError());
                             }}
+                            onBlur={handleBlur}
                             required
                         />
                     </Form>

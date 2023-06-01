@@ -205,3 +205,33 @@ export const ButtonText = styled.p`
     line-height: 27px;
     letter-spacing: 0.3em;
 `;
+
+export const ErrorMessage = styled.p`
+    opacity: 0.7;
+    text-align: center;
+    font-family: 'Avenir';
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin: 0;
+    margin-top: 10px;
+`;
+
+export const ErrorMessagePink = styled.span`
+    opacity: 0.7;
+    text-decoration: underline;
+    text-align: center;
+    font-family: 'Avenir';
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: rgba(248, 45, 152, 1);
+    margin: 0;
+    margin-top: 10px;
+    cursor: pointer;
+`;

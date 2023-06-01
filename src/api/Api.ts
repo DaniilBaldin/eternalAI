@@ -10,6 +10,17 @@ type SignInResponse = {
     success: boolean;
 };
 
+type AccountResponse = {
+    user: {
+        id: string;
+        email: string;
+        name: string;
+        method: string;
+        phoneNumber: string;
+    };
+    success: boolean;
+};
+
 export default class Api extends HttpClient {
     static instance: Api;
 
@@ -31,6 +42,10 @@ export default class Api extends HttpClient {
 
     public signIn = (data: { email: string; password: string }) => {
         return this.instance.post<SignInResponse>('/sign-in', data);
+    };
+
+    public getUser = () => {
+        return this.instance.get<AccountResponse>('/account');
     };
 }
 
