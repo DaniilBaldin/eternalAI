@@ -23,11 +23,14 @@ import { PaywallModal } from '../modal/Paywall/Paywall';
 import { SubscribePayment } from '../modal/Paywall/components/SubscribePayment/SubscribePayment';
 import { SubscribeSuccess } from '../modal/Paywall/components/SubscribeSuccess/SubscribeSuccess';
 import { useLocation } from 'react-router-dom';
-import { Selector } from '~/store/hooks/redux-hooks';
+import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { authSelector, signUpSelector } from '~/store/selectors/authSelector';
+import { resetError } from '~/store/reducers/authReducer';
 
 export const HeaderComponent = () => {
     const { pathname } = useLocation();
+    const dispatch = Dispatch();
+
     const isAuth = Selector(authSelector);
     const isSign = Selector(signUpSelector);
 
@@ -58,6 +61,7 @@ export const HeaderComponent = () => {
     };
 
     const onCloseHandler = () => {
+        dispatch(resetError());
         setIsMenuShow(false);
         setIsLoginShow(false);
         setIsSignUpShow(false);

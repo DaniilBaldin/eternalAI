@@ -1,4 +1,4 @@
-import  styled  from 'styled-components';
+import styled from 'styled-components';
 
 export const Modal = styled.div<{ $show: boolean }>`
     position: fixed;
@@ -167,7 +167,7 @@ export const ContinueButton = styled.button`
     align-items: center;
     justify-content: center;
     margin: 0;
-    margin-top: 34px;
+    margin-top: 24px;
     cursor: pointer;
 
     &:hover {

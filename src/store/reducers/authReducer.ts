@@ -18,6 +18,11 @@ const initialState = {
 
 type Token = string | null;
 
+type ErrorResponse = {
+    message: string;
+    success: boolean;
+};
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -33,6 +38,9 @@ export const authSlice = createSlice({
             state.token = '';
             state.isAuth = false;
         },
+        resetError(state) {
+            state.errorMessage = '';
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(signInAction.pending, (state) => {
@@ -45,10 +53,10 @@ export const authSlice = createSlice({
             state.token = token;
             state.isAuth = true;
         });
-        builder.addCase(signInAction.rejected, (state, { payload }) => {
+        builder.addCase(signInAction.rejected, (state, action) => {
             state.isLoading = false;
             state.isSuccess = false;
-            state.errorMessage = payload as string;
+            state.errorMessage = (action.payload as ErrorResponse).message as string;
         });
         builder.addCase(signUpAction.pending, (state) => {
             state.isLoading = true;
@@ -59,14 +67,14 @@ export const authSlice = createSlice({
             state.user.id = payload.user.id;
             state.isSigned = true;
         });
-        builder.addCase(signUpAction.rejected, (state, { payload }) => {
+        builder.addCase(signUpAction.rejected, (state, action) => {
             state.isLoading = false;
             state.isSuccess = false;
-            state.errorMessage = payload as string;
+            state.errorMessage = (action.payload as ErrorResponse).message as string;
         });
     },
 });
 
-export const { logIn, logOut } = authSlice.actions;
+export const { logIn, logOut, resetError } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -81,7 +81,13 @@ export const LoginModal: FC<Props> = (props) => {
                         />
                     </Form>
                     {isError && (
-                        <p style={{ margin: '0', color: 'white' }}>Incorrect email or password.</p>
+                        <p style={{ margin: '0', color: 'white' }}>
+                            {isError === 'BAD_REQUEST' ||
+                            isError === 'PASSWORD_IS_INCORRECT' ||
+                            isError === 'USER_NOT_FOUND'
+                                ? 'Email or password is not correct!'
+                                : 'Please, use Google auth, since you are signed up with it.'}
+                        </p>
                     )}
                     <ResetLink>Forgot password?</ResetLink>
                     <ButtonsContainer>

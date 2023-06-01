@@ -8,8 +8,8 @@ export const signUpAction = createAsyncThunk(
         try {
             const response = await mainApi.signUp(data);
             return response.data;
-        } catch (error) {
-            return rejectWithValue((error as AxiosError).message);
+        } catch (err) {
+            return rejectWithValue((err as AxiosError).response?.data);
         }
     },
 );

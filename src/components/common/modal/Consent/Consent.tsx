@@ -17,8 +17,9 @@ import {
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
 import { useGlobalContext } from '~/utils/Context';
-import { Dispatch } from '~/store/hooks/redux-hooks';
+import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { signUpAction } from '~/store/actions/signUpActions';
+import { errorSelector } from '~/store/selectors/errorSelector';
 
 type Props = {
     show: boolean;
@@ -39,6 +40,7 @@ export const ConsentModal: FC<Props> = (props) => {
     const { user } = useGlobalContext();
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
+    const isError = Selector(errorSelector);
 
     const onSubmit = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
@@ -94,6 +96,14 @@ export const ConsentModal: FC<Props> = (props) => {
                             <Span>I have read the above statement</Span>
                         </Label>
                     </CheckboxContainer>
+                    {isError && (
+                        <p style={{ margin: '0', marginTop: '10px', color: 'white' }}>
+                            {isError === 'BAD_REQUEST' ||
+                            isError === 'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS'
+                                ? 'User already exists'
+                                : 'Please, use Google auth, since you are signed up with it.'}
+                        </p>
+                    )}
                     <ContinueButton disabled={!isChecked}>
                         <ButtonText onClick={onSubmit}>CONTINUE</ButtonText>
                     </ContinueButton>
