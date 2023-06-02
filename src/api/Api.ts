@@ -21,6 +21,17 @@ type AccountResponse = {
     success: boolean;
 };
 
+type AccountSetResponse = {
+    user: {
+        id: string;
+        email: string;
+        name: string;
+        method: string;
+        phoneNumber: string;
+    };
+    success: boolean;
+};
+
 export default class Api extends HttpClient {
     static instance: Api;
 
@@ -46,6 +57,17 @@ export default class Api extends HttpClient {
 
     public getUser = (JWTToken: string) => {
         return this.instance.get<AccountResponse>('/account', {
+            headers: {
+                Authorization: `Bearer ${JWTToken}`,
+            },
+        });
+    };
+
+    public setUser = (
+        JWTToken: string,
+        data: { email: string; name: string; phoneNumber: string; password: string },
+    ) => {
+        return this.instance.patch<AccountSetResponse>('/update-user', data, {
             headers: {
                 Authorization: `Bearer ${JWTToken}`,
             },

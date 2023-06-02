@@ -3,7 +3,7 @@ import { signInAction } from '../actions/signInActions';
 import { signUpAction } from '../actions/signUpActions';
 
 import { storage } from '~/utils/localStorage';
-import { getAccountAction } from '../actions/accountActions';
+import { getAccountAction, setAccountAction } from '../actions/accountActions';
 
 const initialToken = storage.get('Token');
 
@@ -103,6 +103,18 @@ export const authSlice = createSlice({
             state.user = payload;
         });
         builder.addCase(getAccountAction.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = false;
+            state.errorMessage = (action.payload as ErrorResponse).message as string;
+        });
+        builder.addCase(setAccountAction.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(setAccountAction.fulfilled, (state, { payload }) => {
+            state.isLoading = false;
+            state.user = payload;
+        });
+        builder.addCase(setAccountAction.rejected, (state, action) => {
             state.isLoading = false;
             state.isSuccess = false;
             state.errorMessage = (action.payload as ErrorResponse).message as string;

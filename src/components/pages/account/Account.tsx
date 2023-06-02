@@ -24,27 +24,55 @@ import {
     PaymentSaveButton,
 } from './Account.styles';
 import { PaymentInputs } from '~/components/common/PaymentInput/PaymentInput';
-import { Selector } from '~/store/hooks/redux-hooks';
+import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
 import { authSelector } from '~/store/selectors/authSelector';
 import { useNavigate } from 'react-router-dom';
 import { userSelector } from '~/store/selectors/userSelector';
+import { tokenSelector } from '~/store/selectors/tokenSelector';
+import { setAccountAction } from '~/store/actions/accountActions';
 
 //TODO:Account data fetching and adding to form as value
 //TODO:Change subscription date
 
 export const Account = () => {
     const navigate = useNavigate();
+    const dispatch = Dispatch();
     const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
 
     const isAuth = Selector(authSelector);
     const user = Selector(userSelector);
-    console.log(user);
+    const token = Selector(tokenSelector);
+
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [phoneNumber, setPhoneNumber] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const UserInfo = {
+        name: name || user.name,
+        email: email || user.email,
+        phoneNumber: phoneNumber || user.phoneNumber,
+        password: password || '',
+    };
+
+    const formSubmit = async () => {
+        const response = await dispatch(
+            setAccountAction({ Token: token as string, data: UserInfo }),
+        );
+        if (response.meta.requestStatus === 'fulfilled') {
+            alert('Successfully updated!');
+        }
+    };
 
     useEffect(() => {
         if (!isAuth) {
             navigate('/');
         }
     }, [isAuth]);
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
     return (
         <Main>
@@ -62,6 +90,9 @@ export const Account = () => {
                         placeholder={user.name || 'Name'}
                         title="Enter new value to change."
                         min={1}
+                        onChange={(event) => {
+                            setName(event.target.value);
+                        }}
                     />
                     <Label>Email</Label>
                     <Input
@@ -69,8 +100,16 @@ export const Account = () => {
                         autoComplete="off"
                         autoCapitalize="off"
                         placeholder={user.email || 'Email'}
-                        title="Enter new value to change."
+                        title={
+                            user.method === 'email'
+                                ? 'Enter new value to change.'
+                                : 'Not available to Google users'
+                        }
                         min={1}
+                        onChange={(event) => {
+                            setEmail(event.target.value);
+                        }}
+                        disabled={user.method !== 'email'}
                     />
                     <Label>Phone number</Label>
                     <Input
@@ -80,6 +119,9 @@ export const Account = () => {
                         placeholder={user.phoneNumber || 'Phone number'}
                         title="Enter new value to change."
                         min={1}
+                        onChange={(event) => {
+                            setPhoneNumber(event.target.value);
+                        }}
                     />
                     <Label>Password</Label>
                     <Input
@@ -87,12 +129,20 @@ export const Account = () => {
                         autoComplete="off"
                         autoCapitalize="off"
                         placeholder={'Password'}
-                        title="Enter new value to change."
+                        title={
+                            user.method === 'email'
+                                ? 'Enter new value to change.'
+                                : 'Not available to Google users'
+                        }
                         min={1}
+                        onChange={(event) => {
+                            setPassword(event.target.value);
+                        }}
+                        disabled={user.method !== 'email'}
                     />
                 </Form>
                 <ButtonContainer>
-                    <SaveButton>SAVE</SaveButton>
+                    <SaveButton onClick={formSubmit}>SAVE</SaveButton>
                 </ButtonContainer>
             </AccountWindow>
             {!isCardUpdate ? (

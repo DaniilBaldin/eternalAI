@@ -154,6 +154,10 @@ export const Input = styled.input`
     &:hover {
         border: 1px solid rgb(255, 255, 255, 0.5);
     }
+
+    &::placeholder {
+        color: white;
+    }
 `;
 
 export const ButtonContainer = styled.div`
