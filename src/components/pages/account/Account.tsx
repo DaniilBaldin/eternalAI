@@ -78,6 +78,12 @@ export const Account = () => {
         }
     };
 
+    const handleEmailBlur = (event: { target: HTMLInputElement }) => {
+        if ((event.target as HTMLInputElement).validity.patternMismatch) {
+            setError('Not a valid email address!');
+        }
+    };
+
     useEffect(() => {
         if (!isAuth) {
             navigate('/');
@@ -111,9 +117,10 @@ export const Account = () => {
                     />
                     <Label>Email</Label>
                     <Input
-                        type="email"
+                        type="text"
                         autoComplete="off"
                         autoCapitalize="off"
+                        pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$"
                         placeholder={user.email || 'Email'}
                         title={
                             user.method === 'email'
@@ -125,6 +132,7 @@ export const Account = () => {
                             setError('');
                             setEmail(event.target.value);
                         }}
+                        onBlur={handleEmailBlur}
                         disabled={user.method !== 'email'}
                     />
                     <Label>Phone number</Label>
