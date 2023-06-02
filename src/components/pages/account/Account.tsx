@@ -27,6 +27,7 @@ import { PaymentInputs } from '~/components/common/PaymentInput/PaymentInput';
 import { Selector } from '~/store/hooks/redux-hooks';
 import { authSelector } from '~/store/selectors/authSelector';
 import { useNavigate } from 'react-router-dom';
+import { userSelector } from '~/store/selectors/userSelector';
 
 //TODO:Account data fetching and adding to form as value
 //TODO:Change subscription date
@@ -36,6 +37,8 @@ export const Account = () => {
     const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
 
     const isAuth = Selector(authSelector);
+    const user = Selector(userSelector);
+    console.log(user);
 
     useEffect(() => {
         if (!isAuth) {
@@ -56,36 +59,36 @@ export const Account = () => {
                         type="text"
                         autoComplete="off"
                         autoCapitalize="off"
-                        placeholder="Name"
+                        placeholder={user.name || 'Name'}
+                        title="Enter new value to change."
                         min={1}
-                        required
                     />
                     <Label>Email</Label>
                     <Input
                         type="email"
                         autoComplete="off"
                         autoCapitalize="off"
-                        placeholder="Email"
+                        placeholder={user.email || 'Email'}
+                        title="Enter new value to change."
                         min={1}
-                        required
                     />
                     <Label>Phone number</Label>
                     <Input
                         type="tel"
                         autoComplete="off"
                         autoCapitalize="off"
-                        placeholder="Phone number"
+                        placeholder={user.phoneNumber || 'Phone number'}
+                        title="Enter new value to change."
                         min={1}
-                        required
                     />
                     <Label>Password</Label>
                     <Input
                         type="password"
                         autoComplete="off"
                         autoCapitalize="off"
-                        placeholder="Password"
+                        placeholder={'Password'}
+                        title="Enter new value to change."
                         min={1}
-                        required
                     />
                 </Form>
                 <ButtonContainer>

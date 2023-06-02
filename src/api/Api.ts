@@ -44,8 +44,12 @@ export default class Api extends HttpClient {
         return this.instance.post<SignInResponse>('/sign-in', data);
     };
 
-    public getUser = () => {
-        return this.instance.get<AccountResponse>('/account');
+    public getUser = (JWTToken: string) => {
+        return this.instance.get<AccountResponse>('/account', {
+            headers: {
+                Authorization: `Bearer ${JWTToken}`,
+            },
+        });
     };
 }
 

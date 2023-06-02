@@ -3,8 +3,25 @@ import { signInAction } from '../actions/signInActions';
 import { signUpAction } from '../actions/signUpActions';
 
 import { storage } from '~/utils/localStorage';
+import { getAccountAction } from '../actions/accountActions';
 
 const initialToken = storage.get('Token');
+
+type initialState = {
+    token: string;
+    isAuth: boolean;
+    isSigned: boolean;
+    isLoading: boolean;
+    isSuccess: boolean;
+    errorMessage: string;
+    user: {
+        id: string;
+        email: string;
+        name: string;
+        method: string;
+        phoneNumber: string;
+    };
+};
 
 const initialState = {
     token: initialToken ? initialToken : '',
@@ -13,7 +30,13 @@ const initialState = {
     isLoading: false,
     isSuccess: false,
     errorMessage: '',
-    user: { id: '', email: '' },
+    user: {
+        id: '',
+        email: '',
+        name: '',
+        method: '',
+        phoneNumber: '',
+    },
 };
 
 type Token = string | null;
@@ -25,7 +48,7 @@ type ErrorResponse = {
 
 export const authSlice = createSlice({
     name: 'auth',
-    initialState,
+    initialState: initialState,
     reducers: {
         logIn: (state, action: PayloadAction<Token>) => {
             storage.set('Token', action.payload);
@@ -68,6 +91,18 @@ export const authSlice = createSlice({
             state.isSigned = true;
         });
         builder.addCase(signUpAction.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = false;
+            state.errorMessage = (action.payload as ErrorResponse).message as string;
+        });
+        builder.addCase(getAccountAction.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(getAccountAction.fulfilled, (state, { payload }) => {
+            state.isLoading = false;
+            state.user = payload;
+        });
+        builder.addCase(getAccountAction.rejected, (state, action) => {
             state.isLoading = false;
             state.isSuccess = false;
             state.errorMessage = (action.payload as ErrorResponse).message as string;
