@@ -54,7 +54,9 @@ export const ConsentModal: FC<Props> = (props) => {
         }
         if (response.meta.requestStatus === 'rejected') {
             if (
-                (response.payload as ErrorMessage).message === 'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS'
+                (response.payload as ErrorMessage).message ===
+                    'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS' ||
+                (response.payload as ErrorMessage).message === 'BAD_REQUEST'
             ) {
                 setError('Sorry, user with that email already exists!');
             }
