@@ -19,9 +19,9 @@ export const LoginSuccessful = () => {
 
     if (token?.length) {
         dispatch(logIn(token));
-        setTimeout(() => {
-            navigate('/');
-        }, 2000);
+        // setTimeout(() => {
+        //     navigate('/');
+        // }, 2000);
     }
 
     return (
