@@ -6,14 +6,14 @@ import { Dispatch, Selector } from './store/hooks/redux-hooks';
 import { tokenSelector } from './store/selectors/tokenSelector';
 import { getAccountAction } from './store/actions/accountActions';
 import { authSelector } from './store/selectors/authSelector';
-import { userSelector } from './store/selectors/userSelector';
+// import { userSelector } from './store/selectors/userSelector';
 
 function App() {
     const dispatch = Dispatch();
 
     const token = Selector(tokenSelector);
     const isAuth = Selector(authSelector);
-    const userInfo = Selector(userSelector);
+    // const userInfo = Selector(userSelector);
 
     const [isPricing, setIsPricing] = useState<boolean>(false);
     const [isSubscribe, setIsSubscribe] = useState<boolean>(false);
