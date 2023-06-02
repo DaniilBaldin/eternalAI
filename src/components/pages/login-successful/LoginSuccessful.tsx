@@ -18,10 +18,11 @@ export const LoginSuccessful = () => {
     }, [token]);
 
     if (token?.length) {
+        const fixedToken = token.replace('}', '');
         dispatch(logIn(token));
-        // setTimeout(() => {
-        //     navigate('/');
-        // }, 2000);
+        setTimeout(() => {
+            navigate('/');
+        }, 1000);
     }
 
     return (
