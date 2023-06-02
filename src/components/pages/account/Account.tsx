@@ -171,7 +171,9 @@ export const Account = () => {
                 <ButtonContainer>
                     <SaveButton
                         onClick={formSubmit}
-                        disabled={!name && !email && !phoneNumber && !password}
+                        disabled={
+                            error.length > 0 || (!name && !email && !phoneNumber && !password)
+                        }
                     >
                         SAVE
                     </SaveButton>
