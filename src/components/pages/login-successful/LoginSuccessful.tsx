@@ -18,8 +18,7 @@ export const LoginSuccessful = () => {
     }, [token]);
 
     if (token?.length) {
-        const fixedToken = token.replace('}', '');
-        dispatch(logIn(fixedToken));
+        dispatch(logIn(token));
         setTimeout(() => {
             navigate('/');
         }, 1000);
