@@ -167,7 +167,7 @@ export const Account = () => {
                         disabled={user.method !== 'email'}
                     />
                 </Form>
-                {error && <ErrorMessage>{error}</ErrorMessage>}
+                {error && <ErrorMessage style={{ marginTop: '-20px' }}>{error}</ErrorMessage>}
                 <ButtonContainer>
                     <SaveButton
                         onClick={formSubmit}
