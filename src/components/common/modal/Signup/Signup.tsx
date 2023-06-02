@@ -51,7 +51,7 @@ export const SignUpModal: FC<Props> = (props) => {
     const handleBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
             setError(
-                'Password must be at least 6 characters long and contain at least one uppercase letter and one number!',
+                'Password must be at least 8 characters long and contain at least one uppercase letter and one number!',
             );
         }
     };
@@ -95,8 +95,8 @@ export const SignUpModal: FC<Props> = (props) => {
                                 id="password"
                                 autoComplete="off"
                                 placeholder="Password"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
-                                min={1}
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                                min={8}
                                 onChange={(event) => {
                                     setError('');
                                     setPassword(event.target.value);
@@ -129,7 +129,7 @@ export const SignUpModal: FC<Props> = (props) => {
                                 onConsent();
                             }}
                             disabled={
-                                error.length > 0 || !email || !password || password.length < 6
+                                error.length > 0 || !email || !password || password.length < 8
                             }
                         >
                             SIGN UP
