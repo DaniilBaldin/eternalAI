@@ -30,9 +30,15 @@ import { useNavigate } from 'react-router-dom';
 import { userSelector } from '~/store/selectors/userSelector';
 import { tokenSelector } from '~/store/selectors/tokenSelector';
 import { setAccountAction } from '~/store/actions/accountActions';
+import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
 
 //TODO:Account data fetching and adding to form as value
 //TODO:Change subscription date
+
+type ErrorMessage = {
+    message: string;
+    success: string;
+};
 
 export const Account = () => {
     const navigate = useNavigate();
@@ -47,6 +53,7 @@ export const Account = () => {
     const [email, setEmail] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     const UserInfo = {
         name: name || user.name,
@@ -60,7 +67,14 @@ export const Account = () => {
             setAccountAction({ Token: token as string, data: UserInfo }),
         );
         if (response.meta.requestStatus === 'fulfilled') {
-            alert('Successfully updated!');
+            setError('Successfully updated!');
+        }
+        if (response.meta.requestStatus === 'rejected') {
+            if (
+                (response.payload as ErrorMessage).message === 'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS'
+            ) {
+                setError('Sorry, user with that email already exists!');
+            }
         }
     };
 
@@ -91,6 +105,7 @@ export const Account = () => {
                         title="Enter new value to change."
                         min={1}
                         onChange={(event) => {
+                            setError('');
                             setName(event.target.value);
                         }}
                     />
@@ -107,6 +122,7 @@ export const Account = () => {
                         }
                         min={1}
                         onChange={(event) => {
+                            setError('');
                             setEmail(event.target.value);
                         }}
                         disabled={user.method !== 'email'}
@@ -120,6 +136,7 @@ export const Account = () => {
                         title="Enter new value to change."
                         min={1}
                         onChange={(event) => {
+                            setError('');
                             setPhoneNumber(event.target.value);
                         }}
                     />
@@ -136,13 +153,20 @@ export const Account = () => {
                         }
                         min={1}
                         onChange={(event) => {
+                            setError('');
                             setPassword(event.target.value);
                         }}
                         disabled={user.method !== 'email'}
                     />
                 </Form>
+                {error && <ErrorMessage>{error}</ErrorMessage>}
                 <ButtonContainer>
-                    <SaveButton onClick={formSubmit}>SAVE</SaveButton>
+                    <SaveButton
+                        onClick={formSubmit}
+                        disabled={!name && !email && !phoneNumber && !password}
+                    >
+                        SAVE
+                    </SaveButton>
                 </ButtonContainer>
             </AccountWindow>
             {!isCardUpdate ? (

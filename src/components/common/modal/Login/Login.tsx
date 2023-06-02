@@ -18,11 +18,11 @@ import {
     Title,
 } from './Login.styles';
 import { createPortal } from 'react-dom';
-import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
+import { Dispatch } from '~/store/hooks/redux-hooks';
 import { signInAction } from '~/store/actions/signInActions';
-import { errorSelector } from '~/store/selectors/errorSelector';
+
 import { googleUrl } from '~/utils/stringifiedParams';
-import { resetError } from '~/store/reducers/authReducer';
+import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
 
 type Props = {
     show: boolean;
@@ -30,26 +30,40 @@ type Props = {
     onSignUp: () => void;
 };
 
+type ErrorMessage = {
+    message: string;
+    success: string;
+};
+
 export const LoginModal: FC<Props> = (props) => {
     const dispatch = Dispatch();
-
-    const isError = Selector(errorSelector);
 
     const { show, onClose, onSignUp } = props;
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     const onSubmit = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
         const response = await dispatch(signInAction({ email: email, password: password }));
-        console.log(response);
+        if (response.meta.requestStatus === 'fulfilled') {
+            setError('Successfully updated!');
+        }
+        if (response.meta.requestStatus === 'rejected') {
+            if (
+                (response.payload as ErrorMessage).message ===
+                'USER_WAS_REGISTERED_WITH_ANOTHER_METHOD'
+            ) {
+                setError('Please log in with Google service!');
+            } else {
+                setError('Email or password is incorrect!');
+            }
+        }
     };
 
     const handleBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
-            alert(
-                'Password must be at least 6 characters long and contain at least one uppercase letter and one number!',
-            );
+            setError('Not a valid email address!');
         }
     };
 
@@ -65,13 +79,15 @@ export const LoginModal: FC<Props> = (props) => {
                             type="text"
                             autoComplete="off"
                             autoCapitalize="off"
-                            placeholder="Login"
+                            autoCorrect="off"
+                            placeholder="Email"
+                            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$"
                             min={1}
-                            // value={user ? user.email : ''}
                             onChange={(event) => {
-                                dispatch(resetError());
+                                setError('');
                                 setEmail(event.target.value);
                             }}
+                            onBlur={handleBlur}
                             required
                         />
                         <Label>Password</Label>
@@ -80,26 +96,16 @@ export const LoginModal: FC<Props> = (props) => {
                             autoComplete="off"
                             autoCapitalize="off"
                             placeholder="Password"
-                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
                             min={1}
                             value={password}
                             onChange={(event) => {
+                                setError('');
                                 setPassword(event.target.value);
-                                dispatch(resetError());
                             }}
-                            onBlur={handleBlur}
                             required
                         />
                     </Form>
-                    {isError && (
-                        <p style={{ margin: '0', color: 'white' }}>
-                            {isError === 'BAD_REQUEST' ||
-                            isError === 'PASSWORD_IS_INCORRECT' ||
-                            isError === 'USER_NOT_FOUND'
-                                ? 'Email or password is not correct!'
-                                : 'Please, use Google auth, since you are signed up with it.'}
-                        </p>
-                    )}
+                    {error && <ErrorMessage style={{ marginTop: '-10px' }}>{error}</ErrorMessage>}
                     <ResetLink>Forgot password?</ResetLink>
                     <ButtonsContainer>
                         <ButtonWrap>
@@ -114,7 +120,9 @@ export const LoginModal: FC<Props> = (props) => {
                         </ButtonWrap>
                         <SignInButton
                             onClick={onSubmit}
-                            disabled={!email || !password || password.length < 6}
+                            disabled={
+                                error.length > 0 || !email || !password || password.length < 6
+                            }
                         >
                             SIGN IN
                         </SignInButton>

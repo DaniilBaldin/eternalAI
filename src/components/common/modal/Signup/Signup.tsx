@@ -20,11 +20,9 @@ import {
     BottomLink,
 } from './Signup.styles';
 
-import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
-import { errorSelector } from '~/store/selectors/errorSelector';
 import { useGlobalContext } from '~/utils/Context';
 import { googleUrl } from '~/utils/stringifiedParams';
-import { resetError } from '~/store/reducers/authReducer';
+import { ErrorMessage } from '../Consent/Consent.styles';
 
 type Props = {
     show: boolean;
@@ -34,26 +32,25 @@ type Props = {
 };
 
 export const SignUpModal: FC<Props> = (props) => {
-    const dispatch = Dispatch();
-
-    const isError = Selector(errorSelector);
     const { setUser } = useGlobalContext();
 
     const { show, onClose, onSignIn, onConsent } = props;
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
+
     const user = { email: email, password: password };
 
     const handleEmailBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
-            alert('Not a valid email address!');
+            setError('Not a valid email address!');
         }
     };
 
     const handleBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
-            alert(
+            setError(
                 'Password must be at least 6 characters long and contain at least one uppercase letter and one number!',
             );
         }
@@ -75,19 +72,19 @@ export const SignUpModal: FC<Props> = (props) => {
                         <Label htmlFor="email">
                             Email
                             <Input
-                                type="email"
+                                type="text"
                                 id="email"
                                 name="email"
-                                // pattern="/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/u"
+                                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$"
                                 autoComplete="off"
                                 placeholder="Email"
                                 autoCorrect="off"
                                 min={1}
                                 onChange={(event) => {
-                                    dispatch(resetError());
+                                    setError('');
                                     setEmail(event.target.value);
                                 }}
-                                // onBlur={handleEmailBlur}
+                                onBlur={handleEmailBlur}
                                 required
                             />
                         </Label>
@@ -101,7 +98,7 @@ export const SignUpModal: FC<Props> = (props) => {
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
                                 min={1}
                                 onChange={(event) => {
-                                    dispatch(resetError());
+                                    setError('');
                                     setPassword(event.target.value);
                                 }}
                                 onBlur={handleBlur}
@@ -109,8 +106,10 @@ export const SignUpModal: FC<Props> = (props) => {
                             />
                         </Label>
                     </Form>
-                    {isError && (
-                        <p style={{ margin: '0', color: 'white' }}>Incorrect email or password.</p>
+                    {error && (
+                        <ErrorMessage style={{ marginTop: '-20px', marginBottom: '10px' }}>
+                            {error}
+                        </ErrorMessage>
                     )}
                     <ButtonsContainer>
                         <ButtonWrap>
@@ -129,7 +128,9 @@ export const SignUpModal: FC<Props> = (props) => {
                                 setUser(user);
                                 onConsent();
                             }}
-                            disabled={!email || !password || password.length < 6}
+                            disabled={
+                                error.length > 0 || !email || !password || password.length < 6
+                            }
                         >
                             SIGN UP
                         </SignUpButton>

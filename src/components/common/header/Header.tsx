@@ -56,6 +56,7 @@ export const HeaderComponent = () => {
     };
 
     const onSignupHandler = () => {
+        setIsConsent(false);
         setIsLoginShow(false);
         setIsMenuShow(false);
         setIsSignUpShow(true);
@@ -108,7 +109,8 @@ export const HeaderComponent = () => {
                     <ConsentModal
                         show={isConsent}
                         onClose={() => setIsConsent(false)}
-                        onGoBack={onLoginHandler}
+                        onGoBack={onSignupHandler}
+                        onLogin={onLoginHandler}
                     />
                     <LoginModal
                         onClose={() => setIsLoginShow(false)}

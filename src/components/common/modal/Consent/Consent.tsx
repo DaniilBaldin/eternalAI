@@ -19,44 +19,51 @@ import {
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
 import { useGlobalContext } from '~/utils/Context';
-import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
+import { Dispatch } from '~/store/hooks/redux-hooks';
 import { signUpAction } from '~/store/actions/signUpActions';
-import { errorSelector } from '~/store/selectors/errorSelector';
-import { resetError } from '~/store/reducers/authReducer';
 
 type Props = {
     show: boolean;
     onClose: () => void;
     onGoBack: () => void;
+    onLogin: () => void;
 };
 
-type SignUpResponse = {
-    id: string;
-    email: string;
-    success: boolean;
+type ErrorMessage = {
+    message: string;
+    success: string;
 };
 
 export const ConsentModal: FC<Props> = (props) => {
     const dispatch = Dispatch();
 
-    const { show, onClose, onGoBack } = props;
+    const { show, onClose, onGoBack, onLogin } = props;
 
     const { user } = useGlobalContext();
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
-    const isError = Selector(errorSelector);
+    const [error, setError] = useState<string>('');
 
     const onSubmit = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
         const response = await dispatch(signUpAction(user));
         console.log(response);
-        if ((response.payload as SignUpResponse).success) {
-            alert('You now may login with your email and password!');
+        if (response.meta.requestStatus === 'fulfilled') {
+            alert('You now may sign in with your email and password.');
+            onLogin();
+        }
+        if (response.meta.requestStatus === 'rejected') {
+            if (
+                (response.payload as ErrorMessage).message === 'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS'
+            ) {
+                setError('Sorry, user with that email already exists!');
+            }
         }
     };
 
     const onGoBackHandler = () => {
-        dispatch(resetError());
+        setError('');
+        setIsChecked(false);
         onGoBack();
     };
 
@@ -105,18 +112,15 @@ export const ConsentModal: FC<Props> = (props) => {
                             <Span>I have read the above statement</Span>
                         </Label>
                     </CheckboxContainer>
-                    {isError && (
+                    {error && (
                         <ErrorMessage>
-                            {isError === 'BAD_REQUEST' ||
-                            isError === 'USER_WITH_SUCH_EMAIL_ALREADY_EXISTS'
-                                ? 'User already exists'
-                                : 'Please, use Google auth, since you are signed up with it.'}
+                            {error}
                             &nbsp;
-                            <ErrorMessagePink onClick={onGoBackHandler}>Sign in</ErrorMessagePink>
+                            <ErrorMessagePink onClick={onGoBackHandler}>Go back</ErrorMessagePink>
                         </ErrorMessage>
                     )}
-                    <ContinueButton disabled={!isChecked}>
-                        <ButtonText onClick={onSubmit}>CONTINUE</ButtonText>
+                    <ContinueButton disabled={!isChecked || error.length > 0} onClick={onSubmit}>
+                        <ButtonText>CONTINUE</ButtonText>
                     </ContinueButton>
                 </ConsentWindow>
             </ModalContent>

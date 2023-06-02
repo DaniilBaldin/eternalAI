@@ -205,6 +205,14 @@ export const SaveButton = styled.button`
             rgba(88, 51, 239, 0.8) 114.41%
         );
     }
+
+    &:disabled {
+        background: linear-gradient(
+            281.4deg,
+            rgba(248, 45, 152, 0.4) -2.34%,
+            rgba(88, 51, 239, 0.4) 114.41%
+        );
+    }
 `;
 
 export const Badge = styled.div`
