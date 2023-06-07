@@ -2,12 +2,12 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Dispatch } from '~/store/hooks/redux-hooks';
+import { appDispatch } from '~/store/hooks/redux-hooks';
 import { logIn } from '~/store/reducers/authReducer';
 import { SuccessPaymentWindow, SuccessBadge, Title } from './LoginSuccessful.styles';
 
 export const LoginSuccessful = () => {
-    const dispatch = Dispatch();
+    const dispatch = appDispatch();
     const navigate = useNavigate();
 
     const [params] = useSearchParams();

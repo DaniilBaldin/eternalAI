@@ -18,7 +18,7 @@ import {
     Title,
 } from './Login.styles';
 import { createPortal } from 'react-dom';
-import { Dispatch } from '~/store/hooks/redux-hooks';
+import { appDispatch } from '~/store/hooks/redux-hooks';
 import { signInAction } from '~/store/actions/signInActions';
 
 import { googleUrl } from '~/utils/stringifiedParams';
@@ -36,7 +36,7 @@ type ErrorMessage = {
 };
 
 export const LoginModal: FC<Props> = (props) => {
-    const dispatch = Dispatch();
+    const dispatch = appDispatch();
 
     const { show, onClose, onSignUp } = props;
     const [email, setEmail] = useState<string>('');

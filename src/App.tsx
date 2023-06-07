@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Router } from './routes/Router';
 
 import { GlobalContext } from './utils/Context';
-import { Dispatch, Selector } from './store/hooks/redux-hooks';
+import { appDispatch, Selector } from './store/hooks/redux-hooks';
 import { tokenSelector } from './store/selectors/tokenSelector';
 import { getAccountAction } from './store/actions/accountActions';
 import { authSelector } from './store/selectors/authSelector';
 // import { userSelector } from './store/selectors/userSelector';
 
 function App() {
-    const dispatch = Dispatch();
+    const dispatch = appDispatch();
 
     const token = Selector(tokenSelector);
     const isAuth = Selector(authSelector);

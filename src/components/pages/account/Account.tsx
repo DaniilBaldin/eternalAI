@@ -20,17 +20,19 @@ import {
     ButtonWrap,
     UpdateButton,
     CancelButton,
-    PaymentForm,
-    PaymentSaveButton,
 } from './Account.styles';
-import { PaymentInputs } from '~/components/common/PaymentInput/PaymentInput';
-import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
+
+import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { authSelector } from '~/store/selectors/authSelector';
 import { useNavigate } from 'react-router-dom';
 import { userSelector } from '~/store/selectors/userSelector';
 import { tokenSelector } from '~/store/selectors/tokenSelector';
-import { setAccountAction } from '~/store/actions/accountActions';
+import { getAccountAction, setAccountAction } from '~/store/actions/accountActions';
 import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
+import { subscribeSelector } from '~/store/selectors/subscribeSelector';
+import { month } from '~/utils/month';
+import { unsubscribeAction } from '~/store/actions/subscribeActions';
+import { PaymentFormWindow } from './components/paymentForm';
 
 //TODO:Account data fetching and adding to form as value
 //TODO:Change subscription date
@@ -42,13 +44,14 @@ type ErrorMessage = {
 
 export const Account = () => {
     const navigate = useNavigate();
-    const dispatch = Dispatch();
-    const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
+    const dispatch = appDispatch();
 
     const isAuth = Selector(authSelector);
     const user = Selector(userSelector);
     const token = Selector(tokenSelector);
+    const isSubscribed = Selector(subscribeSelector);
 
+    const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -62,7 +65,9 @@ export const Account = () => {
         password: password || '',
     };
 
-    const formSubmit = async () => {
+    const SubscriptionDate = new Date(user.subscriptionExpiresAt * 1000);
+
+    const onSubmit = async () => {
         const response = await dispatch(
             setAccountAction({ Token: token as string, data: UserInfo }),
         );
@@ -78,6 +83,17 @@ export const Account = () => {
         }
     };
 
+    const onUnsubscribe = async () => {
+        const response = await dispatch(unsubscribeAction(token as string));
+        if (response.meta.requestStatus === 'fulfilled') {
+            await dispatch(getAccountAction(token as string));
+            alert('Subscription cancelled!');
+        }
+        if (response.meta.requestStatus === 'rejected') {
+            alert('You are not subscribed!');
+        }
+    };
+
     const handleEmailBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
             setError('Not a valid email address!');
@@ -89,10 +105,6 @@ export const Account = () => {
             navigate('/');
         }
     }, [isAuth]);
-
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
 
     return (
         <Main>
@@ -170,7 +182,7 @@ export const Account = () => {
                 {error && <ErrorMessage style={{ marginTop: '-20px' }}>{error}</ErrorMessage>}
                 <ButtonContainer>
                     <SaveButton
-                        onClick={formSubmit}
+                        onClick={onSubmit}
                         disabled={
                             error.length > 0 || (!name && !email && !phoneNumber && !password)
                         }
@@ -187,13 +199,32 @@ export const Account = () => {
                         </Badge>
                     </BadgeWrap>
                     <PriceTitle>$10 / month</PriceTitle>
-                    <Subtitle>Next payment will be processed on {`${'June 6, 2023'}`}</Subtitle>
+                    {!isSubscribed ? (
+                        <Subtitle>You are not subscribed.</Subtitle>
+                    ) : (
+                        <Subtitle>
+                            {user.hasSubscription
+                                ? 'Next payment will be processed on'
+                                : 'Your subscribtion will expire'}{' '}
+                            {`${month.filter(
+                                (mnth, index) => index === SubscriptionDate.getMonth(),
+                            )} ${SubscriptionDate.getDate()}, ${SubscriptionDate.getFullYear()}.`}
+                        </Subtitle>
+                    )}
                     <ButtonWrap>
-                        <UpdateButton onClick={() => setIsCardUpdate(true)}>
+                        <UpdateButton
+                            onClick={() => setIsCardUpdate(true)}
+                            disabled={!isSubscribed || !user.hasSubscription}
+                        >
                             Update payment
                         </UpdateButton>
                     </ButtonWrap>
-                    <CancelButton>Cancel subscription</CancelButton>
+                    <CancelButton
+                        disabled={!isSubscribed || !user.hasSubscription}
+                        onClick={onUnsubscribe}
+                    >
+                        Cancel subscription
+                    </CancelButton>
                 </PaymentWindow>
             ) : (
                 <PaymentWindow>
@@ -204,13 +235,12 @@ export const Account = () => {
                     </BadgeWrap>
                     <PriceTitle>$10 / month</PriceTitle>
                     <Subtitle style={{ marginBottom: '32px' }}>
-                        Next payment will be processed on {`${'June 6, 2023'}`}
+                        Next payment will be processed on{' '}
+                        {`${month.filter(
+                            (mnth, index) => index + 1 === SubscriptionDate.getMonth(),
+                        )} ${SubscriptionDate.getDate()}, ${SubscriptionDate.getFullYear()}.`}
                     </Subtitle>
-
-                    <PaymentForm>
-                        <PaymentInputs />
-                        <PaymentSaveButton>SAVE</PaymentSaveButton>
-                    </PaymentForm>
+                    <PaymentFormWindow setIsCardUpdate={setIsCardUpdate} />
                 </PaymentWindow>
             )}
         </Main>

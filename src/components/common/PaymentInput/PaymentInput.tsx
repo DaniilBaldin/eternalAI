@@ -1,15 +1,21 @@
-import React, { FormEvent, useState } from 'react';
+import React, { Dispatch, FC, FormEvent, SetStateAction } from 'react';
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 
 import { images } from '~/utils/images';
 import { css } from 'styled-components';
 
-export const PaymentInputs = (): JSX.Element => {
+type Props = {
+    setCardNumber: Dispatch<SetStateAction<string>>;
+    setExpiryDate: Dispatch<SetStateAction<string>>;
+    setCVCNumber: Dispatch<SetStateAction<string>>;
+    setError: Dispatch<SetStateAction<string>>;
+};
+
+export const PaymentInputs: FC<Props> = (props): JSX.Element => {
+    const { setCardNumber, setExpiryDate, setCVCNumber, setError } = props;
+
     const { wrapperProps, getCardImageProps, getCardNumberProps, getExpiryDateProps, getCVCProps } =
         usePaymentInputs();
-
-    const [value, setValue] = useState<string>('');
-    console.log(value);
 
     return (
         <PaymentInputsWrapper
@@ -83,7 +89,8 @@ export const PaymentInputs = (): JSX.Element => {
                 {...getCardNumberProps({
                     onChange: (e: FormEvent<HTMLInputElement>) => {
                         // if (onChange) onChange(e);
-                        setValue(e.currentTarget.value);
+                        setError('');
+                        setCardNumber(e.currentTarget.value);
                     },
                     // onBlur: () => setFocused(false),
                     // onFocus: () => setFocused(true),
@@ -92,8 +99,24 @@ export const PaymentInputs = (): JSX.Element => {
                 //     setValue(e.currentTarget.value);
                 // }}
             />
-            <input {...getExpiryDateProps()} />
-            <input {...getCVCProps()} />
+            <input
+                {...getExpiryDateProps({
+                    onChange: (e: FormEvent<HTMLInputElement>) => {
+                        // if (onChange) onChange(e);
+                        setError('');
+                        setExpiryDate(e.currentTarget.value);
+                    },
+                })}
+            />
+            <input
+                {...getCVCProps({
+                    onChange: (e: FormEvent<HTMLInputElement>) => {
+                        // if (onChange) onChange(e);
+                        setError('');
+                        setCVCNumber(e.currentTarget.value);
+                    },
+                })}
+            />
         </PaymentInputsWrapper>
     );
 };

@@ -17,19 +17,28 @@ type AccountResponse = {
         name: string;
         method: string;
         phoneNumber: string;
+        stripeId: string;
+        subscriptionExpiresAt: number;
+        hasSubscription: boolean;
     };
     success: boolean;
 };
 
-type AccountSetResponse = {
-    user: {
+type SubscribeResponse = {
+    subscription: {
         id: string;
-        email: string;
-        name: string;
-        method: string;
-        phoneNumber: string;
+        status: string;
+        current_period_start: number;
+        current_period_end: number;
+        collection_method: string;
+        customer: string;
     };
     success: boolean;
+};
+
+type SuccessResponse = {
+    message: string;
+    success: string;
 };
 
 export default class Api extends HttpClient {
@@ -67,7 +76,47 @@ export default class Api extends HttpClient {
         JWTToken: string,
         data: { email: string; name: string; phoneNumber: string; password: string },
     ) => {
-        return this.instance.patch<AccountSetResponse>('/update-user', data, {
+        return this.instance.patch<AccountResponse>('/update-user', data, {
+            headers: {
+                Authorization: `Bearer ${JWTToken}`,
+            },
+        });
+    };
+
+    public subscribeUser = (
+        JWTToken: string,
+        data: {
+            cardNumber: string;
+            expMonth: number;
+            expYear: number;
+            cvc: string;
+        },
+    ) => {
+        return this.instance.post<SubscribeResponse>('/subscribe', data, {
+            headers: {
+                Authorization: `Bearer ${JWTToken}`,
+            },
+        });
+    };
+
+    public unsubscribeUser = (JWTToken: string) => {
+        return this.instance.get<SuccessResponse>('/unsubscribe', {
+            headers: {
+                Authorization: `Bearer ${JWTToken}`,
+            },
+        });
+    };
+
+    public updateSubscription = (
+        JWTToken: string,
+        data: {
+            cardNumber: string;
+            expMonth: number;
+            expYear: number;
+            cvc: string;
+        },
+    ) => {
+        return this.instance.post<SuccessResponse>('/change-payment-method', data, {
             headers: {
                 Authorization: `Bearer ${JWTToken}`,
             },

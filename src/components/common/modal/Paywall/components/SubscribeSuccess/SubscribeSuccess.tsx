@@ -11,15 +11,22 @@ import {
 } from './SubscribeSuccess.styles';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '~/utils/Context';
+import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
+import { tokenSelector } from '~/store/selectors/tokenSelector';
+import { getAccountAction } from '~/store/actions/accountActions';
 
 type Props = {
     show: boolean;
 };
 
 export const SubscribeSuccess: FC<Props> = (props) => {
-    const { show } = props;
+    const dispatch = appDispatch();
     const navigate = useNavigate();
+
+    const { show } = props;
     const { setIsSuccess } = useGlobalContext();
+
+    const token = Selector(tokenSelector);
 
     return createPortal(
         <div>
@@ -32,9 +39,10 @@ export const SubscribeSuccess: FC<Props> = (props) => {
                     <Title>You have successfully subscribed!</Title>
                     <Subtitle>A receipt was sent to your email</Subtitle>
                     <SuccessButton
-                        onClick={() => {
+                        onClick={async () => {
+                            await dispatch(getAccountAction(token as string));
                             setIsSuccess(false);
-                            navigate('/a');
+                            navigate('/');
                         }}
                     >
                         START CHATTING

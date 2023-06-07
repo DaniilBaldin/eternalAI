@@ -13,7 +13,7 @@ import {
 } from './Menu.styles';
 
 import { useGlobalContext } from '~/utils/Context';
-import { Dispatch, Selector } from '~/store/hooks/redux-hooks';
+import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { logOut } from '~/store/reducers/authReducer';
 import { authSelector } from '~/store/selectors/authSelector';
 
@@ -23,7 +23,7 @@ type Props = {
 };
 
 export const MenuModal: FC<Props> = (props) => {
-    const dispatch = Dispatch();
+    const dispatch = appDispatch();
 
     const { isShow, onClose } = props;
 

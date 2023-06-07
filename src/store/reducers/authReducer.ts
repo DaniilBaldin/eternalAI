@@ -13,6 +13,7 @@ type initialState = {
     isSigned: boolean;
     isLoading: boolean;
     isSuccess: boolean;
+    isSubscribed: boolean;
     errorMessage: string;
     user: {
         id: string;
@@ -20,6 +21,9 @@ type initialState = {
         name: string;
         method: string;
         phoneNumber: string;
+        stripeId: string;
+        subscriptionExpiresAt: number;
+        hasSubscription: boolean;
     };
 };
 
@@ -29,6 +33,7 @@ const initialState = {
     isSigned: false,
     isLoading: false,
     isSuccess: false,
+    isSubscribed: false,
     errorMessage: '',
     user: {
         id: '',
@@ -36,6 +41,9 @@ const initialState = {
         name: '',
         method: '',
         phoneNumber: '',
+        stripeId: '',
+        subscriptionExpiresAt: 0,
+        hasSubscription: false,
     },
 };
 
@@ -101,6 +109,14 @@ export const authSlice = createSlice({
         builder.addCase(getAccountAction.fulfilled, (state, { payload }) => {
             state.isLoading = false;
             state.user = payload;
+            if (
+                payload.subscriptionExpiresAt !== null &&
+                new Date(payload.subscriptionExpiresAt * 1000).getTime() >= new Date().getTime()
+            ) {
+                state.isSubscribed = true;
+            } else {
+                state.isSubscribed = false;
+            }
         });
         builder.addCase(getAccountAction.rejected, (state, action) => {
             state.isLoading = false;

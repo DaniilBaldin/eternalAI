@@ -19,6 +19,8 @@ import {
     SubscribeButton,
 } from './Paywall.styles';
 import { useGlobalContext } from '~/utils/Context';
+import { Selector } from '~/store/hooks/redux-hooks';
+import { subscribeSelector } from '~/store/selectors/subscribeSelector';
 
 type Props = {
     show: boolean;
@@ -27,6 +29,8 @@ type Props = {
 
 export const PaywallModal: FC<Props> = (props) => {
     const { show } = props;
+
+    const isSubscribed = Selector(subscribeSelector);
 
     const { setIsSubscribe, setIsPricing } = useGlobalContext();
 
@@ -69,6 +73,7 @@ export const PaywallModal: FC<Props> = (props) => {
                                 setIsSubscribe(true);
                                 setIsPricing(false);
                             }}
+                            disabled={isSubscribed}
                         >
                             SUBSCRIBE
                         </SubscribeButton>

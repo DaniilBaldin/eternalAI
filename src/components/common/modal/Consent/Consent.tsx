@@ -19,7 +19,7 @@ import {
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
 import { useGlobalContext } from '~/utils/Context';
-import { Dispatch } from '~/store/hooks/redux-hooks';
+import { appDispatch } from '~/store/hooks/redux-hooks';
 import { signUpAction } from '~/store/actions/signUpActions';
 
 type Props = {
@@ -35,7 +35,7 @@ type ErrorMessage = {
 };
 
 export const ConsentModal: FC<Props> = (props) => {
-    const dispatch = Dispatch();
+    const dispatch = appDispatch();
 
     const { show, onClose, onGoBack, onLogin } = props;
 
