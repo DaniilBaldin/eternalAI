@@ -210,7 +210,7 @@ export const Account = () => {
                         <Subtitle>
                             {user.hasSubscription
                                 ? 'Next payment will be processed on'
-                                : 'Your subscribtion will expire'}{' '}
+                                : 'Your subscribtion is cancelled and will expire'}{' '}
                             {`${month.filter(
                                 (mnth, index) => index === SubscriptionDate.getMonth(),
                             )} ${SubscriptionDate.getDate()}, ${SubscriptionDate.getFullYear()}.`}
