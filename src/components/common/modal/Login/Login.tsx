@@ -18,11 +18,13 @@ import {
     Title,
 } from './Login.styles';
 import { createPortal } from 'react-dom';
-import { appDispatch } from '~/store/hooks/redux-hooks';
+import { Selector, appDispatch } from '~/store/hooks/redux-hooks';
 import { signInAction } from '~/store/actions/signInActions';
 
 import { googleUrl } from '~/utils/stringifiedParams';
 import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
+import { loadingSelector } from '~/store/selectors/loadingSelector';
+import { ButtonLoader } from '../../buttonLoader/ButtonLoader';
 
 type Props = {
     show: boolean;
@@ -37,6 +39,8 @@ type ErrorMessage = {
 
 export const LoginModal: FC<Props> = (props) => {
     const dispatch = appDispatch();
+
+    const isLoading = Selector(loadingSelector);
 
     const { show, onClose, onSignUp } = props;
     const [email, setEmail] = useState<string>('');
@@ -124,7 +128,7 @@ export const LoginModal: FC<Props> = (props) => {
                                 error.length > 0 || !email || !password || password.length < 6
                             }
                         >
-                            SIGN IN
+                            {isLoading ? <ButtonLoader /> : 'SIGN IN'}
                         </SignInButton>
                     </ButtonsContainer>
                     <BreakLine />

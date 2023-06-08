@@ -19,8 +19,10 @@ import {
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
 import { useGlobalContext } from '~/utils/Context';
-import { appDispatch } from '~/store/hooks/redux-hooks';
+import { Selector, appDispatch } from '~/store/hooks/redux-hooks';
 import { signUpAction } from '~/store/actions/signUpActions';
+import { loadingSelector } from '~/store/selectors/loadingSelector';
+import { ButtonLoader } from '../../buttonLoader/ButtonLoader';
 
 type Props = {
     show: boolean;
@@ -36,6 +38,8 @@ type ErrorMessage = {
 
 export const ConsentModal: FC<Props> = (props) => {
     const dispatch = appDispatch();
+
+    const isLoading = Selector(loadingSelector);
 
     const { show, onClose, onGoBack, onLogin } = props;
 
@@ -122,7 +126,7 @@ export const ConsentModal: FC<Props> = (props) => {
                         </ErrorMessage>
                     )}
                     <ContinueButton disabled={!isChecked || error.length > 0} onClick={onSubmit}>
-                        <ButtonText>CONTINUE</ButtonText>
+                        <ButtonText>{isLoading ? <ButtonLoader /> : 'CONTINUE'}</ButtonText>
                     </ContinueButton>
                 </ConsentWindow>
             </ModalContent>

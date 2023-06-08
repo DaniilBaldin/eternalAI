@@ -7,7 +7,7 @@ export const Modal = styled.div<{ $show: boolean }>`
     top: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.1);
-    /* backdrop-filter: blur(77px); */
+    backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: center;

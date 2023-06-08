@@ -130,7 +130,7 @@ export const HeaderComponent = () => {
                         }}
                     />
                     <SubscribePayment show={isSubscribe} />
-                    <SubscribeSuccess show={isSuccess} />
+                    <SubscribeSuccess show={isSuccess} onClose={onCloseHandler} />
                 </Header>
             ) : (
                 <Header $fixed={isMenuShow}>

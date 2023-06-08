@@ -13,7 +13,8 @@ import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { subscribeAction } from '~/store/actions/subscribeActions';
 import { tokenSelector } from '~/store/selectors/tokenSelector';
 import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
-import { useNavigate } from 'react-router-dom';
+import { ButtonLoader } from '~/components/common/buttonLoader/ButtonLoader';
+import { stateSelector } from '~/store/selectors/stateSelector';
 
 type Props = {
     show: boolean;
@@ -30,6 +31,8 @@ export const SubscribePayment: FC<Props> = (props) => {
     const { show } = props;
 
     const token = Selector(tokenSelector);
+    const state = Selector(stateSelector);
+    const isLoading = state.subscribeSlice.isLoading;
 
     const { setIsSubscribe, setIsSuccess } = useGlobalContext();
 
@@ -78,6 +81,11 @@ export const SubscribePayment: FC<Props> = (props) => {
                             setCVCNumber={setCVCNumber}
                             setError={setError}
                         />
+                        {error && (
+                            <ErrorMessage style={{ marginTop: '-20px', marginBottom: '-20px' }}>
+                                {error}
+                            </ErrorMessage>
+                        )}
                         <SubmitButton
                             onClick={(e) => {
                                 e.preventDefault();
@@ -93,11 +101,8 @@ export const SubscribePayment: FC<Props> = (props) => {
                                 CVCNumber.length < 3
                             }
                         >
-                            SUBMIT PAYMENT
+                            {isLoading ? <ButtonLoader /> : 'SUBMIT PAYMENT'}
                         </SubmitButton>
-                        {error && (
-                            <ErrorMessage style={{ marginTop: '-20px' }}>{error}</ErrorMessage>
-                        )}
                     </PaymentForm>
                 </SubscribePaymentWindow>
             </ModalContent>

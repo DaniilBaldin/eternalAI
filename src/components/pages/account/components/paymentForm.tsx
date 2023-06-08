@@ -5,6 +5,8 @@ import { updateSubscription } from '~/store/actions/subscribeActions';
 import { tokenSelector } from '~/store/selectors/tokenSelector';
 import { PaymentForm, PaymentSaveButton } from './paymentForm.styles';
 import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
+import { ButtonLoader } from '~/components/common/buttonLoader/ButtonLoader';
+import { stateSelector } from '~/store/selectors/stateSelector';
 
 type Props = {
     setIsCardUpdate: Dispatch<React.SetStateAction<boolean>>;
@@ -16,6 +18,8 @@ export const PaymentFormWindow: FC<Props> = (props) => {
     const { setIsCardUpdate } = props;
 
     const token = Selector(tokenSelector);
+    const state = Selector(stateSelector);
+    const isLoading = state.subscribeSlice.isLoading;
 
     const [cardNumber, setCardNumber] = useState<string>('');
     const [expiryDate, setExpiryDate] = useState<string>('');
@@ -68,7 +72,7 @@ export const PaymentFormWindow: FC<Props> = (props) => {
                         CVCNumber.length < 3
                     }
                 >
-                    SAVE
+                    {isLoading ? <ButtonLoader /> : 'SAVE'}
                 </PaymentSaveButton>
             </PaymentForm>
             {error && <ErrorMessage>{error}</ErrorMessage>}

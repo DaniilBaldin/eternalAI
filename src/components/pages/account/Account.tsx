@@ -33,6 +33,8 @@ import { subscribeSelector } from '~/store/selectors/subscribeSelector';
 import { month } from '~/utils/month';
 import { unsubscribeAction } from '~/store/actions/subscribeActions';
 import { PaymentFormWindow } from './components/paymentForm';
+import { loadingSelector } from '~/store/selectors/loadingSelector';
+import { ButtonLoader } from '~/components/common/buttonLoader/ButtonLoader';
 
 //TODO:Account data fetching and adding to form as value
 //TODO:Change subscription date
@@ -50,6 +52,9 @@ export const Account = () => {
     const user = Selector(userSelector);
     const token = Selector(tokenSelector);
     const isSubscribed = Selector(subscribeSelector);
+    const isLoading = Selector(loadingSelector);
+
+    console.log(isLoading);
 
     const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
     const [name, setName] = useState<string>('');
@@ -187,7 +192,7 @@ export const Account = () => {
                             error.length > 0 || (!name && !email && !phoneNumber && !password)
                         }
                     >
-                        SAVE
+                        {isLoading ? <ButtonLoader /> : 'SAVE'}
                     </SaveButton>
                 </ButtonContainer>
             </AccountWindow>

@@ -17,13 +17,14 @@ import { getAccountAction } from '~/store/actions/accountActions';
 
 type Props = {
     show: boolean;
+    onClose: () => void;
 };
 
 export const SubscribeSuccess: FC<Props> = (props) => {
     const dispatch = appDispatch();
     const navigate = useNavigate();
 
-    const { show } = props;
+    const { show, onClose } = props;
     const { setIsSuccess } = useGlobalContext();
 
     const token = Selector(tokenSelector);
@@ -42,6 +43,7 @@ export const SubscribeSuccess: FC<Props> = (props) => {
                         onClick={async () => {
                             await dispatch(getAccountAction(token as string));
                             setIsSuccess(false);
+                            onClose();
                             navigate('/');
                         }}
                     >

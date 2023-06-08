@@ -181,13 +181,14 @@ export const SaveButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* padding: 0; */
     font-family: 'Arquitecta';
     font-size: 13px;
     /* line-height: 14.3px; */
     letter-spacing: 0.3em;
     font-weight: 700;
     color: #ffffff;
+    /* padding: 0; */
+
     cursor: pointer;
 
     &:hover {
@@ -389,5 +390,54 @@ export const CancelButton = styled.button`
     &:disabled {
         color: #ffffff;
         cursor: auto;
+    }
+`;
+
+export const LoadingAnimation = styled.div`
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: white;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+
+    ::before,
+    ::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
+    ::before {
+        left: -15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: white;
+        color: white;
+        animation: dot-flashing 1s infinite alternate;
+        animation-delay: 0s;
+    }
+    ::after {
+        left: 15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: white;
+        color: white;
+        animation: dot-flashing 1s infinite alternate;
+        animation-delay: 1s;
+    }
+
+    @keyframes dot-flashing {
+        0% {
+            background-color: white;
+        }
+        50%,
+        100% {
+            background-color: rgba(152, 128, 255, 0.2);
+        }
     }
 `;
