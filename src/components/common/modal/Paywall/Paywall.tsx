@@ -49,7 +49,14 @@ export const PaywallModal: FC<Props> = (props) => {
                             <WindowSubtitlePink>3 free</WindowSubtitlePink> questions when you share
                             on social media
                         </WindowSubtitle>
-                        <ShareButton>share</ShareButton>
+                        <ShareButton
+                            onClick={() => {
+                                navigator.clipboard.writeText('https://eternal-ai.vercel.app/');
+                                alert('Link copied to clipbard');
+                            }}
+                        >
+                            share
+                        </ShareButton>
                     </ShareWindow>
                     <SubscribeWindow>
                         <ProBadge>PRO</ProBadge>
