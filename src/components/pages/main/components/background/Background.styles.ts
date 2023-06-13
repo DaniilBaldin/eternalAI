@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const Image = styled(LazyLoadImage)<{
+export const Img = styled(LazyLoadImage)<{
     top: number;
     bottom?: string;
     left: string;

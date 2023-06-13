@@ -1,7 +1,15 @@
-import { Account } from '~/components/pages/account/Account';
-import { Chat } from '~/components/pages/chat/Chat';
+import { lazy } from 'react';
+
+const MainPage = lazy(() =>
+    import('~/components/pages/main/MainPage').then(({ MainPage }) => ({ default: MainPage })),
+);
+const Account = lazy(() =>
+    import('~/components/pages/account/Account').then(({ Account }) => ({ default: Account })),
+);
+const Chat = lazy(() =>
+    import('~/components/pages/chat/Chat').then(({ Chat }) => ({ default: Chat })),
+);
 import { LoginSuccessful } from '~/components/pages/login-successful/LoginSuccessful';
-import { MainPage } from '~/components/pages/main/MainPage';
 
 export enum Routes {
     MAIN = '/',

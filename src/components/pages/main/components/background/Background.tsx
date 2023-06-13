@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Wrapper, Image } from './Background.styles';
+import { Wrapper, Img } from './Background.styles';
 
 export const Background = () => {
     return (
         <Wrapper>
             <div style={{ margin: '0' }}>
-                <Image
+                <Img
                     top={2}
                     bottom={'px'}
                     left={'10%'}
@@ -15,7 +15,7 @@ export const Background = () => {
                     alt="conversation"
                 />
             </div>
-            <Image
+            <Img
                 top={58.5}
                 bottom={'0%'}
                 left={'72%'}
@@ -25,7 +25,7 @@ export const Background = () => {
                 width={'19%'}
             />
 
-            <Image
+            <Img
                 top={-45}
                 bottom={'0%'}
                 left={'4%'}
@@ -33,7 +33,7 @@ export const Background = () => {
                 alt="Group"
                 width={'90%'}
             />
-            <Image
+            <Img
                 top={-40}
                 bottom={'0%'}
                 left={'10%'}
@@ -41,10 +41,10 @@ export const Background = () => {
                 alt="Image"
                 width={'70%'}
             />
-            <Image top={5} left={'60%'} src="/main/Ellipse3643.svg" alt="Image" width={'30%'} />
-            <Image top={10} left={'40%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image top={5} left={'20%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image
+            <Img top={5} left={'60%'} src="/main/Ellipse3643.svg" alt="Image" width={'30%'} />
+            <Img top={10} left={'40%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
+            <Img top={5} left={'20%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
+            <Img
                 top={50}
                 left={'57%'}
                 src="/main/Einstein-compressed.webp"
@@ -52,8 +52,8 @@ export const Background = () => {
                 placeholderSrc="/main/Einstein-compressed.webp"
                 width={'21%'}
             />
-            <Image top={22} left={'36%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image
+            <Img top={22} left={'36%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
+            <Img
                 top={62}
                 left={'7%'}
                 src="/main/Musk-compressed.webp"
@@ -61,7 +61,7 @@ export const Background = () => {
                 placeholderSrc="/main/Musk-compressed.webp"
                 width={'21%'}
             />
-            <Image
+            <Img
                 top={47}
                 left={'20%'}
                 src="/main/Jobs-compressed.webp"
@@ -69,8 +69,8 @@ export const Background = () => {
                 placeholderSrc="/main/Jobs-compressed.webp"
                 width={'23%'}
             />
-            <Image top={21} left={'22%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Image
+            <Img top={21} left={'22%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
+            <Img
                 top={23}
                 left={'33%'}
                 src="/main/King-compressed.webp"
@@ -78,8 +78,8 @@ export const Background = () => {
                 alt="Image"
                 width={'33%'}
             />
-            <Image top={12} left={'32%'} src="/main/Ellipse3644.svg" alt="Image" width={'43%'} />
-            <Image top={47.5} left={'32'} src="/main/Gradient.png" alt="Image" width={'100%'} />
+            <Img top={12} left={'32%'} src="/main/Ellipse3644.svg" alt="Image" width={'43%'} />
+            <Img top={47.5} left={'32'} src="/main/Gradient.png" alt="Image" width={'100%'} />
         </Wrapper>
     );
 };

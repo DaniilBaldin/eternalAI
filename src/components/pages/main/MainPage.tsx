@@ -12,9 +12,16 @@ import {
 import { Background } from './components/background/Background';
 import { Individuals } from './components/individuals/Individuals';
 import { useGlobalContext } from '~/utils/Context';
+import { Selector } from '~/store/hooks/redux-hooks';
+import { Loader } from '~/components/common/loader/Loader';
+import { loadingSelector } from '~/store/selectors/loadingSelector';
 
 export const MainPage = () => {
     const { isPricing, isSubscribe, isSuccess } = useGlobalContext();
+
+    const isLoading = Selector(loadingSelector);
+
+    if (isLoading) return <Loader />;
 
     return (
         <Main>

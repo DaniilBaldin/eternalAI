@@ -14,6 +14,7 @@
         "@types/axios": "^0.14.0",
         "@types/react-lazy-load-image-component": "^1.5.3",
         "@types/react-payment-inputs": "^1.1.0",
+        "@types/react-transition-group": "^4.4.6",
         "@types/styled-components": "^5.1.26",
         "@types/tabbable": "^3.1.2",
         "axios": "^1.4.0",
@@ -25,6 +26,7 @@
         "react-payment-inputs": "^1.1.9",
         "react-redux": "^8.0.5",
         "react-router-dom": "^6.11.1",
+        "react-transition-group": "^4.4.5",
         "redux-thunk": "^2.4.2",
         "styled-components": "^5.3.6",
         "tabbable": "^6.1.2"
