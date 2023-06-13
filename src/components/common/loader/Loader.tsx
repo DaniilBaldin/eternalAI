@@ -14,7 +14,7 @@ export const Loader: FC = () => {
             <Wrapper>
                 <AnimationContainer>
                     <BackgroundImage
-                        src="public/background/EllipseBlueBlur.webp "
+                        src="/background/EllipseBlueBlur.webp "
                         // left={20}
                         // bottom={5}
                         rotate={90}
@@ -24,7 +24,7 @@ export const Loader: FC = () => {
                         style={{ marginLeft: '20px' }}
                     />
                     <BackgroundImage
-                        src="/public/background/EllipseBlueBlur.webp "
+                        src="/background/EllipseBlueBlur.webp "
                         rotate={90}
                         width={200.41}
                         height={254.22}
@@ -32,7 +32,7 @@ export const Loader: FC = () => {
                         // style={{ marginLeft: '50px' }}
                     />
                     <BackgroundImage
-                        src="/public/background/EllipseBlueBlur.webp "
+                        src="/background/EllipseBlueBlur.webp "
                         rotate={90}
                         width={165.41}
                         height={224.14}
