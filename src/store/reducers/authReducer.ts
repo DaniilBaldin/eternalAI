@@ -128,6 +128,7 @@ export const authSlice = createSlice({
         });
         builder.addCase(setAccountAction.fulfilled, (state, { payload }) => {
             state.isLoading = false;
+            console.log(payload);
             state.user = payload;
         });
         builder.addCase(setAccountAction.rejected, (state, action) => {

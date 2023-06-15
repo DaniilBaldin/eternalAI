@@ -1,7 +1,9 @@
 import { lazy } from 'react';
 
 const MainPage = lazy(() =>
-    import('~/components/pages/main/MainPage').then(({ MainPage }) => ({ default: MainPage })),
+    import('~/components/pages/main/MainPage').then(({ MainPageMemo }) => ({
+        default: MainPageMemo,
+    })),
 );
 const Account = lazy(() =>
     import('~/components/pages/account/Account').then(({ Account }) => ({ default: Account })),

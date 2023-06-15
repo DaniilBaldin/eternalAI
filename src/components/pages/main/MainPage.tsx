@@ -16,7 +16,7 @@ import { Selector } from '~/store/hooks/redux-hooks';
 import { Loader } from '~/components/common/loader/Loader';
 import { loadingSelector } from '~/store/selectors/loadingSelector';
 
-export const MainPage = () => {
+const MainPage = () => {
     const { isPricing, isSubscribe, isSuccess } = useGlobalContext();
 
     const isLoading = Selector(loadingSelector);
@@ -53,3 +53,5 @@ export const MainPage = () => {
         </Main>
     );
 };
+
+export const MainPageMemo = React.memo(MainPage);

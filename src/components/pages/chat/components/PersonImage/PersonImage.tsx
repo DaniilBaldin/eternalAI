@@ -10,7 +10,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
         <Wrapper>
             <InnerWrapper>
                 <BackgroundImage
-                    src="/background/EllipsePinkBlur.webp "
+                    src="/background/EllipsePinkBlur.avif "
                     left={15}
                     bottom={5}
                     rotate={-90}
@@ -19,7 +19,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                     blur={27.11}
                 />
                 <BackgroundImage
-                    src="/background/EllipseBlueBlur.webp"
+                    src="/background/EllipseBlueBlur.avif"
                     left={20}
                     bottom={5}
                     rotate={-90}
@@ -28,7 +28,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                     blur={48.81}
                 />
                 <BackgroundImage
-                    src="/background/EllipseWhiteBlur.webp"
+                    src="/public/background/EllipseWhiteBlur.avif"
                     left={7}
                     bottom={5}
                     rotate={-57}
@@ -46,7 +46,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                     blur={0}
                 />
                 <BackgroundImage
-                    src="/background/EllipsePinkBlurVert.webp "
+                    src="/background/EllipsePinkBlurVert.avif "
                     left={7}
                     bottom={5}
                     rotate={30}
@@ -64,7 +64,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                     blur={0}
                 />
                 <BackgroundImage
-                    src="/background/EllipseYellowBlur.webp"
+                    src="/public/background/EllipseYellowBlur.avif"
                     left={7}
                     bottom={5}
                     rotate={30}

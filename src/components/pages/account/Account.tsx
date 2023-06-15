@@ -54,8 +54,6 @@ export const Account = () => {
     const isSubscribed = Selector(subscribeSelector);
     const isLoading = Selector(loadingSelector);
 
-    console.log(isLoading);
-
     const [isCardUpdate, setIsCardUpdate] = useState<boolean>(false);
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');

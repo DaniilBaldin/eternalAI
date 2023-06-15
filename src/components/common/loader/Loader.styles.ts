@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    animation: bounce-out 5s ease-in;
+    animation: bounce-out 7s ease-in;
 
     @keyframes bounce-out {
         0% {
@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
             /* transform: scale(1); */
         }
         100% {
-            opacity: 0;
+            opacity: 0.4;
             /* transform: scale(0.9); */
         }
     }
@@ -51,8 +51,8 @@ export const AnimationContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 272px;
-    height: 269px;
+    width: 500px;
+    height: 400px;
     /* overflow: hidden; */
     position: relative;
     /* border: 1px solid white; */
