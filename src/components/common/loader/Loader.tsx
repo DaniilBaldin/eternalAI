@@ -14,7 +14,7 @@ export const Loader: FC = () => {
             <Wrapper>
                 <AnimationContainer>
                     <BackgroundImage
-                        src="/public/background/EllipseBlueBlur.avif "
+                        src="/background/EllipseBlueBlur.avif "
                         // left={20}
                         // bottom={5}
                         rotate={90}

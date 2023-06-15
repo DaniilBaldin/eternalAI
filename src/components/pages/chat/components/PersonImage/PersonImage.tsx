@@ -28,7 +28,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                     blur={48.81}
                 />
                 <BackgroundImage
-                    src="/public/background/EllipseWhiteBlur.avif"
+                    src="/background/EllipseWhiteBlur.avif"
                     left={7}
                     bottom={5}
                     rotate={-57}
@@ -64,7 +64,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                     blur={0}
                 />
                 <BackgroundImage
-                    src="/public/background/EllipseYellowBlur.avif"
+                    src="/background/EllipseYellowBlur.avif"
                     left={7}
                     bottom={5}
                     rotate={30}
