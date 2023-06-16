@@ -47,7 +47,7 @@ export const MenuButton = styled.button`
     justify-content: center;
     -webkit-justify-content: center;
     background-color: transparent;
-    background-image: url('/public/header/MenuButton.svg');
+    background-image: url('/header/MenuButton.svg');
     background-position: center;
     background-repeat: no-repeat;
     border: none;
@@ -65,7 +65,7 @@ export const MenuButton = styled.button`
         left: 85%;
         right: 15%;
         top: 0;
-        background-image: url('/public/header/hamburger.svg');
+        background-image: url('/header/hamburger.svg');
     }
 `;
 
@@ -83,7 +83,7 @@ export const CloseButton = styled.button`
     justify-content: center;
     -webkit-justify-content: center;
     background-color: transparent;
-    background-image: url('/public/header/Close.svg');
+    background-image: url('/header/Close.svg');
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid #2f2535;
