@@ -50,9 +50,6 @@ export const LoginModal: FC<Props> = (props) => {
     const onSubmit = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
         const response = await dispatch(signInAction({ email: email, password: password }));
-        if (response.meta.requestStatus === 'fulfilled') {
-            setError('Successfully updated!');
-        }
         if (response.meta.requestStatus === 'rejected') {
             if (
                 (response.payload as ErrorMessage).message ===

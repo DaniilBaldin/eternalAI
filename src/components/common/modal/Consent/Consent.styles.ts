@@ -169,6 +169,13 @@ export const ContinueButton = styled.button`
     margin: 0;
     margin-top: 24px;
     cursor: pointer;
+    color: #ffffff;
+    font-family: 'Arquitecta';
+    font-size: 13px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 27px;
+    letter-spacing: 0.3em;
 
     &:hover {
         background: linear-gradient(
@@ -194,16 +201,6 @@ export const ContinueButton = styled.button`
         );
         cursor: auto;
     }
-`;
-
-export const ButtonText = styled.p`
-    color: #ffffff;
-    font-family: 'Arquitecta';
-    font-size: 13px;
-    font-weight: 700;
-    font-style: normal;
-    line-height: 27px;
-    letter-spacing: 0.3em;
 `;
 
 export const ErrorMessage = styled.p`

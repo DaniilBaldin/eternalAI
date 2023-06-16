@@ -36,9 +36,6 @@ import { PaymentFormWindow } from './components/paymentForm';
 import { loadingSelector } from '~/store/selectors/loadingSelector';
 import { ButtonLoader } from '~/components/common/buttonLoader/ButtonLoader';
 
-//TODO:Account data fetching and adding to form as value
-//TODO:Change subscription date
-
 type ErrorMessage = {
     message: string;
     success: string;

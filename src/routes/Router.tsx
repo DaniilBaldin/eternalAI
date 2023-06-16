@@ -2,8 +2,8 @@ import React, { FunctionComponent, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from '~/components/common/layout/Layout';
-import { routes } from './routes';
 import { Loader } from '~/components/common/loader/Loader';
+import { routes } from './routes';
 
 type RouterType = {
     path: string;

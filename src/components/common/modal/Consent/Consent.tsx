@@ -13,7 +13,6 @@ import {
     Label,
     Span,
     ContinueButton,
-    ButtonText,
     ErrorMessage,
     ErrorMessagePink,
 } from './Consent.styles';
@@ -126,7 +125,7 @@ export const ConsentModal: FC<Props> = (props) => {
                         </ErrorMessage>
                     )}
                     <ContinueButton disabled={!isChecked || error.length > 0} onClick={onSubmit}>
-                        <ButtonText>{isLoading ? <ButtonLoader /> : 'CONTINUE'}</ButtonText>
+                        {isLoading ? <ButtonLoader /> : 'CONTINUE'}
                     </ContinueButton>
                 </ConsentWindow>
             </ModalContent>
