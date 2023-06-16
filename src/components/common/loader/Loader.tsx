@@ -14,7 +14,7 @@ export const Loader: FC = () => {
             <Wrapper>
                 <AnimationContainer>
                     <BackgroundImage
-                        src="/background/EllipseBlueBlur.avif "
+                        src="/background/EllipseBlueBlur.webp"
                         // left={20}
                         // bottom={5}
                         rotate={90}
@@ -25,16 +25,15 @@ export const Loader: FC = () => {
                         loading="lazy"
                     />
                     <BackgroundImage
-                        src="/background/EllipseBlueBlur.avif "
+                        src="/background/EllipseBlueBlur.webp "
                         rotate={90}
                         width={200.41 + 50}
                         height={254.22 + 50}
                         blur={9.18}
                         loading="lazy"
-                        // style={{ marginLeft: '50px' }}
                     />
                     <BackgroundImage
-                        src="/background/EllipseBlueBlur.avif "
+                        src="/background/EllipseBlueBlur.webp "
                         rotate={90}
                         width={165.41 + 50}
                         height={224.14 + 50}
@@ -51,8 +50,6 @@ export const Loader: FC = () => {
                     />
                     <BackgroundImage
                         src="/background/EllipsePink.webp"
-                        // left={10}
-                        // bottom={10}
                         rotate={30}
                         width={166 + 50}
                         height={202 + 50}
@@ -61,8 +58,6 @@ export const Loader: FC = () => {
                     />
                     <BackgroundImage
                         src="/background/EllipseYellow.webp"
-                        // left={10}
-                        // bottom={10}
                         rotate={45}
                         width={173 + 50}
                         height={200 + 50}
@@ -71,8 +66,6 @@ export const Loader: FC = () => {
                     />
                     <BackgroundImage
                         src="/background/EllipseYellow.webp"
-                        // left={7}
-                        // bottom={5}
                         rotate={45}
                         width={166 + 50}
                         height={202 + 50}
@@ -81,8 +74,6 @@ export const Loader: FC = () => {
                     />
                     <BackgroundImage
                         src="/background/EllipseWhite.webp"
-                        // left={7}
-                        // bottom={5}
                         rotate={57}
                         width={166 + 50}
                         height={209 + 50}
@@ -91,8 +82,6 @@ export const Loader: FC = () => {
                     />
                     <BackgroundImage
                         src="/background/EllipseWhite.webp"
-                        // left={10}
-                        // bottom={10}
                         rotate={45}
                         width={166 + 50}
                         height={210 + 50}

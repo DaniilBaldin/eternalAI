@@ -13,6 +13,11 @@ export const Header = styled.header<{ $fixed: boolean }>`
     min-height: 80px;
     z-index: 999;
     position: ${(props) => (props.$fixed ? 'fixed' : 'relative')};
+
+    @media (max-width: 1000px) {
+        width: 90vw;
+        max-width: 90vw;
+    }
 `;
 
 export const HeaderWrapper = styled.div`
@@ -22,6 +27,10 @@ export const HeaderWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 1000px) {
+        justify-content: space-between;
+    }
 `;
 
 export const MenuButton = styled.button`
@@ -38,6 +47,9 @@ export const MenuButton = styled.button`
     justify-content: center;
     -webkit-justify-content: center;
     background-color: transparent;
+    background-image: url('/public/header/MenuButton.svg');
+    background-position: center;
+    background-repeat: no-repeat;
     border: none;
     cursor: pointer;
 
@@ -47,6 +59,13 @@ export const MenuButton = styled.button`
         -ms-transform: scale(0.9);
         -o-transform: scale(0.9);
         transform: scale(0.9);
+    }
+
+    @media (max-width: 1000px) {
+        left: 85%;
+        right: 15%;
+        top: 0;
+        background-image: url('/public/header/hamburger.svg');
     }
 `;
 
@@ -64,9 +83,18 @@ export const CloseButton = styled.button`
     justify-content: center;
     -webkit-justify-content: center;
     background-color: transparent;
+    background-image: url('/public/header/Close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
     border: 1px solid #2f2535;
     border-radius: 8px;
     cursor: pointer;
+
+    @media (max-width: 1000px) {
+        left: 85%;
+        right: 15%;
+        top: 0;
+    }
 `;
 
 export const LogoContainer = styled(Link)`
@@ -94,6 +122,10 @@ export const ButtonsContainer = styled.div`
     padding: 0;
     margin: 0;
     margin-top: 32px;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
 `;
 
 export const LoginButton = styled.button`

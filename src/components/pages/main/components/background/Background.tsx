@@ -11,7 +11,7 @@ export const Background = () => {
                     bottom={'0%'}
                     left={'10%'}
                     width={'80%'}
-                    src="/main/conversation.avif"
+                    src="/main/conversation.webp"
                     alt="conversation"
                 />
             </div>
@@ -19,7 +19,7 @@ export const Background = () => {
                 top={58.5}
                 bottom={'0%'}
                 left={'72%'}
-                src="/main/Teresa-compressed.avif"
+                src="/main/Teresa-compressed.webp"
                 alt="Image"
                 width={'19%'}
             />
@@ -28,7 +28,7 @@ export const Background = () => {
                 top={-45}
                 bottom={'0%'}
                 left={'4%'}
-                src="/main/Group2.avif"
+                src="/main/Group2.webp"
                 alt="Group"
                 width={'90%'}
             />
@@ -46,15 +46,15 @@ export const Background = () => {
             <Img
                 top={50}
                 left={'57%'}
-                src="/main/Einstein-compressed.avif"
+                src="/main/Einstein-compressed.webp"
                 alt="Image"
                 width={'21%'}
             />
             <Img top={22} left={'36%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Img top={62} left={'7%'} src="/main/Musk-compressed.avif" alt="Image" width={'21%'} />
-            <Img top={47} left={'20%'} src="/main/Jobs-compressed.avif" alt="Image" width={'23%'} />
+            <Img top={62} left={'7%'} src="/main/Musk-compressed.webp" alt="Image" width={'21%'} />
+            <Img top={47} left={'20%'} src="/main/Jobs-compressed.webp" alt="Image" width={'23%'} />
             <Img top={21} left={'22%'} src="/main/Ellipse3643.svg" alt="Image" width={'43%'} />
-            <Img top={23} left={'33%'} src="/main/King-compressed.avif" alt="Image" width={'33%'} />
+            <Img top={23} left={'33%'} src="/main/King-compressed.webp" alt="Image" width={'33%'} />
             <Img top={12} left={'32%'} src="/main/Ellipse3644.svg" alt="Image" width={'43%'} />
             <Gradient />
         </Wrapper>

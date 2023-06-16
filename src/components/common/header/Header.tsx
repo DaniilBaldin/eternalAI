@@ -136,17 +136,9 @@ export const HeaderComponent = () => {
                 <Header $fixed={isMenuShow}>
                     <HeaderWrapper>
                         {!isMenuShow ? (
-                            <MenuButton onClick={onMenuHandler}>
-                                <img src="/header/MenuButton.svg" alt="Eternal" />
-                            </MenuButton>
+                            <MenuButton onClick={onMenuHandler} />
                         ) : (
-                            <CloseButton onClick={() => setIsMenuShow(false)}>
-                                <img
-                                    src="/header/Close.svg"
-                                    alt="MenuClose"
-                                    style={{ margin: '0' }}
-                                />
-                            </CloseButton>
+                            <CloseButton onClick={() => setIsMenuShow(false)} />
                         )}
                         <LogoContainer to="/" onClick={onCloseHandler}>
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />

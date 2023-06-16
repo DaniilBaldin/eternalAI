@@ -1,4 +1,4 @@
-import  styled  from 'styled-components';
+import styled from 'styled-components';
 
 export const Main = styled.div`
     /* max-width: 1600px; */
@@ -20,7 +20,7 @@ export const Gradient = styled.div`
     background: linear-gradient(110deg, rgba(80, 50, 230, 0.15) 0.5%, rgba(20, 20, 30, 0) 35%);
     z-index: -10;
 
-    @media (max-width: 600px) {
+    @media (max-width: 1000px) {
         display: none;
     }
 `;
@@ -51,6 +51,16 @@ export const Title = styled.p`
     &:nth-child(odd) {
         margin-top: 120px;
     }
+
+    @media (max-width: 1000px) {
+        font-size: 16px;
+        line-height: 21px;
+        letter-spacing: 0.3em;
+
+        &:nth-child(odd) {
+            margin-top: 60px;
+        }
+    }
 `;
 
 export const Text = styled.p`
@@ -64,6 +74,11 @@ export const Text = styled.p`
     color: #ffffff;
     margin: 0;
     margin-bottom: 16px;
+
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        line-height: 21px;
+    }
 `;
 
 export const QuestionButton = styled.button`
@@ -119,6 +134,10 @@ export const QuestionButton = styled.button`
     }
 
     @media (max-width: 1000px) {
+        width: 450px;
+        height: 64px;
+    }
+    @media (max-width: 600px) {
         width: 343px;
         height: 64px;
     }
@@ -134,4 +153,10 @@ export const ButtonText = styled.p`
     margin: 0;
     text-align: left;
     margin-left: 20px;
+
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        line-height: 21px;
+        margin-left: 10px;
+    }
 `;
