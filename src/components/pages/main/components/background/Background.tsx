@@ -21,14 +21,14 @@ export const Background = () => {
             <ConversationWrapper>
                 <Conversation src="/main/conversation.webp" alt="conversation" />
             </ConversationWrapper>
-            <BackgroundGroup src="/public/main/Group2.webp" alt="background" />
-            <Musk src="/public/main/Musk-compressed.webp" alt="Musk" />
-            <Teresa src="/public/main/Teresa-compressed.webp" alt="Teresa" />
-            <Jobs src="/public/main/Jobs-compressed.webp" alt="Jobs" />
-            <Einstein src="/public/main/Einstein-compressed.webp" alt="Einstein" />
-            <Blur src="/public/main/Ellipse3644.svg" alt="Blur" />
-            <King src="/public/main/King-compressed.webp" alt="King" />
-            <BlurTwo src="/public/main/Ellipse3644.svg" alt="BlurTwo" />
+            <BackgroundGroup src="/main/Group2.webp" alt="background" />
+            <Musk src="/main/Musk-compressed.webp" alt="Musk" />
+            <Teresa src="/main/Teresa-compressed.webp" alt="Teresa" />
+            <Jobs src="/main/Jobs-compressed.webp" alt="Jobs" />
+            <Einstein src="/main/Einstein-compressed.webp" alt="Einstein" />
+            <Blur src="/main/Ellipse3644.svg" alt="Blur" />
+            <King src="/main/King-compressed.webp" alt="King" />
+            <BlurTwo src="/main/Ellipse3644.svg" alt="BlurTwo" />
             <Gradient />
         </Wrapper>
     );
