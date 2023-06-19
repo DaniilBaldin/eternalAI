@@ -9,7 +9,7 @@ export const IndividualsMain = styled.div`
     flex-direction: column;
     align-items: right;
     justify-content: flex-start;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 
     @media (max-width: 1000px) {
         margin-top: 50px;
