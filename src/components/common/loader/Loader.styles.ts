@@ -45,6 +45,11 @@ export const Wrapper = styled.div`
 export const TextImage = styled.img`
     width: 497px;
     height: 28px;
+
+    @media (max-width: 1000px) {
+        width: 397px;
+        height: 20px;
+    }
 `;
 
 export const AnimationContainer = styled.div`
@@ -67,8 +72,6 @@ export const BackgroundImage = styled.img<{
     blur: number;
 }>`
     position: absolute;
-    /* left: ${(props) => (props.left ? `rotate(${props.width}px)` : 0)}; */
-    /* bottom: 0; */
     object-fit: contain;
     user-select: none;
     width: ${(props) => `rotate(${props.width}px)`};
