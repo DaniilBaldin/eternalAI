@@ -2,13 +2,17 @@ import styled from 'styled-components';
 
 export const Main = styled.div`
     /* max-width: 1600px; */
-    max-width: 90vw;
+    max-width: 100vw;
     width: 100%;
     padding: 0 15px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 900px) {
+        padding: 0px;
+    }
 `;
 
 export const Gradient = styled.div`
@@ -34,6 +38,7 @@ export const MainQuestions = styled.div`
     -webkit-align-items: center;
     justify-content: start;
     -webkit-justify-content: start;
+    overflow: hidden;
 `;
 
 export const Title = styled.p`

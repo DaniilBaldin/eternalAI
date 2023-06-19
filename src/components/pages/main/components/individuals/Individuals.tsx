@@ -15,7 +15,6 @@ export const Individuals = (): JSX.Element => {
         <IndividualsMain>
             <Title>Individuals</Title>
             <Text>Ask a question to your favorite person and get a realistic response</Text>
-
             <ImageWrapper>
                 {individuals.map((individual: Individual) => (
                     <div key={individual.id} onClick={() => navigate(`/chat/${individual.id}`)}>

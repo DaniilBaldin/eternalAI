@@ -40,8 +40,8 @@ export const MainPage = () => {
                 <QuestionButton type="button" hidden={isPricing || isSubscribe || isSuccess}>
                     <ButtonText>What is your greatest accomplishment?</ButtonText>
                 </QuestionButton>
+                <Background />
             </MainQuestions>
-            <Background />
             <Individuals />
         </Main>
     );

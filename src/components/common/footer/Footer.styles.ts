@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Footer = styled.footer`
-    width: 80vw;
+    width: 90vw;
     /* max-width: 1600px; */
     max-width: 90vw;
     height: 140px;
@@ -17,6 +17,16 @@ export const Footer = styled.footer`
     -webkit-justify-content: space-between;
     padding: 48px;
     margin-bottom: 32px;
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 14px;
+        height: 180px;
+        position: relative;
+        margin: 24px 0px 24px 0px;
+    }
 `;
 
 export const LogoContainer = styled(Link)`
@@ -40,6 +50,11 @@ export const CentralText = styled.p`
     text-align: center;
     margin: 0;
     /* margin-right: 4%; */
+
+    @media (max-width: 1000px) {
+        position: absolute;
+        bottom: 10%;
+    }
 `;
 
 export const ButtonsContainer = styled.div`
@@ -51,6 +66,11 @@ export const ButtonsContainer = styled.div`
     -webkit-justify-content: space-between;
     padding: 0;
     margin: 0;
+
+    @media (max-width: 1000px) {
+        position: absolute;
+        top: 45%;
+    }
 `;
 
 export const FollowUsText = styled.p`

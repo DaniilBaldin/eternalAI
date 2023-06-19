@@ -10,7 +10,7 @@ export const individuals = [
     {
         id: 2,
         name: 'Steve Jobs',
-        title: 'Apple Computer Founder',
+        title: 'Apple Founder',
         src: '/main/souls/Jobs.webp',
         alt: 'Jobs',
         portrait: '/portraits/Jobs.webp',
