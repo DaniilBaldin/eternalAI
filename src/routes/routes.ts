@@ -1,10 +1,12 @@
 import { lazy } from 'react';
 
-const MainPage = lazy(() =>
-    import('~/components/pages/main/MainPage').then(({ MainPage }) => ({
+const MainPage = lazy(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    return import('~/components/pages/main/MainPage').then(({ MainPage }) => ({
         default: MainPage,
-    })),
-);
+    }));
+});
+
 const Account = lazy(() =>
     import('~/components/pages/account/Account').then(({ Account }) => ({ default: Account })),
 );

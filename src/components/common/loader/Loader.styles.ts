@@ -28,15 +28,20 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    animation: bounce-out 7s ease-in;
+    animation: bounce-out 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5ms;
+    /* visibility: hidden; */
 
     @keyframes bounce-out {
-        0% {
+        from {
+            visibility: visible;
             opacity: 1;
             /* transform: scale(1); */
         }
-        100% {
-            opacity: 0.4;
+        to {
+            visibility: visible;
+            opacity: 0;
             /* transform: scale(0.9); */
         }
     }
