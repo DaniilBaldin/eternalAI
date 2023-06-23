@@ -99,13 +99,10 @@ export const Portrait = styled.img`
 
 export const Gradient = styled.div`
     position: absolute;
-    left: 0;
-    bottom: -1px;
-    height: 100px;
-    width: 90%;
-    border: none;
-    outline: none;
-    background: linear-gradient(180deg, #11111500 0%, #11111586 50%, #111115 100%);
-    z-index: 1;
-    object-fit: contain;
+    bottom: 0px;
+    left: 0px;
+    background: linear-gradient(180deg, rgba(17, 17, 21, 0) 54.58%, #111115 100%);
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
 `;

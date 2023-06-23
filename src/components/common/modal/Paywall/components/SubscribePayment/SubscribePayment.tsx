@@ -8,7 +8,7 @@ import {
     SubscribePaymentWindow,
 } from './SubscribePayment.styles';
 import { PaymentInputs } from '~/components/common/PaymentInput/PaymentInput';
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { subscribeAction } from '~/store/actions/subscribeActions';
 import { tokenSelector } from '~/store/selectors/tokenSelector';

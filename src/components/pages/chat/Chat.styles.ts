@@ -7,14 +7,16 @@ export const Container = styled.section`
     max-width: 80vw;
     min-width: 80vw;
     position: relative;
-    padding: 32px 0;
+    padding: 0;
     max-height: 1100px;
+    padding-top: 30px;
 `;
 
 export const Wrapper = styled.div`
     display: flex;
     flex: 1 0 auto;
     max-height: 100%;
+    padding-bottom: 30px;
     /* gap: 50px; */
 `;
 
@@ -29,20 +31,22 @@ export const ImageContainer = styled.div`
     justify-content: center;
     margin: 0 -34px;
     align-self: center;
-    max-height: 1100px;
+    /* padding-top: 40px; */
+    /* max-height: 1100px; */
 `;
 
 export const ChatContainer = styled.div`
     flex: 1 0 calc(40% + 32px);
     width: calc(40% + 32px);
-    height: 940px;
-    /* height: calc(100vh - 298px); */
+    /* height: 940px; */
+    height: calc(100vh - 298px);
     min-height: 200px;
     position: relative;
     margin-left: -20px;
     display: flex;
     flex-direction: column;
-    max-height: 1100px;
+    /* padding-top: 40px; */
+    /* max-height: 1100px; */
 `;
 export const InputContainer = styled.div`
     display: flex;
@@ -50,7 +54,7 @@ export const InputContainer = styled.div`
     justify-content: flex-end;
     height: 100px;
     margin: 0;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 `;
 
 export const NameContainer = styled.div`

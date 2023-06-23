@@ -1,7 +1,11 @@
-import React, { FunctionComponent, Suspense } from 'react';
+import React, { FunctionComponent, Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Layout } from '~/components/common/layout/Layout';
+// import { Layout } from '~/components/common/layout/Layout';
+const Layout = lazy(() =>
+    import('~/components/common/layout/Layout').then(({ Layout }) => ({ default: Layout })),
+);
+
 import { Loader } from '~/components/common/loader/Loader';
 import { routes } from './routes';
 

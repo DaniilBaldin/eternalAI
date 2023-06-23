@@ -10,7 +10,7 @@ import {
     SuccessButton,
 } from './SubscribeSuccess.styles';
 import { useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { tokenSelector } from '~/store/selectors/tokenSelector';
 import { getAccountAction } from '~/store/actions/accountActions';

@@ -17,7 +17,7 @@ import {
     ErrorMessagePink,
 } from './Consent.styles';
 import { createPortal } from 'react-dom';
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { Selector, appDispatch } from '~/store/hooks/redux-hooks';
 import { signUpAction } from '~/store/actions/signUpActions';
 import { loadingSelector } from '~/store/selectors/loadingSelector';

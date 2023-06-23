@@ -12,7 +12,7 @@ import {
     LogoutButton,
 } from './Menu.styles';
 
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { logOut } from '~/store/reducers/authReducer';
 import { authSelector } from '~/store/selectors/authSelector';

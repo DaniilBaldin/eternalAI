@@ -10,6 +10,14 @@ export type Context = {
     setIsSubscribe: (isSubscribe: boolean) => void;
     setIsSuccess: (isSuccess: boolean) => void;
     setUser: (user: { email: string; password: string }) => void;
+    isMenuShow: boolean;
+    setIsMenuShow: (isMenuShow: boolean) => void;
+    isLoginShow: boolean;
+    setIsLoginShow: (isLoginShow: boolean) => void;
+    isSignupShow: boolean;
+    setIsSignUpShow: (isSignupShow: boolean) => void;
+    isConsent: boolean;
+    setIsConsent: (isConsent: boolean) => void;
 };
 
 export const GlobalContext = createContext<Context>({
@@ -17,10 +25,18 @@ export const GlobalContext = createContext<Context>({
     isSubscribe: false,
     isSuccess: false,
     user: { email: '', password: '' },
+    isMenuShow: false,
+    isLoginShow: false,
+    isSignupShow: false,
+    isConsent: false,
     setIsPricing: () => {},
     setIsSubscribe: () => {},
     setIsSuccess: () => {},
     setUser: () => {},
+    setIsMenuShow: () => {},
+    setIsLoginShow: () => {},
+    setIsSignUpShow: () => {},
+    setIsConsent: () => {},
 });
 
 export const useGlobalContext = () => useContext(GlobalContext);

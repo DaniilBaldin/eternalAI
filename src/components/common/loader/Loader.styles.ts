@@ -82,9 +82,9 @@ export const BackgroundImage = styled.img<{
     width: ${(props) => `rotate(${props.width}px)`};
     height: ${(props) => `rotate(${props.height}px)`};
     filter: ${(props) => `blur(${props.blur}px)`};
-    -webkit-animation: spin 8s linear infinite;
-    -moz-animation: spin 8s linear infinite;
-    animation: spin 8s linear infinite;
+    -webkit-animation: spin 5s linear infinite;
+    -moz-animation: spin 5s linear infinite;
+    animation: spin 5s linear infinite;
     /* z-index: -10; */
     /* overflow: hidden; */
 

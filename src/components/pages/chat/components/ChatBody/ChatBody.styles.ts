@@ -16,10 +16,11 @@ export const Wrapper = styled.div`
     height: auto;
     overflow: auto;
     display: flex;
-    flex-direction: column-reverse;
-    align-items: end;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: end; */
     width: 100%;
-    max-height: 63vh;
+    max-height: 64vh;
     gap: 20px;
 `;
 
@@ -27,6 +28,7 @@ export const Question = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-end;
     padding: 32px;
     gap: 8px;
     /* width: 362px; */
@@ -85,39 +87,64 @@ export const Answer = styled.div`
     margin-left: 60px;
 `;
 
-export const NewAnswer = styled.div`
-    position: absolute;
-    width: 720px;
-    height: 260px;
-    left: 0%;
-    bottom: 0%;
-    padding: 5px;
-    margin: 0;
-
-    background-image: url('/RectangleChat.svg');
-    background-size: contain;
+export const LoaderWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    width: 70px;
+    height: 50px;
+    margin-left: 60px;
 `;
 
-export const InnerMessage = styled.div`
-    display: flex;
-    /* flex: 1; */
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.8);
-    width: 92%;
-    height: 92%;
-    margin: 0;
-    margin-left: 30px;
-    padding: 10px;
-    text-align: start;
-    font-family: 'Avenir';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
-    border-radius: 28px;
-    letter-spacing: -0.01em;
+export const LoaderAnimation = styled.div`
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: white;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+
+    ::before,
+    ::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
+    ::before {
+        left: -15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: white;
+        color: white;
+        animation: dot-flashing 1s infinite alternate;
+        animation-delay: 0s;
+    }
+    ::after {
+        left: 15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: white;
+        color: white;
+        animation: dot-flashing 1s infinite alternate;
+        animation-delay: 1s;
+    }
+
+    @keyframes dot-flashing {
+        0% {
+            background-color: white;
+        }
+        50%,
+        100% {
+            background-color: rgba(152, 128, 255, 0.2);
+        }
+    }
 `;

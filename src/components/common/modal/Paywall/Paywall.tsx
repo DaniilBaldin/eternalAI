@@ -18,7 +18,7 @@ import {
     Text,
     SubscribeButton,
 } from './Paywall.styles';
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { Selector } from '~/store/hooks/redux-hooks';
 import { subscribeSelector } from '~/store/selectors/subscribeSelector';
 

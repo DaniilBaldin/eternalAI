@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Router } from './routes/Router';
 
-import { GlobalContext } from './utils/Context';
+import { GlobalContext } from './services/Context';
 import { appDispatch, Selector } from './store/hooks/redux-hooks';
 import { tokenSelector } from './store/selectors/tokenSelector';
 import { getAccountAction } from './store/actions/accountActions';
@@ -13,6 +13,10 @@ function App() {
     const token = Selector(tokenSelector);
     const isAuth = Selector(authSelector);
 
+    const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
+    const [isLoginShow, setIsLoginShow] = useState<boolean>(false);
+    const [isSignupShow, setIsSignUpShow] = useState<boolean>(false);
+    const [isConsent, setIsConsent] = useState<boolean>(false);
     const [isPricing, setIsPricing] = useState<boolean>(false);
     const [isSubscribe, setIsSubscribe] = useState<boolean>(false);
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -43,6 +47,14 @@ function App() {
                 setIsSuccess,
                 user,
                 setUser,
+                isMenuShow,
+                setIsMenuShow,
+                isLoginShow,
+                setIsLoginShow,
+                isSignupShow,
+                setIsSignUpShow,
+                isConsent,
+                setIsConsent,
             }}
         >
             <Router />

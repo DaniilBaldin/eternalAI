@@ -20,7 +20,7 @@ import {
     BottomLink,
 } from './Signup.styles';
 
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { googleUrl } from '~/utils/stringifiedParams';
 import { ErrorMessage } from '../Consent/Consent.styles';
 

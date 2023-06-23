@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { storage } from '~/utils/localStorage';
+import { storage } from '~/services/localStorage';
 import {
     subscribeAction,
     unsubscribeAction,

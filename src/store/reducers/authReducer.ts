@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { signInAction } from '../actions/signInActions';
 import { signUpAction } from '../actions/signUpActions';
 
-import { storage } from '~/utils/localStorage';
+import { storage } from '~/services/localStorage';
 import { getAccountAction, setAccountAction } from '../actions/accountActions';
 
 const initialToken = storage.get('Token');

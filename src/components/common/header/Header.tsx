@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import {
     Header,
@@ -18,7 +18,7 @@ import { MenuModal } from '../modal/Menu/Menu';
 import { LoginModal } from '../modal/Login/Login';
 import { SignUpModal } from '../modal/Signup/Signup';
 import { ConsentModal } from '../modal/Consent/Consent';
-import { useGlobalContext } from '~/utils/Context';
+import { useGlobalContext } from '~/services/Context';
 import { PaywallModal } from '../modal/Paywall/Paywall';
 import { SubscribePayment } from '../modal/Paywall/components/SubscribePayment/SubscribePayment';
 import { SubscribeSuccess } from '../modal/Paywall/components/SubscribeSuccess/SubscribeSuccess';
@@ -34,13 +34,22 @@ export const HeaderComponent = () => {
     const isAuth = Selector(authSelector);
     const isSign = Selector(signUpSelector);
 
-    const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
-    const [isLoginShow, setIsLoginShow] = useState<boolean>(false);
-    const [isSignupShow, setIsSignUpShow] = useState<boolean>(false);
-    const [isConsent, setIsConsent] = useState<boolean>(false);
-
-    const { isPricing, setIsPricing, isSubscribe, setIsSubscribe, isSuccess, setIsSuccess } =
-        useGlobalContext();
+    const {
+        isPricing,
+        setIsPricing,
+        isSubscribe,
+        setIsSubscribe,
+        isSuccess,
+        setIsSuccess,
+        isMenuShow,
+        setIsMenuShow,
+        isLoginShow,
+        setIsLoginShow,
+        isSignupShow,
+        setIsSignUpShow,
+        isConsent,
+        setIsConsent,
+    } = useGlobalContext();
 
     const onMenuHandler = () => {
         setIsLoginShow(false);
