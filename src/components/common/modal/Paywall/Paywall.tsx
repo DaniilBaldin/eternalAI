@@ -21,6 +21,7 @@ import {
 import { useGlobalContext } from '~/services/Context';
 import { Selector } from '~/store/hooks/redux-hooks';
 import { subscribeSelector } from '~/store/selectors/subscribeSelector';
+import { authSelector } from '~/store/selectors/authSelector';
 
 type Props = {
     show: boolean;
@@ -31,8 +32,9 @@ export const PaywallModal: FC<Props> = (props) => {
     const { show } = props;
 
     const isSubscribed = Selector(subscribeSelector);
+    const isAuth = Selector(authSelector);
 
-    const { setIsSubscribe, setIsPricing } = useGlobalContext();
+    const { setIsSubscribe, setIsPricing, setIsLoginShow } = useGlobalContext();
 
     return createPortal(
         <div>
@@ -77,8 +79,13 @@ export const PaywallModal: FC<Props> = (props) => {
                         </div>
                         <SubscribeButton
                             onClick={() => {
-                                setIsSubscribe(true);
-                                setIsPricing(false);
+                                if (isAuth) {
+                                    setIsSubscribe(true);
+                                    setIsPricing(false);
+                                } else {
+                                    setIsLoginShow(true);
+                                    setIsPricing(false);
+                                }
                             }}
                             disabled={isSubscribed}
                         >

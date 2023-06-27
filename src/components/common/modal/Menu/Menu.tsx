@@ -16,6 +16,7 @@ import { useGlobalContext } from '~/services/Context';
 import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { logOut } from '~/store/reducers/authReducer';
 import { authSelector } from '~/store/selectors/authSelector';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
     isShow: boolean;
@@ -24,6 +25,7 @@ type Props = {
 
 export const MenuModal: FC<Props> = (props) => {
     const dispatch = appDispatch();
+    const navigate = useNavigate();
 
     const { isShow, onClose } = props;
 
@@ -83,6 +85,7 @@ export const MenuModal: FC<Props> = (props) => {
                     <LogoutButton
                         onClick={() => {
                             dispatch(logOut());
+                            navigate('/');
                         }}
                     >
                         Sign out

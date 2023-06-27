@@ -32,6 +32,7 @@ export const ChatInput: FC<Props> = (props) => {
         setIsLoading(true);
         setQuestion([...messages, { type: 'question', message: message }]);
         if (message.trim()) {
+            console.log('message sent!');
             IoSocket.emit('hero', {
                 hero: hero,
                 question: message,

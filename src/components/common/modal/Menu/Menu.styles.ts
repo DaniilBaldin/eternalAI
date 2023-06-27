@@ -20,7 +20,7 @@ export const Modal = styled.div<{ $show: boolean }>`
 
 export const ModalContent = styled.div<{ $show: boolean }>`
     width: 434px;
-    height: 440px;
+    height: 540px;
     visibility: ${(props) => (props.$show ? 'visible' : 'hidden')};
     opacity: ${(props) => (props.$show ? 1 : 0)};
     background-color: transparent;
@@ -113,4 +113,5 @@ export const LogoutButton = styled.button`
     line-height: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    /* border: 1px solid white; */
 `;

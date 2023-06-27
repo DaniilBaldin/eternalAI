@@ -25,6 +25,9 @@ import { authSelector } from '~/store/selectors/authSelector';
 import { IoSocket } from '~/services/socketConnect';
 import { questions } from '~/utils/questions';
 import { Question } from '~/utils/questions';
+import { useGlobalContext } from '~/services/Context';
+import { tokenSelector } from '~/store/selectors/tokenSelector';
+import { storage } from '~/services/localStorage';
 
 type Message = {
     type: string;
@@ -32,10 +35,14 @@ type Message = {
 };
 
 export const Chat: FC = () => {
-    const navigate = useNavigate();
     const location = useLocation();
+
+    const token = storage.get('Token');
+
     const questionId = location.state?.id;
     const question = questions.filter((question: Question) => question.id === questionId);
+
+    const { setIsPricing } = useGlobalContext();
 
     const lastMessageRef = useRef<null | HTMLDivElement>(null);
 
@@ -43,22 +50,12 @@ export const Chat: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>();
 
-    console.log(isLoading);
-
     if (error?.length) {
-        alert(error);
+        console.log(error);
     }
-
-    const isAuth = Selector(authSelector);
 
     const { id } = useParams();
     const individualInfo = individuals.filter((individual: Individual) => individual.id === +id!);
-
-    // useEffect(() => {
-    //     if (!isAuth) {
-    //         navigate('/');
-    //     }
-    // }, [isAuth]);
 
     useEffect(() => {
         if (question.length) {
@@ -68,6 +65,30 @@ export const Chat: FC = () => {
             };
             setMessages([...messages, newQuestion]);
         }
+    }, []);
+
+    useEffect(() => {
+        IoSocket.connect();
+
+        IoSocket.on('error', (response) => {
+            setError(response);
+        });
+
+        IoSocket.on('user-questions', () => {
+            console.log('Blocked!');
+            setIsPricing(true);
+        });
+
+        IoSocket.on('disconnect', () => {
+            setIsLoading(false);
+        });
+
+        return () => {
+            IoSocket.off('hero');
+            IoSocket.off('heroResponse');
+            IoSocket.off('disconnect');
+            IoSocket.disconnect();
+        };
     }, []);
 
     useEffect(() => {
@@ -83,25 +104,11 @@ export const Chat: FC = () => {
     }, [id]);
 
     useEffect(() => {
-        IoSocket.connect();
-        IoSocket.on('error', (response) => {
-            setError(response);
-        });
-
-        return () => {
-            IoSocket.off('hero');
-            IoSocket.off('heroResponse');
-            IoSocket.off('disconnect');
-            // IoSocket.disconnect();
-        };
-    }, []);
-
-    useEffect(() => {
         lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
     IoSocket.on('heroResponse', (data) => {
-        console.log(data);
+        // console.log(data);
         const newAnswer = { type: 'answer', message: data };
         setMessages([...messages, newAnswer]);
         setIsLoading(false);

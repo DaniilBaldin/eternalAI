@@ -25,6 +25,7 @@ import { googleUrl } from '~/utils/stringifiedParams';
 import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
 import { loadingSelector } from '~/store/selectors/loadingSelector';
 import { ButtonLoader } from '../../buttonLoader/ButtonLoader';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
     show: boolean;
@@ -39,6 +40,7 @@ type ErrorMessage = {
 
 export const LoginModal: FC<Props> = (props) => {
     const dispatch = appDispatch();
+    const navigate = useNavigate();
 
     const isLoading = Selector(loadingSelector);
 
@@ -50,6 +52,11 @@ export const LoginModal: FC<Props> = (props) => {
     const onSubmit = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
         const response = await dispatch(signInAction({ email: email, password: password }));
+
+        if (response.meta.requestStatus === 'fulfilled') {
+            navigate('/');
+        }
+
         if (response.meta.requestStatus === 'rejected') {
             if (
                 (response.payload as ErrorMessage).message ===
