@@ -15,19 +15,14 @@ import {
 } from './Chat.styles';
 import { PersonImage } from './components/PersonImage/PersonImage';
 import { ChatInput } from './components/ChatInput/ChatInput';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { individuals } from '~/utils/individuals';
 import { Individual } from '../main/components/individuals/components/ImageCard/ImageCard.types';
 import { ChatBody } from './components/ChatBody/ChatBody';
-import { Selector } from '~/store/hooks/redux-hooks';
-import { authSelector } from '~/store/selectors/authSelector';
-
 import { IoSocket } from '~/services/socketConnect';
 import { questions } from '~/utils/questions';
 import { Question } from '~/utils/questions';
 import { useGlobalContext } from '~/services/Context';
-import { tokenSelector } from '~/store/selectors/tokenSelector';
-import { storage } from '~/services/localStorage';
 
 type Message = {
     type: string;
@@ -36,8 +31,6 @@ type Message = {
 
 export const Chat: FC = () => {
     const location = useLocation();
-
-    const token = storage.get('Token');
 
     const questionId = location.state?.id;
     const question = questions.filter((question: Question) => question.id === questionId);
