@@ -94,7 +94,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                 src="/main/Ellipse3644.svg"
                 left={15}
                 bottom={10}
-                rotate={-45}
+                rotate={0}
                 width={490}
                 height={619}
                 blur={0}
