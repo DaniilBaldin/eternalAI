@@ -45,6 +45,13 @@ export const Chat: FC = () => {
     const { id } = useParams();
     const individualInfo = individuals.filter((individual: Individual) => individual.id === +id!);
 
+    IoSocket.on('heroResponse', (data) => {
+        console.log('message received!');
+        const newAnswer = { type: 'answer', message: data };
+        setMessages([...messages, newAnswer]);
+        setIsLoading(false);
+    });
+
     useEffect(() => {
         if (question.length) {
             const newQuestion = {
@@ -75,7 +82,7 @@ export const Chat: FC = () => {
             IoSocket.off('hero');
             IoSocket.off('heroResponse');
             IoSocket.off('disconnect');
-            IoSocket.disconnect();
+            // IoSocket.disconnect();
         };
     }, []);
 
@@ -94,13 +101,6 @@ export const Chat: FC = () => {
     useEffect(() => {
         lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
-
-    IoSocket.on('heroResponse', (data) => {
-        console.log('message received!');
-        const newAnswer = { type: 'answer', message: data };
-        setMessages([...messages, newAnswer]);
-        setIsLoading(false);
-    });
 
     return (
         <Container>
