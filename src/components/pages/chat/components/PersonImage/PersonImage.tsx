@@ -91,7 +91,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
             </InnerWrapper>
             <Portrait src={individual.portrait} alt={individual.alt} />
             <BackgroundImage
-                src="/public/main/Ellipse3644.svg"
+                src="/main/Ellipse3644.svg"
                 left={15}
                 bottom={10}
                 rotate={-45}
