@@ -103,6 +103,6 @@ export const Gradient = styled.div`
     left: 0px;
     background: linear-gradient(180deg, rgba(17, 17, 21, 0) 54.58%, #111115 100%);
     width: 100%;
-    height: 50%;
+    height: 200px;
     overflow: hidden;
 `;

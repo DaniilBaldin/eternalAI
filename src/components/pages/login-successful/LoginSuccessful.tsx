@@ -21,7 +21,7 @@ export const LoginSuccessful = () => {
         dispatch(logIn(token));
         setTimeout(() => {
             navigate('/');
-        }, 1000);
+        }, 2000);
     }
 
     return (
