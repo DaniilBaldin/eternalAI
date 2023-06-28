@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-    flex: 0 0 50%;
+    flex: 0 0 55%;
     width: 60%;
     height: calc(100vh - 298px);
     position: relative;
@@ -36,7 +36,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const ChatContainer = styled.div`
-    flex: 1 0 calc(50% + 32px);
+    flex: 1 0 calc(45% + 32px);
     width: calc(40% + 32px);
     /* height: 940px; */
     height: calc(100vh - 298px);
