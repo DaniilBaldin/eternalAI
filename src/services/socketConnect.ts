@@ -1,13 +1,16 @@
 import { io } from 'socket.io-client';
-import { storage } from './localStorage';
+import { store } from '~/store';
 
 const URL = import.meta.env.VITE_SOCKET_URL;
 
-const token = storage.get('Token');
+const getToken = () => {
+    const state = store.getState();
+    return state.authSlice.token;
+};
 
 export const IoSocket = io(URL, {
-    auth: {
-        token: `Bearer ${token}`,
+    auth: (cb) => {
+        cb({ token: `Bearer ${getToken()}` });
     },
     // reconnection: true,
     autoConnect: false,

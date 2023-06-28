@@ -41,11 +41,6 @@ export const Chat: FC = () => {
 
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string>();
-
-    if (error?.length) {
-        console.log(error);
-    }
 
     const { id } = useParams();
     const individualInfo = individuals.filter((individual: Individual) => individual.id === +id!);
@@ -64,7 +59,7 @@ export const Chat: FC = () => {
         IoSocket.connect();
 
         IoSocket.on('error', (response) => {
-            setError(response);
+            console.log(response);
         });
 
         IoSocket.on('user-questions', () => {
@@ -87,7 +82,7 @@ export const Chat: FC = () => {
     useEffect(() => {
         if ((individualInfo[0] as Individual).name.length) {
             setIsLoading(true);
-            IoSocket.emit('hero', {
+            IoSocket.timeout(500).emit('hero', {
                 hero: `${(individualInfo[0] as Individual).name}`,
                 question: question.length
                     ? question[0].question
@@ -101,7 +96,7 @@ export const Chat: FC = () => {
     }, [messages]);
 
     IoSocket.on('heroResponse', (data) => {
-        // console.log(data);
+        console.log('message received!');
         const newAnswer = { type: 'answer', message: data };
         setMessages([...messages, newAnswer]);
         setIsLoading(false);

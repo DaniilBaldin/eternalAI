@@ -85,6 +85,7 @@ export const Answer = styled.div`
     color: #e4e4e4;
     margin: 0;
     margin-left: 60px;
+    text-align: justify;
 `;
 
 export const LoaderWrapper = styled.div`
