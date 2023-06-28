@@ -152,7 +152,17 @@ export const HeaderComponent = () => {
                         </LogoContainer>
                         {pathname.includes('chat') ? (
                             <ButtonsContainer>
-                                <ShareButton>SHARE</ShareButton>
+                                <ShareButton
+                                    $hidden={isMenuShow}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(
+                                            'https://eternal-ai.vercel.app/',
+                                        );
+                                        alert('Link copied to clipbard');
+                                    }}
+                                >
+                                    SHARE
+                                </ShareButton>
                             </ButtonsContainer>
                         ) : (
                             <ButtonsContainer>

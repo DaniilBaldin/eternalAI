@@ -234,7 +234,8 @@ export const LogoContainerAlternative = styled(Link)`
     margin-top: 35px;
 `;
 
-export const ShareButton = styled.button`
+export const ShareButton = styled.button<{ $hidden: boolean }>`
+    display: ${(props) => (props.$hidden ? 'none' : 'inline-block')};
     width: 157px;
     height: 48px;
     background: transparent;
@@ -243,7 +244,7 @@ export const ShareButton = styled.button`
     border: none;
     padding: 5px;
     border-radius: 66px;
-    display: inline-block;
+    /* display: inline-block; */
     margin: 0;
     font-family: 'Arquitecta';
     font-style: normal;
