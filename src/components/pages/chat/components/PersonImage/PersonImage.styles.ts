@@ -103,6 +103,17 @@ export const Gradient = styled.div`
     left: 0px;
     background: linear-gradient(180deg, rgba(17, 17, 21, 0) 54.58%, #111115 100%);
     width: 100%;
-    height: 200px;
+    height: 150px;
     overflow: hidden;
+`;
+
+export const GradientTop = styled.div`
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    background: linear-gradient(180deg, rgba(17, 17, 21, 0) 54.58%, #111115 100%);
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    transform: rotate(180deg);
 `;
