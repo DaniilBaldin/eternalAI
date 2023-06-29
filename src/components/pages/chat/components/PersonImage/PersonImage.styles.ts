@@ -16,6 +16,7 @@ export const InnerWrapper = styled.div`
     height: 100%;
     position: relative;
     max-height: 940px;
+    overflow-block: hidden;
     overflow-y: hidden;
     margin: 0;
 `;

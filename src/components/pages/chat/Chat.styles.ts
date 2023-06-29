@@ -10,6 +10,7 @@ export const Container = styled.section`
     padding: 0;
     max-height: 1100px;
     padding-top: 30px;
+    padding-right: 3vw;
 `;
 
 export const Wrapper = styled.div`
@@ -46,6 +47,8 @@ export const ChatContainer = styled.div`
     margin-left: -20px;
     display: flex;
     flex-direction: column;
+    background: transparent;
+    overflow: hidden;
     /* padding-top: 40px; */
     /* max-height: 1100px; */
 `;

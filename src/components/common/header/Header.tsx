@@ -81,7 +81,6 @@ export const HeaderComponent = () => {
         setIsPricing(false);
         setIsSubscribe(false);
         setIsSuccess(false);
-        // navigate('/');
     };
 
     const onConsentHandler = () => {
@@ -134,7 +133,13 @@ export const HeaderComponent = () => {
                         onSignIn={onLoginHandler}
                         onConsent={onConsentHandler}
                     />
-                    <PaywallModal show={isPricing} onClose={onCloseHandler} />
+                    <PaywallModal
+                        show={isPricing}
+                        onClose={() => {
+                            setIsPricing(false);
+                            navigate('/');
+                        }}
+                    />
                     <SubscribePayment show={isSubscribe} />
                     <SubscribeSuccess show={isSuccess} onClose={onCloseHandler} />
                 </Header>
