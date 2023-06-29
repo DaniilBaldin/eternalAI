@@ -26,6 +26,7 @@ import { ErrorMessage } from '~/components/common/modal/Consent/Consent.styles';
 import { loadingSelector } from '~/store/selectors/loadingSelector';
 import { ButtonLoader } from '../../buttonLoader/ButtonLoader';
 import { useNavigate } from 'react-router-dom';
+import { IoSocket } from '~/services/socketConnect';
 
 type Props = {
     show: boolean;
@@ -54,6 +55,7 @@ export const LoginModal: FC<Props> = (props) => {
         const response = await dispatch(signInAction({ email: email, password: password }));
 
         if (response.meta.requestStatus === 'fulfilled') {
+            IoSocket.disconnect();
             navigate('/');
         }
 

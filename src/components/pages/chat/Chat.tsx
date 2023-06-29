@@ -68,6 +68,7 @@ export const Chat: FC = () => {
 
     useEffect(() => {
         IoSocket.connect();
+        console.log('Connected to socket.');
 
         IoSocket.on('error', (response) => {
             console.log(response);
@@ -84,6 +85,7 @@ export const Chat: FC = () => {
         });
 
         IoSocket.on('disconnect', () => {
+            console.log('Disconnected.');
             setIsLoading(false);
         });
 
@@ -108,7 +110,7 @@ export const Chat: FC = () => {
     }, [id]);
 
     useEffect(() => {
-        lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
+        lastMessageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, [messages]);
 
     return (

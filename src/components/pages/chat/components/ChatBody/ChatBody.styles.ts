@@ -7,9 +7,11 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column-reverse;
     position: relative;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /* padding: 20px; */
     z-index: 1;
+    padding-top: -10%;
+    /* border: 1px solid white; */
 `;
 
 export const Wrapper = styled.div`
@@ -18,6 +20,8 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    align-self: flex-end;
+
     /* justify-content: end; */
     width: 100%;
     max-height: 64vh;
@@ -80,7 +84,7 @@ export const Answer = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
-    line-height: 36px;
+    line-height: 30px;
     letter-spacing: -0.01em;
     color: #e4e4e4;
     margin: 0;

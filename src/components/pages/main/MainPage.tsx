@@ -1,4 +1,4 @@
-import React, { lazy, useEffect } from 'react';
+import React, { lazy } from 'react';
 
 import {
     Main,
@@ -20,18 +20,11 @@ import { Individuals } from './components/individuals/Individuals';
 import { useGlobalContext } from '~/services/Context';
 import { useNavigate } from 'react-router-dom';
 import { randomNumber } from '~/utils/randomNumber';
-import { IoSocket } from '~/services/socketConnect';
 
 export const MainPage = () => {
     const navigate = useNavigate();
 
     const { isPricing, isSubscribe, isSuccess } = useGlobalContext();
-
-    useEffect(() => {
-        if (IoSocket.connected) {
-            IoSocket.disconnect();
-        }
-    }, [IoSocket]);
 
     return (
         <Main>

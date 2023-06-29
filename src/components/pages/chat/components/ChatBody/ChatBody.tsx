@@ -32,12 +32,18 @@ export const ChatBody: FC<{
                 <Wrapper>
                     {messages?.map((message: Message) =>
                         message.type === 'answer' ? (
-                            <AnswerContainer key={v4()}>
-                                <Avatar src={individual.src} alt={individual.alt} />
-                                <Answer>{message.message}</Answer>
-                            </AnswerContainer>
+                            <div key={v4()} style={{ alignSelf: 'start' }}>
+                                <div ref={lastMessageRef} />
+                                <AnswerContainer>
+                                    <Avatar src={individual.src} alt={individual.alt} />
+                                    <Answer>{message.message}</Answer>
+                                </AnswerContainer>
+                            </div>
                         ) : (
-                            <Question key={v4()}>{message.message}</Question>
+                            <div key={v4()} style={{ alignSelf: 'end' }}>
+                                <div ref={lastMessageRef} />
+                                <Question>{message.message}</Question>
+                            </div>
                         ),
                     )}
                     {isLoading && (
@@ -49,7 +55,7 @@ export const ChatBody: FC<{
                             </LoaderWrapper>
                         </AnswerContainer>
                     )}
-                    <div ref={lastMessageRef} />
+                    {/* <div ref={lastMessageRef} /> */}
 
                     {/* {messages.length ? (
                         <AnswerContainer>

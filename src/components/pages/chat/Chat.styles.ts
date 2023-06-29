@@ -24,6 +24,7 @@ export const ImageContainer = styled.div`
     flex: 0 0 55%;
     width: 60%;
     height: calc(100vh - 298px);
+    /* min-height: 200px; */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -39,7 +40,7 @@ export const ChatContainer = styled.div`
     flex: 1 0 calc(45% + 32px);
     width: calc(40% + 32px);
     /* height: 940px; */
-    height: calc(100vh - 298px);
+    height: calc(100vh - 360px);
     min-height: 200px;
     position: relative;
     margin-left: -20px;
