@@ -31,6 +31,7 @@ export const HeaderComponent = () => {
     const { pathname } = useLocation();
     const dispatch = appDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const isAuth = Selector(authSelector);
     const isSign = Selector(signUpSelector);
@@ -81,6 +82,7 @@ export const HeaderComponent = () => {
         setIsPricing(false);
         setIsSubscribe(false);
         setIsSuccess(false);
+        if (location.pathname.split('/').includes('chat')) navigate('');
     };
 
     const onConsentHandler = () => {
@@ -136,8 +138,8 @@ export const HeaderComponent = () => {
                     <PaywallModal
                         show={isPricing}
                         onClose={() => {
-                            setIsPricing(false);
                             navigate('/');
+                            setIsPricing(false);
                         }}
                     />
                     <SubscribePayment show={isSubscribe} />
