@@ -75,6 +75,7 @@ export const Chat: FC = () => {
             IoSocket.auth = (cb) => {
                 cb({ token: `Bearer ${token}` });
             };
+            IoSocket.connect();
         });
 
         IoSocket.on('user-questions', () => {

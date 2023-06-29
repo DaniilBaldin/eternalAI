@@ -35,6 +35,7 @@ import { unsubscribeAction } from '~/store/actions/subscribeActions';
 import { PaymentFormWindow } from './components/paymentForm';
 import { loadingSelector } from '~/store/selectors/loadingSelector';
 import { ButtonLoader } from '~/components/common/buttonLoader/ButtonLoader';
+import { IoSocket } from '~/services/socketConnect';
 
 type ErrorMessage = {
     message: string;
@@ -105,6 +106,12 @@ export const Account = () => {
             navigate('/');
         }
     }, [isAuth]);
+
+    useEffect(() => {
+        if (IoSocket.connected) {
+            IoSocket.disconnect();
+        }
+    }, [IoSocket]);
 
     return (
         <Main>
