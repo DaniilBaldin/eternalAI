@@ -1,4 +1,4 @@
-import { io } from 'socket.io-client';
+import { Socket, io } from 'socket.io-client';
 import { store } from '~/store';
 
 const URL = import.meta.env.VITE_SOCKET_URL;
@@ -8,7 +8,7 @@ const getToken = () => {
     return state.authSlice.token;
 };
 
-export const IoSocket = io(URL, {
+export const IoSocket: Socket = io(URL, {
     auth: (cb) => {
         cb({ token: `Bearer ${getToken()}` });
     },

@@ -23,6 +23,8 @@ import { IoSocket } from '~/services/socketConnect';
 import { questions } from '~/utils/questions';
 import { Question } from '~/utils/questions';
 import { useGlobalContext } from '~/services/Context';
+import { Selector } from '~/store/hooks/redux-hooks';
+import { tokenSelector } from '~/store/selectors/tokenSelector';
 
 type Message = {
     type: string;
@@ -44,6 +46,8 @@ export const Chat: FC = () => {
 
     const { id } = useParams();
     const individualInfo = individuals.filter((individual: Individual) => individual.id === +id!);
+
+    const token = Selector(tokenSelector);
 
     IoSocket.on('heroResponse', (data) => {
         console.log('message received!');
@@ -67,6 +71,10 @@ export const Chat: FC = () => {
 
         IoSocket.on('error', (response) => {
             console.log(response);
+            console.log('Reconnecting...');
+            IoSocket.auth = (cb) => {
+                cb({ token: `Bearer ${token}` });
+            };
         });
 
         IoSocket.on('user-questions', () => {

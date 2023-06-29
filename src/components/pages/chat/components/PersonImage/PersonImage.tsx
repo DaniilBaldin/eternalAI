@@ -7,12 +7,14 @@ import {
     Gradient,
     InnerWrapper,
     GradientTop,
+    BlurOnTop,
 } from './PersonImage.styles';
 
 import { Individual } from '../../../main/components/individuals/components/ImageCard/ImageCard.types';
 
 export const PersonImage: FC<{ individual: Individual }> = (props) => {
     const { individual } = props;
+
     return (
         <Wrapper>
             <InnerWrapper>
@@ -90,15 +92,7 @@ export const PersonImage: FC<{ individual: Individual }> = (props) => {
                 />
             </InnerWrapper>
             <Portrait src={individual.portrait} alt={individual.alt} />
-            <BackgroundImage
-                src="/main/Ellipse3644.svg"
-                left={15}
-                bottom={10}
-                rotate={0}
-                width={490}
-                height={619}
-                blur={0}
-            />
+            <BlurOnTop src="/main/Ellipse3644.svg" alt="BlurOnTop" />
             <Gradient />
             <GradientTop />
         </Wrapper>

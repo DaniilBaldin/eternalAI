@@ -40,9 +40,9 @@ export const BackgroundImage = styled.img<{
     /* width: ${(props) => `rotate(${props.width}px)`};
     height: ${(props) => `rotate(${props.height}px)`}; */
     filter: ${(props) => `blur(${props.blur}px)`};
-    -webkit-animation: spin 15s linear infinite;
-    -moz-animation: spin 15s linear infinite;
-    animation: spin 15s linear infinite;
+    -webkit-animation: spin 10s linear infinite;
+    -moz-animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite;
     /* z-index: -10; */
     overflow: hidden;
 
@@ -116,4 +116,17 @@ export const GradientTop = styled.div`
     height: 150px;
     overflow: hidden;
     transform: rotate(180deg);
+`;
+
+export const BlurOnTop = styled.img`
+    position: absolute;
+    left: 15%;
+    bottom: 10%;
+    object-fit: contain;
+    user-select: none;
+    width: 80%;
+    height: 80%;
+    max-width: 80%;
+    max-height: 740px;
+    overflow: hidden;
 `;

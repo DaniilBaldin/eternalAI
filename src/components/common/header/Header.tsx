@@ -81,7 +81,7 @@ export const HeaderComponent = () => {
         setIsPricing(false);
         setIsSubscribe(false);
         setIsSuccess(false);
-        navigate('/');
+        // navigate('/');
     };
 
     const onConsentHandler = () => {
