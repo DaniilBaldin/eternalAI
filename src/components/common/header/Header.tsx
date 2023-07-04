@@ -31,7 +31,6 @@ export const HeaderComponent = () => {
     const { pathname } = useLocation();
     const dispatch = appDispatch();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const isAuth = Selector(authSelector);
     const isSign = Selector(signUpSelector);

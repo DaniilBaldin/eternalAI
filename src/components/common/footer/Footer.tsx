@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 export const FooterComponent = () => {
     const { pathname } = useLocation();
     return (
-        <div hidden={pathname.includes('chat')}>
+        <div hidden={pathname.includes('chat') || pathname.includes('login-successful')}>
             <Footer>
                 <LogoContainer to="/">
                     <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
