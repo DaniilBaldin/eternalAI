@@ -17,6 +17,7 @@ import { appDispatch, Selector } from '~/store/hooks/redux-hooks';
 import { logOut } from '~/store/reducers/authReducer';
 import { authSelector } from '~/store/selectors/authSelector';
 import { useNavigate } from 'react-router-dom';
+import { IoSocket } from '~/services/socketConnect';
 
 type Props = {
     isShow: boolean;
@@ -84,6 +85,7 @@ export const MenuModal: FC<Props> = (props) => {
                 {isAuth && (
                     <LogoutButton
                         onClick={() => {
+                            IoSocket.disconnect();
                             dispatch(logOut());
                             navigate('/');
                         }}

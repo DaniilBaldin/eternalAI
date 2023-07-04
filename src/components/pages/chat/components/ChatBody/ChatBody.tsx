@@ -13,8 +13,8 @@ import { ButtonLoader } from '~/components/common/buttonLoader/ButtonLoader';
 import { v4 } from 'uuid';
 
 type Message = {
-    type: string;
-    message: string;
+    role: string;
+    content: string;
 };
 
 export const ChatBody: FC<{
@@ -31,18 +31,18 @@ export const ChatBody: FC<{
             <div style={{ display: 'block' }}>
                 <Wrapper>
                     {messages?.map((message: Message) =>
-                        message.type === 'answer' ? (
+                        message.role === 'assistant' ? (
                             <div key={v4()} style={{ alignSelf: 'start' }}>
                                 <div ref={lastMessageRef} />
                                 <AnswerContainer>
                                     <Avatar src={individual.src} alt={individual.alt} />
-                                    <Answer>{message.message}</Answer>
+                                    <Answer>{message.content}</Answer>
                                 </AnswerContainer>
                             </div>
                         ) : (
                             <div key={v4()} style={{ alignSelf: 'end' }}>
                                 <div ref={lastMessageRef} />
-                                <Question>{message.message}</Question>
+                                <Question>{message.content}</Question>
                             </div>
                         ),
                     )}

@@ -8,8 +8,8 @@ import { Selector } from '~/store/hooks/redux-hooks';
 import { useGlobalContext } from '~/services/Context';
 
 type Message = {
-    type: string;
-    message: string;
+    role: string;
+    content: string;
 };
 
 type Props = {
@@ -30,7 +30,7 @@ export const ChatInput: FC<Props> = (props) => {
     const onMessageSend = (event: { preventDefault: () => void }) => {
         event.preventDefault();
         setIsLoading(true);
-        setQuestion([...messages, { type: 'question', message: message }]);
+        setQuestion([...messages, { role: 'user', content: message }]);
         if (message.trim()) {
             console.log('message sent!');
             IoSocket.emit('hero', {

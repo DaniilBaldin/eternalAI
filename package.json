@@ -12,6 +12,7 @@
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.5",
         "@types/axios": "^0.14.0",
+        "@types/jsonwebtoken": "^9.0.2",
         "@types/react-lazy-load-image-component": "^1.5.3",
         "@types/react-payment-inputs": "^1.1.0",
         "@types/react-transition-group": "^4.4.6",
@@ -19,6 +20,7 @@
         "@types/tabbable": "^3.1.2",
         "@types/uuid": "^9.0.2",
         "axios": "^1.4.0",
+        "jsonwebtoken": "^9.0.0",
         "query-string": "^8.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

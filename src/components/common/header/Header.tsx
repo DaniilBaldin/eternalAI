@@ -82,7 +82,6 @@ export const HeaderComponent = () => {
         setIsPricing(false);
         setIsSubscribe(false);
         setIsSuccess(false);
-        if (location.pathname.split('/').includes('chat')) navigate('');
     };
 
     const onConsentHandler = () => {
@@ -114,7 +113,12 @@ export const HeaderComponent = () => {
                             <img src="/header/Logo.svg" alt="Logo" style={{ marginRight: '5px' }} />
                             <img src="/header/ETERNAL.svg" alt="Eternal" />
                         </LogoContainerAlternative>
-                        <CloseButtonAlterntive onClick={onCloseHandler}>
+                        <CloseButtonAlterntive
+                            onClick={() => {
+                                onCloseHandler();
+                                navigate('/');
+                            }}
+                        >
                             <img src="/header/Close.svg" alt="MenuClose" style={{ margin: '0' }} />
                         </CloseButtonAlterntive>
                     </HeaderAlternative>

@@ -27,8 +27,8 @@ import { Selector } from '~/store/hooks/redux-hooks';
 import { tokenSelector } from '~/store/selectors/tokenSelector';
 
 type Message = {
-    type: string;
-    message: string;
+    role: string;
+    content: string;
 };
 
 export const Chat: FC = () => {
@@ -51,20 +51,10 @@ export const Chat: FC = () => {
 
     IoSocket.on('heroResponse', (data) => {
         console.log('message received!');
-        const newAnswer = { type: 'answer', message: data };
+        const newAnswer = { role: 'assistant', content: data };
         setMessages([...messages, newAnswer]);
         setIsLoading(false);
     });
-
-    useEffect(() => {
-        if (question.length) {
-            const newQuestion = {
-                type: 'question',
-                message: question[0].question,
-            };
-            setMessages([...messages, newQuestion]);
-        }
-    }, []);
 
     useEffect(() => {
         IoSocket.connect();
@@ -77,6 +67,10 @@ export const Chat: FC = () => {
                 cb({ token: `Bearer ${token}` });
             };
             IoSocket.connect();
+        });
+
+        IoSocket.on('chat-history', (response) => {
+            setMessages(response);
         });
 
         IoSocket.on('user-questions', () => {
@@ -100,7 +94,11 @@ export const Chat: FC = () => {
     useEffect(() => {
         if ((individualInfo[0] as Individual).name.length) {
             setIsLoading(true);
-            IoSocket.timeout(500).emit('hero', {
+            IoSocket.emit('chat-history', {
+                hero: `${(individualInfo[0] as Individual).name}`,
+            });
+
+            IoSocket.emit('hero', {
                 hero: `${(individualInfo[0] as Individual).name}`,
                 question: question.length
                     ? question[0].question

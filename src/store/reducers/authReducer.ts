@@ -4,8 +4,9 @@ import { signUpAction } from '../actions/signUpActions';
 
 import { storage } from '~/services/localStorage';
 import { getAccountAction, setAccountAction } from '../actions/accountActions';
+import { verifyToken } from '~/services/tokenVerify';
 
-const initialToken = storage.get('Token');
+const initialToken = verifyToken(storage.get('Token'));
 
 type initialState = {
     token: string;
