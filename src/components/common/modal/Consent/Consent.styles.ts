@@ -37,6 +37,10 @@ export const ModalContent = styled.div<{ $show: boolean }>`
     justify-content: flex-start;
     z-index: 200;
     margin-top: 20px;
+
+    @media (max-width: 420px) {
+        padding-top: 50px;
+    }
 `;
 
 export const ConsentWindow = styled.div`
@@ -70,6 +74,11 @@ export const ConsentWindow = styled.div`
         position: absolute;
         z-index: -999;
     }
+
+    @media (max-width: 1000px) {
+        width: 343px;
+        padding: 32px;
+    }
 `;
 
 export const Title = styled.p`
@@ -82,6 +91,11 @@ export const Title = styled.p`
     color: #ffffff;
     text-align: left;
     margin-bottom: 8px;
+
+    @media (max-width: 1000px) {
+        font-size: 24px;
+        line-height: 36px;
+    }
 `;
 
 export const MainText = styled.p`
@@ -95,6 +109,11 @@ export const MainText = styled.p`
     color: #ffffff;
     margin: 0;
     margin-bottom: 34px;
+
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        line-height: 21px;
+    }
 `;
 
 export const CheckboxContainer = styled.div`
@@ -153,6 +172,11 @@ export const Span = styled.span`
     letter-spacing: -0.01em;
     color: #ffffff;
     margin: 0;
+
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        line-height: 21px;
+    }
 `;
 
 export const ContinueButton = styled.button`
@@ -167,7 +191,7 @@ export const ContinueButton = styled.button`
     align-items: center;
     justify-content: center;
     margin: 0;
-    margin-top: 24px;
+    margin-top: 20px;
     cursor: pointer;
     color: #ffffff;
     font-family: 'Arquitecta';
@@ -200,6 +224,10 @@ export const ContinueButton = styled.button`
             rgba(88, 51, 239, 0.4) 114.41%
         );
         cursor: auto;
+    }
+
+    @media (max-width: 1000px) {
+        width: 279px;
     }
 `;
 
