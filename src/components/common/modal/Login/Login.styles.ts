@@ -38,6 +38,10 @@ export const ModalContent = styled.div<{ $show: boolean }>`
     justify-content: flex-start;
     z-index: 200;
     margin-top: 20px;
+
+    @media (max-width: 420px) {
+        padding-top: 50px;
+    }
 `;
 
 export const SignUpWindow = styled.div`
@@ -71,6 +75,17 @@ export const SignUpWindow = styled.div`
         position: absolute;
         z-index: -999;
     }
+
+    @media (max-width: 900px) {
+        width: 343px;
+        height: 580px;
+        padding: 32px;
+    }
+
+    @media (max-width: 400px) {
+        height: 560px;
+        padding: 24px;
+    }
 `;
 
 export const Title = styled.p`
@@ -83,6 +98,10 @@ export const Title = styled.p`
     color: #ffffff;
     text-align: left;
     margin-bottom: 32px;
+
+    @media (max-width: 900px) {
+        margin-bottom: 16px;
+    }
 `;
 
 export const Form = styled.form`
@@ -131,6 +150,12 @@ export const Input = styled.input`
     &:hover {
         border: 1px solid rgb(255, 255, 255, 0.5);
     }
+
+    @media (max-width: 900px) {
+        width: 279px;
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
 `;
 
 export const ResetLink = styled.p`
@@ -145,6 +170,11 @@ export const ResetLink = styled.p`
     margin: 0;
     margin-bottom: 32px;
     cursor: pointer;
+
+    @media (max-width: 900px) {
+        /* margin-top: -16px; */
+        margin-bottom: 16px;
+    }
 `;
 
 export const ButtonsContainer = styled.div`
@@ -152,6 +182,10 @@ export const ButtonsContainer = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+
+    @media (max-width: 900px) {
+        flex-direction: column-reverse;
+    }
 `;
 
 export const ButtonWrap = styled.div`
@@ -171,6 +205,11 @@ export const ButtonWrap = styled.div`
     cursor: pointer;
     margin-right: 16px;
     outline: none;
+
+    @media (max-width: 900px) {
+        width: 279px;
+        margin-right: 0px;
+    }
 `;
 
 export const GoogleButton = styled(Link)`
@@ -204,6 +243,18 @@ export const GoogleButton = styled(Link)`
         border: 1px solid transparent;
         width: 302px;
         height: 60px;
+    }
+
+    @media (max-width: 900px) {
+        width: 277px;
+
+        &:hover {
+            width: 276px;
+        }
+
+        &:focus {
+            width: 276px;
+        }
     }
 `;
 
@@ -253,6 +304,11 @@ export const SignInButton = styled.button`
         );
         cursor: auto;
     }
+
+    @media (max-width: 900px) {
+        width: 279px;
+        margin-bottom: 16px;
+    }
 `;
 
 export const BreakLine = styled.div`
@@ -263,6 +319,12 @@ export const BreakLine = styled.div`
     margin-top: 32px;
     margin-bottom: 32px;
     /* align-self: center; */
+
+    @media (max-width: 900px) {
+        width: 279px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
 `;
 
 export const BottomTextWrapper = styled.div`

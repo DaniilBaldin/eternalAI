@@ -18,11 +18,11 @@ import {
     BottomText,
     BottomTextWrapper,
     BottomLink,
+    ErrorMessage,
 } from './Signup.styles';
 
 import { useGlobalContext } from '~/services/Context';
 import { googleUrl } from '~/utils/stringifiedParams';
-import { ErrorMessage } from '../Consent/Consent.styles';
 
 type Props = {
     show: boolean;
@@ -50,9 +50,7 @@ export const SignUpModal: FC<Props> = (props) => {
 
     const handleBlur = (event: { target: HTMLInputElement }) => {
         if ((event.target as HTMLInputElement).validity.patternMismatch) {
-            setError(
-                'Password must be at least 8 characters long and contain at least one uppercase letter and one number!',
-            );
+            setError('Password not strong enough!');
         }
     };
 
@@ -69,48 +67,40 @@ export const SignUpModal: FC<Props> = (props) => {
                             onConsent();
                         }}
                     >
-                        <Label htmlFor="email">
-                            Email
-                            <Input
-                                type="text"
-                                id="email"
-                                name="email"
-                                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$"
-                                autoComplete="off"
-                                placeholder="Email"
-                                autoCorrect="off"
-                                min={1}
-                                onChange={(event) => {
-                                    setError('');
-                                    setEmail(event.target.value);
-                                }}
-                                onBlur={handleEmailBlur}
-                                required
-                            />
-                        </Label>
-                        <Label htmlFor="password">
-                            Password
-                            <Input
-                                type="password"
-                                id="password"
-                                autoComplete="off"
-                                placeholder="Password"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                                min={8}
-                                onChange={(event) => {
-                                    setError('');
-                                    setPassword(event.target.value);
-                                }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                        </Label>
+                        <Label htmlFor="email">Email</Label>
+                        <Input
+                            type="email"
+                            id="email"
+                            name="email"
+                            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                            autoComplete="off"
+                            placeholder="Email"
+                            autoCorrect="off"
+                            min={1}
+                            onChange={(event) => {
+                                setError('');
+                                setEmail(event.target.value);
+                            }}
+                            onBlur={handleEmailBlur}
+                            required
+                        />
+                        <Label htmlFor="password">Password</Label>
+                        <Input
+                            type="password"
+                            id="password"
+                            autoComplete="off"
+                            placeholder="Password"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$"
+                            min={8}
+                            onChange={(event) => {
+                                setError('');
+                                setPassword(event.target.value);
+                            }}
+                            onBlur={handleBlur}
+                            required
+                        />
                     </Form>
-                    {error && (
-                        <ErrorMessage style={{ marginTop: '-20px', marginBottom: '10px' }}>
-                            {error}
-                        </ErrorMessage>
-                    )}
+                    {error && <ErrorMessage style={{ marginTop: '-10px' }}>{error}</ErrorMessage>}
                     <ButtonsContainer>
                         <ButtonWrap>
                             <GoogleButton to={googleUrl}>

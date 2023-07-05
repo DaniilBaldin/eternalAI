@@ -20,7 +20,8 @@ export const Modal = styled.div<{ $show: boolean }>`
 
 export const ModalContent = styled.div<{ $show: boolean }>`
     width: 434px;
-    height: 540px;
+    height: 100%;
+    /* height: 540px; */
     visibility: ${(props) => (props.$show ? 'visible' : 'hidden')};
     opacity: ${(props) => (props.$show ? 1 : 0)};
     background-color: transparent;
@@ -35,8 +36,11 @@ export const ModalContent = styled.div<{ $show: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     z-index: 999;
+
+    @media (max-width: 1000px) {
+    }
 `;
 
 export const MenuLink = styled(Link)`
@@ -105,7 +109,9 @@ export const LogoutButton = styled.button`
     outline: none;
     color: white;
     cursor: pointer;
-    margin-top: 100px;
+    position: absolute;
+    bottom: 0;
+    /* margin-top: 100px; */
     font-family: 'Arquitecta';
     font-style: normal;
     font-weight: 700;
@@ -114,4 +120,77 @@ export const LogoutButton = styled.button`
     letter-spacing: 0.2em;
     text-transform: uppercase;
     /* border: 1px solid white; */
+`;
+
+export const AuthButtonsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 2%;
+`;
+
+export const GetStartedButton = styled.button`
+    height: 48px;
+    width: 343px;
+    /* padding: 16px 24px 16px 24px; */
+    background: linear-gradient(281.4deg, #f82d98 -2.34%, #5833ef 114.41%);
+    border: none;
+    border-radius: 120px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    cursor: pointer;
+    font-family: Arquitecta;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 14.3px;
+    letter-spacing: 0.3em;
+    color: #ffffff;
+    /* text-align: center; */
+    /* vertical-align: center; */
+    margin: 0;
+
+    @media (min-width: 1001px) {
+        display: none;
+    }
+`;
+
+export const LoginButton = styled.button`
+    height: 58px;
+    width: 80px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    font-family: 'Arquitecta';
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 14.3px;
+    letter-spacing: 0.3em;
+    color: #ffffff;
+    margin: 0;
+    /* margin-right: 32px; */
+    cursor: pointer;
+
+    &:hover {
+        color: #f82d98;
+    }
+    &:hidden {
+        display: none;
+    }
+
+    @media (min-width: 1001px) {
+        display: none;
+    }
 `;

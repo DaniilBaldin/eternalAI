@@ -17,7 +17,11 @@ export const Individuals = (): JSX.Element => {
             <Text>Ask a question to your favorite person and get a realistic response</Text>
             <ImageWrapper>
                 {individuals.map((individual: Individual) => (
-                    <div key={individual.id} onClick={() => navigate(`/chat/${individual.id}`)}>
+                    <div
+                        key={individual.id}
+                        onClick={() => navigate(`/chat/${individual.id}`)}
+                        tabIndex={0}
+                    >
                         <ImageCard
                             id={individual.id}
                             src={individual.src}

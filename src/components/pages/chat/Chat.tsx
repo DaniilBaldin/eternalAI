@@ -57,16 +57,32 @@ export const Chat: FC = () => {
     });
 
     useEffect(() => {
+        if (IoSocket.connected) {
+            console.log('Connected to socket.');
+        }
+    }, [IoSocket]);
+
+    useEffect(() => {
         IoSocket.connect();
-        console.log('Connected to socket.');
 
         IoSocket.on('error', (response) => {
             console.log(response);
+            if (response === 'UNAUTHORIZED') {
+                console.log('Reconnecting...');
+                IoSocket.auth = (cb) => {
+                    cb({ token: `Bearer ${token}` });
+                };
+                IoSocket.connect();
+            }
             console.log('Reconnecting...');
+            IoSocket.disconnect();
             IoSocket.auth = (cb) => {
                 cb({ token: `Bearer ${token}` });
             };
             IoSocket.connect();
+        });
+        IoSocket.on('my_error', (response) => {
+            console.log(response);
         });
 
         IoSocket.on('chat-history', (response) => {

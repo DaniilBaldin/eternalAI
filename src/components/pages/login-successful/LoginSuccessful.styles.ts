@@ -47,13 +47,6 @@ export const SuccessBadge = styled.div`
     margin: 0;
     margin-top: 48px;
     margin-bottom: 24px;
-    animation: rotate 1s infinite;
-
-    @keyframes rotate {
-        100% {
-            transform: rotate(180deg);
-        }
-    }
 `;
 
 export const Title = styled.p`

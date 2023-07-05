@@ -10,6 +10,9 @@ import {
     Img,
     MenuText,
     LogoutButton,
+    AuthButtonsWrapper,
+    GetStartedButton,
+    LoginButton,
 } from './Menu.styles';
 
 import { useGlobalContext } from '~/services/Context';
@@ -30,13 +33,30 @@ export const MenuModal: FC<Props> = (props) => {
 
     const { isShow, onClose } = props;
 
-    const { setIsPricing } = useGlobalContext();
+    const { setIsPricing, setIsMenuShow, setIsLoginShow, setIsSignUpShow, setIsConsent } =
+        useGlobalContext();
+
     const isAuth = Selector(authSelector);
+    console.log(isAuth);
 
     const account = 'account';
 
     const onCloseHandler = () => {
         onClose();
+    };
+
+    const onLoginHandler = () => {
+        setIsMenuShow(false);
+        setIsSignUpShow(false);
+        setIsLoginShow(true);
+        setIsConsent(false);
+    };
+
+    const onSignupHandler = () => {
+        setIsConsent(false);
+        setIsLoginShow(false);
+        setIsMenuShow(false);
+        setIsSignUpShow(true);
     };
 
     return createPortal(
@@ -82,7 +102,20 @@ export const MenuModal: FC<Props> = (props) => {
                         <Img src="/footer/Youtube.svg" alt="Youtube" />
                     </a>
                 </Footer>
-                {isAuth && (
+                {!isAuth ? (
+                    <AuthButtonsWrapper>
+                        {!isAuth && (
+                            <GetStartedButton type="button" onClick={onSignupHandler}>
+                                GET STARTED
+                            </GetStartedButton>
+                        )}
+                        {!isAuth && (
+                            <LoginButton type="button" onClick={onLoginHandler}>
+                                LOGIN
+                            </LoginButton>
+                        )}
+                    </AuthButtonsWrapper>
+                ) : (
                     <LogoutButton
                         onClick={() => {
                             IoSocket.disconnect();

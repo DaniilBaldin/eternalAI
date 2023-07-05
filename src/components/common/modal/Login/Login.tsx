@@ -86,12 +86,12 @@ export const LoginModal: FC<Props> = (props) => {
                     <Form onSubmit={onSubmit}>
                         <Label>Email</Label>
                         <Input
-                            type="text"
+                            type="email"
                             autoComplete="off"
                             autoCapitalize="off"
                             autoCorrect="off"
                             placeholder="Email"
-                            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$"
+                            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                             min={1}
                             onChange={(event) => {
                                 setError('');
